@@ -1,9 +1,10 @@
 import React from 'react'
+import './LandingHeader.css'
 
 function LandingHeader() {
   return (
-    <div>
-        <h1>header</h1>
+    <div className='header-container'>
+        <h1>trial header element</h1>
     </div>
   )
 }

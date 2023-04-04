@@ -1,4 +1,4 @@
-import logo from '../logo.svg';
+// import logo from '../images/spira_logo1 1.png';
 import './App.css';
 import LandingHeader from './LandingHeader';
 

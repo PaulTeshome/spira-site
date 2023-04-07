@@ -5,7 +5,7 @@ function InputComponent({label, type, name, placeholder}) {
     <div>
     <label>
         {label}<br/>
-        <input type={type} name={name} placeholder={placeholder}/><br/>
+        <input type={type} name={name} placeholder={placeholder} className='hire-form-inputs'/><br/>
     </label>
     </div>
   )

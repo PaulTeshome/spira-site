@@ -4,7 +4,8 @@ import InputComponent from './InputComponent'
 
 function HireForm() {
   return (
-    <div>
+    <div className='hire-form-container'>
+      <div className='form-container'>
         <form>
             <InputComponent label="First Name" type="text" name="fname" placeholder='Enter First Name'/>
             <InputComponent label="Last Name" type="text" name="lname" placeholder='Enter Last Name'/>
@@ -13,13 +14,13 @@ function HireForm() {
             <InputComponent label="Phone" type="tel" name="phone" placeholder='Enter Phone Number'/>
             <InputComponent label="Tell us how we could be of help" type="radio" name="phone" placeholder='Enter Phone Number'/>
             <label>
-            Specify<br/>
+                Specify<br/>
             <textarea name="spec" placeholder='Specify your choice above'/>
             </label>
             <InputComponent type="submit" name="submit" value="Submit"/>
         </form>
+      </div>
         
-
     </div>
   )
 }

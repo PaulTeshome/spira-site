@@ -1,4 +1,15 @@
-input[type=text], select, input[type=email], input[type=textarea],  input[type=tel]{
+.hire-form-container{
+  height: 800px;
+  margin-left: 10%;
+  margin-right: 10%;
+  background-image: url("../images/stockholm2.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  padding: 15% 5% ;
+}
+input[type=text], select, textarea,input[type=email], input[type=tel]{
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -24,8 +35,13 @@ input[type=text], select, input[type=email], input[type=textarea],  input[type=t
     background-color: #45a049;
   }
   
-  div {
+  .form-container {
     border-radius: 5px;
-    background-color: #f2f2f2;
-    padding: 20px;
+    background-color: #f0eeee;
+    margin-left: 20%;
+    margin-right: 20%;
+    padding: 5%;
+    width: 50%;
+
   }
+ 

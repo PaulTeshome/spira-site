@@ -18,3 +18,12 @@
     flex-wrap: wrap;
     flex-direction: row;
 }
+
+@media only screen and (min-width: 850px) {
+    /* For desktop: */
+    .recent-container{
+        font-size: 40px;
+    
+    }
+    
+    }

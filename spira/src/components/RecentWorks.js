@@ -5,7 +5,7 @@ import RecentWorksCard from './RecentWorksCard'
 function RecentWorks() {
   return (
     <div className='recent-container'>
-       <h1>RECENT WORKS</h1>
+       <span>RECENT WORKS</span>
         <div className='work-list-container'>
             <RecentWorksCard/>
             <RecentWorksCard/>

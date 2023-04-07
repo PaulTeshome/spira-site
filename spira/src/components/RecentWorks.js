@@ -7,9 +7,9 @@ function RecentWorks() {
     <div className='recent-container'>
        <span>RECENT WORKS</span>
         <div className='work-list-container'>
-            <RecentWorksCard/>
-            <RecentWorksCard/>
-            <RecentWorksCard/>
+            <RecentWorksCard proj_title="Project 1" proj_desc=" this is the proj description"/>
+            <RecentWorksCard proj_title="Project 2" proj_desc=" this is the proj description"/>
+            <RecentWorksCard proj_title="Project 3" proj_desc=" this is the proj description"/>
         </div>
     </div>
   )

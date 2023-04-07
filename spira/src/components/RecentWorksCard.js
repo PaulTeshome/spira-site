@@ -1,12 +1,12 @@
 import React from 'react'
 import './RecentWorksCard.css'
 
-function RecentWorksCard() {
+function RecentWorksCard({proj_title, proj_desc}) {
   return (
     <div className='recent-card'>
-      <div className='recent-card-bg'></div>
         <div className='recent-card-desc'>
-          awbdhjaldbwajldwaljdhwjalfjek;kl ai amapaulsoenfe
+          <span className='recent-card-header'>{proj_title}</span>
+          <span className='recent-card-text'>{proj_desc}</span>
         </div>
     </div>
   )

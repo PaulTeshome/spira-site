@@ -8,7 +8,10 @@ function Services() {
     //     <ServicesCard service_name={service.name}service_desc="we manage social media"/>
     // })
     <div className='services-container'>
-        <h1>OUR SERVICES</h1>
+        <span>OUR SERVICES</span>
+        <ServicesCard service_name="SOCIAL MEDIA MANAGMENT" service_desc="we manage social media"/>
+        <ServicesCard service_name="SOCIAL MEDIA MANAGMENT" service_desc="we manage social media"/>
+        <ServicesCard service_name="SOCIAL MEDIA MANAGMENT" service_desc="we manage social media"/>
         <ServicesCard service_name="SOCIAL MEDIA MANAGMENT" service_desc="we manage social media"/>
         <ServicesCard service_name="SOCIAL MEDIA MANAGMENT" service_desc="we manage social media"/>
     </div>

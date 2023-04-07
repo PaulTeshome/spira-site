@@ -2,7 +2,7 @@
     background-color: #061020;
     min-height: 600px;
     color: aliceblue;
-    font-family: Times;
+    font-family: 'Times New Roman', Times, serif;
     font-size: 20px;
     text-align: center;
     display: flex;
@@ -104,6 +104,6 @@
         padding-top:1%;
         padding-bottom: 1%;
         margin-top: 0%;
-        font-size: 12px;
+        font-size: 14px;
     }
 }

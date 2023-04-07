@@ -1,43 +1,209 @@
 .header-container{
-    height: 120px;
-    width: 100%;
-    background-color: #061020;
+    height: 500px;
     color: aliceblue;
 }
-.menuItem {
+
+.landing-header-bg{
+  background-image: url("../images/stockholm1.jpg");
+  filter: blur(.11rem) brightness(0.7);
+  -webkit-filter: blur(0.11rem) brightness(0.7);
+  height: 100%;
+  float: none;
+  z-index: -1;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  clip-path: polygon(0% 0% ,100% 0% ,100% 90%,0% 100%);
+}
+
+.fixed-header{
+  font-weight: bold;
+  position: fixed;
+  top:5%;
+  left: 50%;
+  width:100%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  text-align: center;
+  padding-bottom:.5% ;
+}
+
+.menu-item {
     float:right;
-    margin-right:25px;
-    margin-top:30px;
+    margin-right:3%;
+    margin-top:6%;
     text-decoration:none;
     color: aliceblue;
+    font-size: 60%;
 }
-.hireBtn{
+
+.menu-item:hover{
+  transform: scale(1.1,1.1);
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+.hire-btn{
     background-color:rgba(123,125,176,0.5);
-    color: white;
-    border-radius: 15px;
-    border: none;
+    border: solid 2px rgb(100, 100, 144);
+    border-radius: 25px;
     height:40px;
-    width:90px;
-    margin-top:25px;
+    width:20%;
+    margin-top:3%;
+    font-size: 12px;
 }
-.menuLogo{
+
+.hire-btn:hover{
+  background-color: #5a82c2
+}
+
+.menu-logo{
     float: left;
-    height:60px;
-    width:60px;
-    margin-top:30px;
-    margin-left:10px;
+    height:50px;
+    margin-top:3%;
+    margin-left:3%;
+    padding: 0px;
 }
-.quote-container{
-    box-shadow: 34cqi;
-    background-color: aqua;
-    text-align: left;
-    margin-left: 20px;
-    color: #061020;
-    width: 50%;
+
+.spira-heading{
+    background-color: rgba(0,0,0, 0.3);
+    border: 1px solid #f1f1f1;
+    font-family:serif ;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    text-align: center;
+    padding: 1%;
+    padding-bottom:2.5% ;
+  }
+  
+  .large-heading{
+    font-size: 580%;
+    font-weight: bold;
+  }
+  
+  .small-heading{
+    font-size: 75%;
+    font-weight: normal;
+    font-family: 'Courier New', Courier, monospace;
+  }
+
+@media only screen and (min-width: 600px) {
+  /* For tablets: */
+  .header-container{
+    height: 700px;
+    color: aliceblue;
+  }
+  .col-0 {width: 4%;}
+  .col-1 {width: 8.33%;}
+  .col-2 {width: 16.66%;}
+  .col-3 {width: 25%;}
+  .col-4 {width: 33.33%;}
+  .col-5 {width: 41.66%;}
+  .col-6 {width: 50%;}
+  .col-7 {width: 58.33%;}
+  .col-8 {width: 66.66%;}
+  .col-9 {width: 75%;}
+  .col-10 {width: 83.33%;}
+  .col-11 {width: 91.66%;}
+  .col-12 {width: 100%;}
+  .large-heading{
+    font-size: 600%;
+    font-weight: bold;
+  }
+  
+  .small-heading{
+    font-size: 100%;
+    font-weight: normal;
+  }
+  .menu-item {
+    float:right;
+    margin-right:3%;
+    margin-top:6%;
+    font-size: 80%;
+  }
+  .hire-btn{
+    border-radius: 25px;
+    height:40px;
+    margin-top:5%;
+    width:15%;
+  }
+  .menu-logo{
+    height:50px;
+    width:8%;
+    margin-top:5%;
+    margin-left:3%;
+  }
+  .spira-heading{
+    top: 40%;
+    left: 50%;
+  }
 
 }
-.quote{
-    font-size: 46px;
-    font-family: Gelasio;
+
+@media only screen and (min-width: 850px) {
+  /* For desktop: */
+  .header-container{
+    height: 800px;
+    color: aliceblue;
+  }
+  .col-0 {width: 4%;}
+  .col-1 {width: 8.33%;}
+  .col-2 {width: 16.66%;}
+  .col-3 {width: 25%;}
+  .col-4 {width: 33.33%;}
+  .col-5 {width: 41.66%;}
+  .col-6 {width: 50%;}
+  .col-7 {width: 58.33%;}
+  .col-8 {width: 66.66%;}
+  .col-9 {width: 75%;}
+  .col-10 {width: 83.33%;}
+  .col-11 {width: 91.66%;}
+  .col-12 {width: 100%;}
+  .large-heading{
+    font-size: 900%;
     font-weight: bold;
+  }
+  
+  .small-heading{
+    font-size: 150%;
+    font-weight: normal;
+  }
+  .menu-item {
+    float:right;
+    margin-right:2%;
+    margin-top:5%;
+    font-size: 100%;
+  }
+  .hire-btn{
+    border-radius: 25px;
+    height:40px;
+    margin-top:4.5%;
+  }
+  .menu-logo{
+    width: 60px;
+    height:60px;
+    margin-top:5%;
+    margin-left:3%;
+  }
+  .spira-heading{
+   
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    
+  }
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #0054e6, 0 0 40px #0054e6, 0 0 50px #0054e6, 0 0 60px #0054e6, 0 0 70px #0054e6;
+  }
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #6b4dff, 0 0 40px #6b4dff, 0 0 50px #6b4dff, 0 0 60px #6b4dff, 0 0 70px #6b4dff, 0 0 80px #6b4dff;
+  }
 }

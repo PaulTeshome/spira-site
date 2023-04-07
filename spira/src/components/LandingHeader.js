@@ -1,22 +1,20 @@
 import React from 'react'
 import './LandingHeader.css'
-import logo from '../images/spira_logo1 1.png'
+import FixedHeader from './FixedHeader'
+
 
 function LandingHeader() {
   return (
     <div>
-    <div className='header-container'>
-       <button className='menuItem hireBtn'>Hire us</button>
-        <a className='menuItem' href='app.js'>Services</a>
-        <span className='menuItem'>About us</span>
-        <a  href='app.js'>
-          <img className='menuLogo' src={logo} alt="spira logo"/>
-        </a>
+      <div className='header-container col-12'>
+        <div className='landing-header-bg col-12'></div>
+        <FixedHeader services="App.js" about="App.js" />
+        <div className='spira-heading col-6'>
+          <span className='large-heading'>SPIRA</span><br/>
+          <span className='small-heading'>DIGITAL MARKETING AGENCY</span>
+        </div>
+      </div>
     </div>
-    <div className='quote-container'>
-        <span className="quote">EMPOWREING YOUR BRAND IN THE DIGITAL SPACE</span>
- </div>
- </div>
   )
 }
 

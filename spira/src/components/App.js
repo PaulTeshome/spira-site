@@ -5,6 +5,8 @@ import MottoSection from './MottoSection';
 import Services from './Services';
 import RecentWorks from './RecentWorks';
 import OurTeam from './OurTeam';
+import AboutUs from './AboutUs';
+
 
 function App() {
   return (
@@ -18,6 +20,7 @@ function App() {
       <Services/>
       <RecentWorks/>
       <OurTeam/>
+      <AboutUs/>
     </div>
   );
 }

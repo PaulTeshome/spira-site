@@ -1,0 +1,26 @@
+.title{
+    height: 50px;
+    width: 50px;
+    margin-top: 3%;
+    margin-right: 25%;
+    margin-left: 25%;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 50px;
+    background-color: aqua;
+    }
+.aboutUs-illust{
+    float: right;
+    align-self: right;
+    margin-top: 5%;
+    margin-right: 10%;
+}
+.aboutUs-description{
+    padding: 10%;
+    width: 40%;
+    justify-content: center;
+    font-family: Glegoo;
+    font-size: 20px;
+    font-family:'Courier New', Courier, monospace;
+    font-style: normal;
+    color: rgb(73, 73, 73);
+}

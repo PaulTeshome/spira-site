@@ -1,19 +1,30 @@
-.title{
-    height: 50px;
-    width: 50px;
-    margin-top: 3%;
-    margin-right: 25%;
-    margin-left: 25%;
+.aboutUs-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+.aboutUs-title{
     font-family: 'Times New Roman', Times, serif;
-    font-size: 50px;
-    background-color: aqua;
-    }
+    font-size: 40px;
+}
+
+.aboutUs-desc{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
 .aboutUs-illust{
     float: right;
     align-self: right;
     margin-top: 5%;
     margin-right: 10%;
+    width:30%;
 }
+
 .aboutUs-description{
     padding: 10%;
     width: 40%;
@@ -23,4 +34,10 @@
     font-family:'Courier New', Courier, monospace;
     font-style: normal;
     color: rgb(73, 73, 73);
+}
+
+.aboutUs-testimonials{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }

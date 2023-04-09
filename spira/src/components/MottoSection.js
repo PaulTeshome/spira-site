@@ -20,7 +20,7 @@ function MottoSection({motto, description}) {
         <div className='description-logo'>
               <img id='illust2' src={illust2} alt='motto first illustration'/>
           </div>
-          <div className='quote-container'>
+          <div className='desc-container'>
               <span className="description">{description}</span>
           </div>
        </div>

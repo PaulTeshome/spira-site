@@ -41,7 +41,7 @@
 }
 
 .quote{
-    font-size: 100%;
+    font-size: 110%;
     font-family: Times;
     font-weight: bold;
    
@@ -62,18 +62,27 @@
 }
 
 .description{
-    font-size: 5px;
-    font-family:'Courier New', Courier, monospace;
+    font-size: 9px;
+    font-family:serif;
     font-style: normal;
     color: rgb(73, 73, 73);
+}
+
+.desc-container{
+    text-align: left;
+    color: #061020;
+    width: 50%;
+    height: 100%;
+    padding-top: 5%;
+    z-index: 2;
 }
 
 .description-logo{
     width: 35%;
     height: 100%;
     height: auto;
-    padding: 5%;
-    padding-left: 10%;
+    padding-top: 10%;
+    padding-left: 5%;
     vertical-align: middle;
 }
 
@@ -118,7 +127,7 @@
         width: 100%;
     }
     .quote{
-        font-size: 300%;
+        font-size: 400%;
     }
 
     .description-wrapper{
@@ -130,7 +139,11 @@
     }
 
     .description{
-        font-size: 160%;
+        font-size: 220%;
+    }
+
+    .desc-container{
+        padding-top: 10%;
     }
 
 }

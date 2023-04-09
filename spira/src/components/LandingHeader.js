@@ -8,7 +8,7 @@ function LandingHeader() {
     <div>
       <div className='header-container col-12'>
         <div className='landing-header-bg col-12'></div>
-        <FixedHeader services="App.js" about="App.js" />
+        <FixedHeader services="#services" about="#abtUs" />
         <div className='spira-heading col-6'>
           <span className='large-heading'>SPIRA</span><br/>
           <span className='small-heading'>DIGITAL MARKETING AGENCY</span>

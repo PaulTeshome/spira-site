@@ -6,6 +6,7 @@ import Services from './Services';
 import RecentWorks from './RecentWorks';
 import OurTeam from './OurTeam';
 import AboutUs from './AboutUs';
+import Footer from './Footer';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
       <RecentWorks/>
       <OurTeam/>
       <AboutUs/>
+      <Footer/>
     </div>
   );
 }

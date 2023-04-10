@@ -22,7 +22,8 @@ function App() {
       <RecentWorks/>
       <OurTeam/>
       <AboutUs/>
-      <Footer/>
+      <Footer telegram_link="#tg" insta_link="#insta" gmail_link="email" phone1="+46731443749" 
+              phone2="+46762727223" email="info@spiraagency.com" location="Stockholm, Sweden"/>
     </div>
   );
 }

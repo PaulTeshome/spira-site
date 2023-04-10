@@ -12,7 +12,7 @@ function Footer({telegram_link,insta_link,gmail_link,phone1,phone2,email,locatio
       <div className='footer-content'>
         <div className='footer-contacts'>
           <span className='footer-contacts-header'>Contact Us</span>
-          <span>Email: <a href={email}>{email}</a></span>
+          <span>Email: <a href={`mailto:${email}`}>{email}</a></span>
           <span>Phone: {phone1},{phone2}</span>
           <span>Location: {location}</span>
 

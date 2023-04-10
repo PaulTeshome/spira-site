@@ -27,7 +27,11 @@ function AboutUs() {
 
               <div className='aboutUs-testimonials'>
                 <div className='testimonials-scroller'>
-                  <TestimonialCard source={profile} testimonial="Best marketing agency to work with. Amazing services" owner="unknown1"/>
+                  <TestimonialCard source={profile} testimonial="Best marketing agency to work with. Amazing services
+                  Best marketing agency to work with. Amazing services
+                  Best marketing agency to work with. Amazing services
+                  Best marketing agency to work with. Amazing services
+                  Best marketing agency to work with. Amazing services" owner="unknown1"/>
                   <TestimonialCard source={profile} testimonial="Best marketing agency to work with. Amazing services" owner="unknown2"/>
                   <TestimonialCard source={profile} testimonial="Best marketing agency to work with. Amazing services" owner="unknown3"/>
                   <TestimonialCard source={profile} testimonial="Best marketing agency to work with. Amazing services" owner="unknown4"/>

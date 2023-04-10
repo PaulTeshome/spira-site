@@ -155,12 +155,6 @@
     box-shadow: 4px 6px 8px rgba(114, 119, 185, 0.6);
 }
 
-@media only screen and (min-width: 600px) {
-    /* For tablet: */
-   
-  
-}
-
 @media only screen and (min-width: 850px) {
     /* For desktop: */
     .aboutUs-title{

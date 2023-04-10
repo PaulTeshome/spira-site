@@ -1,5 +1,5 @@
 .spira-footer{
-    height: 400px;
+    height: 150px;
     width: 96%;
     padding: 2% 2%;
     background-color: #061020;
@@ -10,13 +10,13 @@
 
 .footer-title{
     color: aliceblue;
-    font-size: 28px;
+    font-size: 12px;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .footer-content{
     width: 100%;
-    height: 350px;
+    height: 100px;
     margin: 1% 0;
     color: aliceblue;
     display: flex;
@@ -31,8 +31,9 @@
     border-top:solid 2px aliceblue;
     border-bottom: solid 2px aliceblue ;
     height: 98%;
-    width:95%;
-    font-size: 28px;
+    width:90%;
+    margin-left: 5%;
+    font-size: 10px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     justify-content:space-evenly;
 }
@@ -41,9 +42,13 @@
     color: aliceblue;
 }
 
+.footer-contacts a:hover{
+    text-shadow: 1px 2px 6px #fff;
+}
+
 .footer-contacts-header{
     font-weight: bold;
-    font-size: 30px;
+    font-size: 12px;
 }
 
 .footer-links{
@@ -55,15 +60,60 @@
 }
 
 .footer-links img{
-    margin-top: 50%;
-    width:50%;
-    height: 50%;
+    width: 15px;
+    height: 15px;
 }
 
+.footer-links img:hover{
+    transform: scale(1.2,1.2);
+}
 
+.footer-links a{
+    margin-top: 30%;
+}
 
 .footer-end{
+    padding-top: 2%;
     color: aliceblue;
-    font-size: 16px;
+    font-size: 8px;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+@media only screen and (min-width: 850px) {
+    /* For desktop: */
+    .spira-footer{
+        height: 400px;
+    }
+    
+    .footer-title{
+        font-size: 28px;
+    }
+    
+    .footer-content{
+        height: 350px;
+       
+    }
+    
+    .footer-contacts{
+        font-size: 24px;
+    }
+
+    .footer-contacts-header{
+        font-size: 26px;
+    }
+    
+    
+    .footer-links a{
+        margin-top: 50%;
+    }
+    
+    .footer-links img{
+        width: 40px;
+        height: 40px;
+    }
+
+    .footer-end{
+        font-size: 16px;
+    }
+  
 }

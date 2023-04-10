@@ -1,0 +1,47 @@
+.spira-footer{
+    height: 400px;
+    width: 96%;
+    padding: 2% 2%;
+    background-color: #061020;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-title{
+    color: aliceblue;
+    font-size: 28px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.footer-content{
+    width: 100%;
+    height: 350px;
+    margin: 1% 0;
+    color: aliceblue;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.footer-contacts{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    border-top:solid 2px aliceblue;
+    border-bottom: solid 2px aliceblue ;
+    height: 98%;
+    width:95%;
+}
+
+.footer-links{
+    width: 5%;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-end{
+    color: aliceblue;
+    font-size: 16px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}

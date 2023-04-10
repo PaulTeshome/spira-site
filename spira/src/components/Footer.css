@@ -32,13 +32,35 @@
     border-bottom: solid 2px aliceblue ;
     height: 98%;
     width:95%;
+    font-size: 28px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    justify-content:space-evenly;
+}
+
+.footer-contacts a{
+    color: aliceblue;
+}
+
+.footer-contacts-header{
+    font-weight: bold;
+    font-size: 30px;
 }
 
 .footer-links{
     width: 5%;
     display: flex;
     flex-direction: column;
+    height: 98%;
+    justify-content: center;
 }
+
+.footer-links img{
+    margin-top: 50%;
+    width:50%;
+    height: 50%;
+}
+
+
 
 .footer-end{
     color: aliceblue;

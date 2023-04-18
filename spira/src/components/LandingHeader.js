@@ -6,9 +6,9 @@ import FixedHeader from './FixedHeader'
 function LandingHeader() {
   return (
     <div>
-      <div className='header-container col-12'>
+      <div  id="home" className='header-container col-12'>
         <div className='landing-header-bg col-12'></div>
-        <FixedHeader services="#services" about="#abtUs" />
+        <FixedHeader logo_link="#home" services="#services" about="#abtUs" />
         <div className='spira-heading col-6'>
           <span className='large-heading'>SPIRA</span><br/>
           <span className='small-heading'>DIGITAL MARKETING AGENCY</span>

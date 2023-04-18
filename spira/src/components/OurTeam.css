@@ -52,6 +52,10 @@
     box-shadow: 4px 4px 4px rgba(255, 255, 255, .5);
 }
 
+.member-card:hover{
+    transform: scale(1.04,1.04);
+}
+
 .member-profile-holder{
     display: inline-block;
     border-radius: 50%;

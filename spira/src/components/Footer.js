@@ -19,8 +19,8 @@ function Footer({telegram_link,insta_link,gmail_link,phone1,phone2,email,locatio
         </div>
         <div className='footer-links'>
             <a href={telegram_link}><img src={tg_logo} alt="telegram link"/></a>
-            <a href={gmail_link}><img src={mail_logo} alt="telegram link"/></a>
-            <a href={insta_link}><img src={insta_logo} alt="telegram link"/></a>
+            <a href={`mailto:${email}`}><img src={mail_logo} alt="email link"/></a>
+            <a href={insta_link}><img src={insta_logo} alt="instagram link"/></a>
         </div>
       </div>
       <span className='footer-end'>

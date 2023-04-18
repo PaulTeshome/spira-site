@@ -1,5 +1,5 @@
 .recent-card{
-    background-image:  linear-gradient(to right, rgba(6, 16, 32, 0.729),rgba(6, 16, 32, 0.729), rgba(0, 0, 2, 0.52)), url('../images/stockholm1.jpg');
+    background-image:   url('../images/stockholm1.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     min-height:200px;
@@ -9,22 +9,35 @@
     box-shadow: 4px 6px 6px rgba(0, 0, 0, 0.5);
 }
 
+.recent-card:hover{
+    transform: scale(1.04,1.04);
+    background-image:  linear-gradient(to right, rgba(6, 16, 32, 0.729),rgba(6, 16, 32, 0.729), rgba(0, 0, 2, 0.52)), url('../images/stockholm1.jpg');
+} 
+
 .recent-card-header{
+    
+    color: rgba(240, 248, 255,1);
     font-size: 14px;
     font-family: 'Times New Roman', Times, serif;
     text-align: center;
 }
 
+
 .recent-card-desc{
     width: 80%;
+    height: 90%;
     padding: 10%;
     z-index: 10;
-    color: aliceblue;
+    color: rgba(240, 248, 255,0);
     font-size: 8px;
     font-family: 'Courier New', Courier, monospace;
     text-align: left;
     display: flex;
     flex-direction: column;
+}
+
+.recent-card-desc:hover{
+    color: rgba(240, 248, 255,1);
 }
 
 .recent-card-text{
@@ -59,10 +72,6 @@
         min-height:600px;
         width:30%;
         border-radius: 40px;
-    }
-
-    .recent-card:hover{
-        background-image:  linear-gradient(to right, rgba(6, 16, 32, 0.729),rgba(6, 16, 32, 0.729), rgba(0, 0, 2, 0.52)), url('../images/stockholm1.jpg');
     }
 
     .recent-card-header{

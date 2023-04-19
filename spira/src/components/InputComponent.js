@@ -1,12 +1,13 @@
 import React from 'react'
+import './InputComponent.css'
 
-function InputComponent({label, type, name, placeholder, value}) {
+function InputComponent({label, type, name, id, placeholder, value, onchange}) {
   return (
-    <div>
-    <label>
-        {label}<br/>
-        <input type={type} name={name} placeholder={placeholder} className='hire-form-inputs' value={value}/><br/>
-    </label>
+    <div className='input-holder'>
+        <label className='label-text'>
+        {label}
+        </label>
+        <input type={type} name={name} id={id} placeholder={placeholder} className='form-inputs' value={value} onChange={onchange}/><br/>
     </div>
   )
 }

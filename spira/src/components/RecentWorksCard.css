@@ -48,10 +48,9 @@
 @media only screen and (min-width: 600px) {
     /* For tablets: */
     .recent-card{
-        background-image:  linear-gradient(to right, rgba(6, 16, 32, 0.729),rgba(6, 16, 32, 0.729), rgba(0, 0, 2, 0.52)), url('../images/stockholm1.jpg');
         min-height:300px;
         width:30%;
-        border-radius: 40px;
+        border-radius: 30px;
     }
 
     .recent-card-header{

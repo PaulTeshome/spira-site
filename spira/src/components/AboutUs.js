@@ -3,6 +3,7 @@ import TestimonialCard from './TestimonialCard'
 import './AboutUs.css'
 import illust4 from '../images/about us illustration.svg'
 import profile from '../images/default_profile.png'
+import { HashLink as Link } from 'react-router-hash-link'
 
 function AboutUs() {
   return (
@@ -36,7 +37,7 @@ function AboutUs() {
                   <TestimonialCard source={profile} testimonial="Best marketing agency to work with. Amazing services" owner="unknown3"/>
                   <TestimonialCard source={profile} testimonial="Best marketing agency to work with. Amazing services" owner="unknown4"/>
                 </div>
-                <button className='last-hire-btn'>Hire Us</button>
+                <Link className='last-hire-btn' to="/hireUs#top">Hire Us</Link>
               </div>
              
            </div>

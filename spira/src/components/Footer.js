@@ -24,7 +24,7 @@ function Footer({telegram_link,insta_link,gmail_link,phone1,phone2,email,locatio
         </div>
       </div>
       <span className='footer-end'>
-        Copyright &copy;  {date.getFullYear()} Digital Marketing Agency. All rights reserved.
+         &copy;  {date.getFullYear()} Spira Digital Marketing Agency. All rights reserved.
       </span>
     </footer>
   )

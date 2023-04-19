@@ -114,8 +114,16 @@
         width: 30%;
     }
 
+    .quote{
+        font-size: 24px;
+    } 
+
     .description-logo{
         padding-top: 5%;
+    }
+
+    .description{
+        font-size: 10px;
     }
 
     

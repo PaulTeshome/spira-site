@@ -20,13 +20,13 @@
 .fixed-header{
   font-weight: bold;
   position: fixed;
-  top:5%;
+  top:3.5%;
   left: 50%;
   width:100%;
   transform: translate(-50%, -50%);
-  z-index: 2;
+  z-index: 4;
   text-align: center;
-  padding-bottom:.5% ;
+  padding-bottom:1% ;
 }
 
 .menu-item {
@@ -34,6 +34,8 @@
     margin-right:3%;
     margin-top:6%;
     text-decoration:none;
+    text-align: center;
+    align-items: center;
     color: aliceblue;
     font-size: 60%;
 }
@@ -49,10 +51,11 @@
     background-color:rgba(123,125,176,0.5);
     border: solid 2px rgb(100, 100, 144);
     border-radius: 25px;
-    height:40px;
+    height:30px;
     width:20%;
     margin-top:3%;
     font-size: 12px;
+    padding-top: 10px;
 }
 
 .hire-btn:hover{
@@ -61,7 +64,7 @@
 
 .menu-logo{
     float: left;
-    height:50px;
+    height:40px;
     margin-top:3%;
     margin-left:3%;
     padding: 0px;
@@ -111,6 +114,7 @@
   .col-10 {width: 83.33%;}
   .col-11 {width: 91.66%;}
   .col-12 {width: 100%;}
+  
   .large-heading{
     font-size: 600%;
     font-weight: bold;
@@ -128,7 +132,6 @@
   }
   .hire-btn{
     border-radius: 25px;
-    height:40px;
     margin-top:5%;
     width:15%;
   }
@@ -164,6 +167,11 @@
   .col-10 {width: 83.33%;}
   .col-11 {width: 91.66%;}
   .col-12 {width: 100%;}
+
+  .fixed-header{
+    top:4%;
+  }
+
   .large-heading{
     font-size: 900%;
     font-weight: bold;

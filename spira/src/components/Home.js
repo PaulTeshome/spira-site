@@ -6,12 +6,11 @@ import Services from './Services';
 import RecentWorks from './RecentWorks';
 import OurTeam from './OurTeam';
 import AboutUs from './AboutUs';
-import Footer from './Footer';
 
 
 function Home() {
   return (
-    <div className="App">
+    <div>
       <LandingHeader/>
       <MottoSection motto="EMPOWERING YOUR BRAND IN THE DIGITAL SPACE" description="
                 At Spira, our mission is to provide personalized and result-driven solutions
@@ -22,8 +21,6 @@ function Home() {
       <RecentWorks/>
       <OurTeam/>
       <AboutUs/>
-      <Footer telegram_link="#tg" insta_link="#insta" gmail_link="email" phone1="+46731443749" 
-              phone2="+46762727223" email="info@spiraagency.com" location="Stockholm, Sweden"/>
     </div>
   );
 }

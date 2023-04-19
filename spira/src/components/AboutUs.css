@@ -139,12 +139,16 @@
 }
 
 .last-hire-btn{
+    display: flex;
     background-color:#061020;
     border: solid 2px rgb(203, 203, 238);
     border-radius: 20px;
     height:40px;
     width:20%;
     color: aliceblue;
+    text-decoration: none;
+    justify-content: center;
+    align-items: center;
     font-size: 10px;
 }
 

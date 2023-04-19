@@ -1,68 +1,137 @@
 .hire-form-container{
-  height: 800px;
-  margin-left: 10%;
-  margin-right: 10%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  padding: 0%;
+  
+}
+
+.fixed-header-hire{
+  background-color: #061020;
+  font-weight: bold;
+  position: fixed;
+  top:3.5%;
+  left: 50%;
+  width:100%;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+  text-align: center;
+  padding-bottom:1.5% ;
+}
+
+.form-container {
+  height: 100%;
+  width: 70%;
   background-image: url("../images/stockholm2.jpg");
-  background-size: cover;
+  background-size:cover;
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   padding: 15% 5% ;
+  margin-block: 20%;
+  margin-inline: 10%;
 }
 
-.form-container {
-    
-    background-image: url('../images/hire_us_illustration.svg');
+.hire-form{
+  background-image: url('../images/hire_us_illustration.svg');
+  background-repeat: no-repeat;
+  background-size: 100px 100px;
+  background-position:top right;
+  border-radius: 5px;
+  background-color: #f0eeee;
+  margin-inline: 10%;
+  padding: 5%;
+  width: 70%;
+  height: 90%;
+  font-size: 8px;
+}
+
+
+textarea{
+  width: 80%;
+  max-width: 80%;
+  min-width: 60%;
+  padding: 2% 5%;
+  margin: 2% 5%;
+  min-height: 100px;
+  max-height: 200px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 10px;
+  font-size: 8px;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #061020;
+  color: white;
+  padding: 5% 6%;
+  margin: 5% 0;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+label{
+  margin: 5%;
+}
+
+input[type=submit]:hover {
+  background-color: rgb(30, 32, 107);
+}
+
+.invisible-hire{
+  display: none;
+}
+
+
+
+@media only screen and (min-width: 850px) {
+  /* For desktop: */
+
+  .fixed-header-hire{
+    top:4%;
+  }
+  
+  .form-container {
+    height: 100%;
+    width: 70%;
+    background-position: center;
     background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding: 15% 5% ;
+    margin-block: 10%;
+    margin-inline: 10%;
+  }
+  
+  .hire-form{
     background-size: 250px 250px;
     background-position:top right;
     border-radius: 5px;
     background-color: #f0eeee;
-    margin-left: 20%;
-    margin-right: 20%;
+    margin-inline: 20%;
     padding: 5%;
     width: 50%;
     height: 90%;
+    font-size: 16px;
   }
-.hire-form{
   
-}
-.contract-pic{
-  background-color: #061020;
-  z-index: -1;
-  float: right;
-}
-
-input[type=text], select, textarea,input[type=email], input[type=tel]{
+  
+  textarea{
     width: 80%;
-    padding: 2% 5%;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+    max-width: 80%;
+    min-width: 60%;
+    min-height: 100px;
+    max-height: 200px;
     border-radius: 10px;
+    font-size: 16px;
   }
   
   input[type=submit] {
     width: 100%;
-    background-color: #061020;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  label{
-    margin: 5%;
-  }
-  input[type=radio]{
-    margin: 2%;
-  }
-  input[type=submit]:hover {
-    background-color: rgb(30, 32, 107);
   }
   
- 
- 
+  
+}

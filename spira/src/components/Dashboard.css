@@ -7,6 +7,23 @@
     align-items: center;
 }
 
+.dashboard-title{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    margin-block: 3%;
+}
+
+.dashboard-intro{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
+    font-size: 8px;
+    margin-bottom: 2%;
+    margin-inline:5%;
+    width: 90%;
+}
+
 .table-holder{
     overflow-x: auto;
     width: 100%;
@@ -16,7 +33,7 @@
     border-radius: 12px;
     width:96%;
     margin-inline: 2%;
-    font-size: 14px;
+    font-size: 8px;
     border-collapse: collapse;
     margin-bottom: 10%;
 }
@@ -35,7 +52,7 @@
     width:8%;
     border: 1px solid #ddd;
     border-collapse: collapse;
-    min-height: 30px;
+    min-height: 20px;
     overflow-x: auto;
 }
 
@@ -52,9 +69,12 @@
 }
 
 
-.request-table tr{background-color: #e7e6e6;} 
+.request-table tbody{
+    background-color: #e7e6e6;
+    height: 20px;
+} 
 
-.request-table tr:nth-child(even){background-color: #f2f2f2;}
+.request-table tbody:nth-child(even){background-color: #f2f2f2;}
 
 .request-table tr:hover {background-color: #c7daf9;}
 
@@ -66,3 +86,64 @@
     background-color: grey;
 }
 
+.table-btn, .table-btn2{
+    width:100% !important;
+    height: 80px !important;
+    font-size: 4px !important;
+    background-color: #123163 !important;
+}
+
+.table-btn:hover{
+    background-color: yellowgreen !important;
+}
+
+.table-btn2:hover{
+    background-color: grey !important;
+}
+
+@media only screen and (min-width: 600px) {
+    /* For tablets: */
+    .dashboard-title{
+        font-size: 26px;
+        font-weight: bold;
+    }
+    
+    .dashboard-intro{
+        font-size: 14px;
+        margin-bottom: 2%;
+    }
+
+    .request-table{
+        font-size: 12px;
+    }
+
+    .table-btn, .table-btn2{
+        font-size: 6px !important;
+    }
+
+}
+  
+@media only screen and (min-width: 850px) {
+    /* For desktop: */
+    .dashboard-title{
+        font-size: 28px;
+        font-weight: bold;
+    }
+    
+    .dashboard-intro{
+        font-size: 16px;
+        margin-bottom: 2%;
+    }
+
+    .request-table{
+        font-size: 14px;
+    }
+
+    .table-btn, .table-btn2{
+        width:80% !important;
+        height: 40px !important;
+        margin-inline: 10% !important;
+        font-size: 10px !important;
+    }
+
+}

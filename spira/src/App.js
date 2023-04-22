@@ -1,18 +1,15 @@
-// import logo from '../images/spira_logo1 1.png';
-import Home from './components/Home'
-import Footer from './components/Footer'
-import HireForm from './components/HireForm'
+import User from "./User"
+import Admin from "./Admin"
 import  {Route, Routes} from "react-router-dom"
 
 function App() {
   return (
     <div className="App">
       <Routes>
-        <Route exact path="/" element={<Home/>}/>
-        <Route exact path="/hireUs" element={<HireForm/>}/>
+        <Route exact path="*" element={<User/>}/>
+        <Route exact path="/admin/*" element={<Admin/>}/>
       </Routes>
-      <Footer telegram_link="#tg" insta_link="#insta" gmail_link="email" phone1="+46731443749" 
-              phone2="+46762727223" email="info@spiraagency.com" location="Stockholm, Sweden"/>
+     
     </div>
   );
 }

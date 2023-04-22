@@ -25,9 +25,9 @@ function Dashboard() {
                 </tr>                
             </thead>
             <TableRow ReqId="1" fname="paul" lname="teshe" email="aaa@gmail.com" compName="pied piper" phone="107232801" service="marketing management" specify="null" status={true}/>
-            <TableRow ReqId="1" fname="paul" lname="teshe" email="aaa@gmail.com" compName="pied piper" phone="107232801" service="marketing management" specify="null" status={false}/>
-            <TableRow ReqId="1" fname="paul" lname="teshe" email="aaa@gmail.com" compName="pied piper" phone="107232801" service="marketing management" specify="null" status={true}/>
-            <TableRow ReqId="1" fname="paul" lname="teshe" email="aaa@gmail.com" compName="pied piper" phone="107232801" service="marketing management" specify="null" status={true}/>
+            <TableRow ReqId="2" fname="Jared" lname="Dunn" email="aaa@gmail.com" compName="pied piper" phone="107232801" service="marketing management" specify="null" status={false}/>
+            <TableRow ReqId="3" fname="Richard" lname="Hendricks" email="aaa@gmail.com" compName="pied piper" phone="107232801" service="marketing management" specify="null" status={true}/>
+            <TableRow ReqId="4" fname="Erich" lname="Bachman" email="aaa@gmail.com" compName="pied piper" phone="107232801" service="marketing management" specify="null" status={true}/>
         </table>
         </div>
     </div>

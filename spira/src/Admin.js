@@ -5,6 +5,7 @@ import AdminNav from './components/AdminNav'
 import  {Route, Routes} from "react-router-dom"
 import Dashboard from './components/Dashboard'
 import CustomizationPage from './components/CustomizationPage'
+import ManageAdmins from './components/ManageAdmins'
 
 function Admin() {
   return (
@@ -15,6 +16,7 @@ function Admin() {
           <Routes>
             <Route exact path="*" element={<Dashboard/>}/>
             <Route exact path="*/pagecustom" element={<CustomizationPage/>}/>
+            <Route exact path="*/manageadmin" element={<ManageAdmins/>}/>
           </Routes>
         </div>
     </div>

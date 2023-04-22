@@ -1,0 +1,64 @@
+.admin-header {
+    width: 100%;
+    background-color: #061020;
+    color: aliceblue;
+    height: 79px;
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    -ms-flex-align: center;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid aliceblue;
+}
+
+.home-logo{
+    width:45px;
+    height: 45px;
+    margin-left: 25%;
+}
+
+.admin-data{
+    margin-right: 2%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    text-align: right;
+    font-size: 10px;
+}
+
+.admin-data a{
+    text-decoration: none;
+    color: aliceblue;
+}
+
+.admin-data a:hover{
+    text-shadow: 2px 1px 5px #fff;
+}
+
+@media only screen and (min-width: 600px) {
+    /* For tablets: */
+ 
+    .home-logo{
+        width:50px;
+        height: 50px;
+        margin-left: 20%;
+    }
+          
+}
+  
+@media only screen and (min-width: 850px) {
+    /* For desktop: */
+    
+    .home-logo{
+        width:60px;
+        height: 60px;
+        margin-left: 15%;
+    }
+    
+    .admin-data{
+        font-size: 16px;
+    }
+
+}

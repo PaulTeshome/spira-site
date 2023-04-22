@@ -11,7 +11,7 @@ function TableRow({ReqId,fname,lname,email,compName,phone,service,specify,status
             <td>{ReqId}</td>
             <td>{fname}</td>
             <td>{lname}</td>
-            <td>{email}</td>
+            <td><a href={`mailto:${email}`}>{email}</a></td>
             <td>{compName}</td>
             <td>{phone}</td>
             <td>{service}</td>

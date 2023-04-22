@@ -11,11 +11,11 @@ function HireForm() {
       <FixedHeader logo_link="/#home" services="/#services" about="/#abtUs" hireUs=""/>
       <div className='form-container' id="top">
         <form className='hire-form'>
-            <InputComponent label="First Name" type="text" id="fname" name="fname" placeholder='Enter First Name'/>
-            <InputComponent label="Last Name" type="text" id="lname" name="lname" placeholder='Enter Last Name'/>
-            <InputComponent  label="Email" type="Email" id="email" name="email" placeholder='Enter your email'/>
-            <InputComponent label="Company Name" type="text" id="cname" name="cname" placeholder='Enter Company Name'/>
-            <InputComponent label="Phone" type="tel" id="phone" name="phone" placeholder='Enter Phone Number'/>
+            <InputComponent label="First Name" type="text" id="fname" name="fname" placeholder='Enter First Name' classNm='form-inputs'/>
+            <InputComponent label="Last Name" type="text" id="lname" name="lname" placeholder='Enter Last Name' classNm='form-inputs'/>
+            <InputComponent  label="Email" type="Email" id="email" name="email" placeholder='Enter your email' classNm='form-inputs'/>
+            <InputComponent label="Company Name" type="text" id="cname" name="cname" placeholder='Enter Company Name' classNm='form-inputs'/>
+            <InputComponent label="Phone" type="tel" id="phone" name="phone" placeholder='Enter Phone Number' classNm='form-inputs'/>
             
             <label>
                Tell us how we could be of help
@@ -28,7 +28,7 @@ function HireForm() {
             
             <TextInput textLabel="Specify" name="spec"  placeholder='Specify your choice above'/>
 
-            <InputComponent type="submit" name="submit" value="Submit"/>
+            <InputComponent type="submit" name="submit" value="Submit" classNm='form-inputs'/>
         </form>
       </div>
         

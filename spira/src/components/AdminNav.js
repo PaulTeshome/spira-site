@@ -6,7 +6,7 @@ function AdminNav() {
     <nav className='admin-nav'>
         <AdminNavComp link="*/*" name="Dashboard"/>
         <AdminNavComp link="*/pagecustom" name="Page Customization"/>
-        <AdminNavComp link="*" name="Manage Adminstrators"/>
+        <AdminNavComp link="*/manageadmin" name="Manage Adminstrators"/>
         <AdminNavComp link="*" name="Logout"/>
     </nav>
   )

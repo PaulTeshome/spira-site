@@ -21,7 +21,7 @@ function Dashboard() {
                     <th>Service</th>
                     <th>Service Spec</th>
                     <th>Status</th>
-                    <th>Button</th>
+                    <th>Edit Status</th>
                 </tr>                
             </thead>
             <TableRow ReqId="1" fname="paul" lname="teshe" email="aaa@gmail.com" compName="pied piper" phone="107232801" service="marketing management" specify="null" status={true}/>

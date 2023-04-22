@@ -1,0 +1,9 @@
+.dashboard-holder{
+    width: 100%;
+    background-color: red;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}

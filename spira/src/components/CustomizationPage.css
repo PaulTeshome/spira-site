@@ -1,5 +1,54 @@
 .custom-page-holder{
-
     width: 100%;
-    background-color: green;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.customization-title{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    width: 100%;
+    margin-block: 3%;
+}
+
+.customization-intro{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
+    font-size: 8px;
+    margin-bottom: 2%;
+    margin-inline:5%;
+    width: 90%;
+}
+
+
+@media only screen and (min-width: 600px) {
+    /* For tablets: */
+    .customization-title{
+        font-size: 26px;
+        font-weight: bold;
+    }
+    
+    .customization-intro{
+        font-size: 14px;
+        margin-bottom: 2%;
+    }
+
+}
+  
+@media only screen and (min-width: 850px) {
+    /* For desktop: */
+    .customization-title{
+        font-size: 28px;
+        font-weight: bold;
+    }
+    
+    .customization-intro{
+        font-size: 16px;
+        margin-bottom: 2%;
+    }
+
 }

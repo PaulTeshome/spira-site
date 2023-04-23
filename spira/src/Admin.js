@@ -15,8 +15,8 @@ function Admin() {
         <div className='admin-body'>
           <Routes>
             <Route exact path="*" element={<Dashboard/>}/>
-            <Route exact path="*/pagecustom" element={<CustomizationPage/>}/>
-            <Route exact path="*/manageadmin" element={<ManageAdmins/>}/>
+            <Route exact path="*/pagecustom/*" element={<CustomizationPage/>}/>
+            <Route exact path="*/manageadmin/*" element={<ManageAdmins/>}/>
           </Routes>
         </div>
     </div>

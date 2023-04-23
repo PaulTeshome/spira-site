@@ -1,6 +1,6 @@
 .services-container{
     background-color: #061020;
-    min-height: 600px;
+    min-height: 300px;
     color: aliceblue;
     font-family: 'Times New Roman', Times, serif;
     font-size: 20px;
@@ -24,6 +24,8 @@
     padding: 2%;
     margin-bottom: 0%;
     margin-top: 3%;
+    z-index: 2;
+    position: relative;
 }
 
 .services-name{
@@ -43,19 +45,14 @@
     clip-path: polygon( 0% 100%, 50% 0%, 100% 100%);
 }
 
-.dropdown-btn:active{
-    transform: rotateZ(180deg);
-    transition: transform 0.5s;
-}
-
 .services-desc-card{
-    display: block;
-    min-height: 80px;
+    overflow: hidden;
+    height: 80px;
     background-color: aliceblue;
     border-radius: 0px 0px 10px 10px;
-    margin-left: 13%;
-    margin-right: 13%;
-    width:60%;
+    margin-left: 13.2%;
+    margin-right: 13.2%;
+    width:59.6%;
     padding:7%;
     padding-top:1%;
     padding-bottom: 1%;
@@ -63,6 +60,8 @@
     color: #061020;
     font-size: 8px;
     text-align: left;
+    z-index: 1;
+    position: relative;
 }
 
 
@@ -97,9 +96,9 @@
     }
 
     .services-desc-card{
-        margin-left: 20%;
-        margin-right: 20%;
-        width:50%;
+        margin-left: 20.2%;
+        margin-right: 20.2%;
+        width:49.6%;
         padding:5%;
         padding-top:1%;
         padding-bottom: 1%;

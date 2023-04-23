@@ -2,6 +2,7 @@ import React from 'react'
 import './MottoSection.css'
 import illust1 from '../images/ad_illustration.svg'
 import illust2 from '../images/client_illustration.svg'
+import { motion } from 'framer-motion'
 
 function MottoSection({motto, description}) {
   return (

@@ -16,7 +16,7 @@ function LandingHeader() {
           }}
 
           transition={{
-            duration: 2
+            duration: 3
           }}
         >
           <span className='large-heading'>SPIRA</span><br/>

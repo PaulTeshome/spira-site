@@ -18,26 +18,44 @@
 }
 
 .fixed-header{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
   font-weight: bold;
   position: fixed;
   top:3.5%;
   left: 50%;
-  width:100%;
+  width:94%;
   transform: translate(-50%, -50%);
   z-index: 4;
   text-align: center;
   padding-bottom:1% ;
+  padding-top: 5%;
+  padding-inline: 3%;
+}
+
+.nav-bg{
+  background-color: rgba(4, 10, 20, 0.9);
+}
+
+.menu-items-holder{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+  width:40%;
 }
 
 .menu-item {
-    float:right;
-    margin-right:3%;
-    margin-top:6%;
+    margin-left:5%;
     text-decoration:none;
     text-align: center;
     align-items: center;
     color: aliceblue;
-    font-size: 60%;
+    font-size: 8px;
 }
 
 .menu-item:hover{
@@ -48,14 +66,13 @@
 }
 
 .hire-btn{
-    background-color:rgba(123,125,176,0.5);
-    border: solid 2px rgb(100, 100, 144);
-    border-radius: 25px;
-    height:30px;
-    width:20%;
-    margin-top:3%;
-    font-size: 12px;
-    padding-top: 10px;
+  background-color: rgba(123,125,176,0.7);
+  border: solid 2px rgb(100, 100, 144);
+  border-radius: 25px;
+  height: 20px;
+  width: 35%;
+  font-size: 8px;
+  padding-top: 10px;
 }
 
 .hire-btn:hover{
@@ -63,11 +80,7 @@
 }
 
 .menu-logo{
-    float: left;
     height:40px;
-    margin-top:3%;
-    margin-left:3%;
-    padding: 0px;
 }
 
 .spira-heading{
@@ -124,23 +137,27 @@
     font-size: 100%;
     font-weight: normal;
   }
-  .menu-item {
-    float:right;
-    margin-right:3%;
-    margin-top:6%;
-    font-size: 80%;
+
+  .menu-items-holder{
+    width:30%;
   }
+
+  .menu-item {
+    margin-left: 5%;
+    font-size: 10px;
+  }
+
   .hire-btn{
     border-radius: 25px;
-    margin-top:5%;
-    width:15%;
+    font-size: 10px;
+    height: 22px;
   }
+
   .menu-logo{
-    height:50px;
-    width:8%;
-    margin-top:5%;
-    margin-left:3%;
+    height:40px;
+    width: 40px;
   }
+
   .spira-heading{
     top: 40%;
     left: 50%;
@@ -181,23 +198,27 @@
     font-size: 150%;
     font-weight: normal;
   }
-  .menu-item {
-    float:right;
-    margin-right:2%;
-    margin-top:5%;
-    font-size: 100%;
+
+  .menu-items-holder{
+    width:30%;
   }
+
+  .menu-item {
+    margin-left:5%;
+    font-size: 16px;
+  }
+
   .hire-btn{
     border-radius: 25px;
+    font-size: 16px;
     height:40px;
-    margin-top:4.5%;
   }
+
   .menu-logo{
     width: 60px;
     height:60px;
-    margin-top:5%;
-    margin-left:3%;
   }
+
   .spira-heading{
    
     position: absolute;

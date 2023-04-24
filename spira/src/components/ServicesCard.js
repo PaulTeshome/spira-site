@@ -6,8 +6,8 @@ function ServicesCard({service_name:name,service_desc:desc}) {
 
   const handleOpening= () => {
     openCard(prevState => !prevState)
-    console.log(isOpen)
   }
+
   return (
     <div>
         <div className='services-card'>
@@ -39,7 +39,12 @@ function ServicesCard({service_name:name,service_desc:desc}) {
         >
            {desc} {desc} {desc} {desc}
            {desc} {desc} {desc} {desc}
-          
+           {desc} {desc} {desc} {desc}
+           {desc} {desc} {desc} {desc}
+           {desc} {desc} {desc} {desc}
+           {desc} {desc} {desc} {desc}
+           {desc} {desc} {desc} {desc}
+           {desc} {desc} {desc} {desc}
         </motion.div>
     </div>
   

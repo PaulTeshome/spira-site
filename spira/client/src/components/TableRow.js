@@ -3,7 +3,7 @@ import InputComponent from './InputComponent'
 
 function TableRow({ReqId,fname,lname,email,compName,phone,service,specify,status}) {
     const stat= status?'new':'seen'
-    const placeholder= status?'mark as seen':'mark as new'
+    const placeholder= status?'make seen':'make new'
     const classNm =status?'table-btn2':'table-btn'
   return (
     <tbody>

@@ -1,3 +1,5 @@
+// written by Paul T. Hailemeskel
+
 import React,{useState} from 'react'
 import './MottoSection.css'
 import illust1 from '../images/ad_illustration.svg'
@@ -51,8 +53,13 @@ function MottoSection({motto, description}) {
        </div>
        <div className='description-wrapper'  onMouseEnter={()=>{qSwitcher(true)}} onMouseLeave={()=>{qSwitcher(false)}}>
           <motion.div className='description-logo'
-             animate={{
-              scale: q_anim? [0,1] :1
+            initial={{
+              opacity:0
+            }}
+            
+            animate={{
+              scale: q_anim? [0,1] :[1,0.9],
+              opacity: q_anim? [0,1] :1
             }}
 
             transition={{
@@ -63,8 +70,13 @@ function MottoSection({motto, description}) {
               <img id='illust2' src={illust2} alt='motto first illustration'/>
           </motion.div>
           <motion.div className='desc-container'
+            initial={{
+              opacity:0
+            }}
+
             animate={{
-              scale: q_anim? [0,1] :1
+              scale: q_anim? [0,1] :[1,0.9],
+              opacity: q_anim? [0,1] :1
             }}
             
             transition={{

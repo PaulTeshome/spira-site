@@ -4,7 +4,7 @@ import './InputComponent.css'
 function InputComponent({label, type, name, id, placeholder, value, onchange,classNm}) {
   return (
     <div className='input-holder'>
-        <label className='label-text'>
+        <label htmlFor={name} className='label-text'>
         {label}
         <span className='err-msg'></span>
         </label>

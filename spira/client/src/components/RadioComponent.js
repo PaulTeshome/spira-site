@@ -1,18 +1,20 @@
 import React from 'react'
+import { useFormContext } from 'react-hook-form';
 import './RadioComponent.css'
 
-function RadioComponent({value,label,name,onchange,checked}) {
+function RadioComponent({value,label,name}) {
+  const {register} =useFormContext();
   return (
     <div className="radio">
-        <label>
+        <label htmlFor={name}>
         <input
             type="radio"
             value={value}
-            name={name}
-            onChange={onchange}
-            checked={checked}
-            // checked={this.state.selectedOption === {"Other"}}
-            // onChange={this.onValueChange}
+            id={value}
+            {...register(name, 
+               { 
+                required: true 
+              })}
         />
         {label}
         </label>

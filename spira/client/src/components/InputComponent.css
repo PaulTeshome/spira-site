@@ -2,13 +2,22 @@
     margin-block: 1%;
     display: flex;
     flex-direction: column;
-    height: 40px;
+    min-height: 40px;
     width: 100%;
 }
 
 .label-text{
     margin: 0;
     margin-left: 5%;
+    padding: 5px;
+    padding-block: 2px;
+}
+
+.label-info{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: auto;
 }
 
 .form-inputs{

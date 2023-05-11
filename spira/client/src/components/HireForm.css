@@ -42,12 +42,12 @@
 }
 
 .hire-form{
-  background-image: url('../images/hire_us_illustration.svg');
+  background-image: linear-gradient(to bottom, rgba(240, 238, 238,0.5), rgba(240, 238, 238,0.5)), url('../images/hire_us_illustration.svg');
   background-repeat: no-repeat;
   background-size: 100px 100px;
   background-position:top right;
   border-radius: 5px;
-  background-color: #f0eeee;
+  background-color: rgb(240, 238, 238);
   margin-inline: 10%;
   padding: 5%;
   width: 70%;
@@ -71,7 +71,7 @@ textarea{
   font-size: 8px;
 }
 
-input[type=submit] {
+.form-btn{
   width: 100%;
   height: 60px;
   background-color: #061020;
@@ -87,7 +87,7 @@ label{
   margin: 5%;
 }
 
-input[type=submit]:hover {
+.form-btn:hover {
   background-color: rgb(30, 32, 107);
 }
 

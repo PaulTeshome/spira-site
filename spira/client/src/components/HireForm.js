@@ -1,4 +1,6 @@
-import React,{useState, useEffect} from 'react'
+import React,{useEffect} from 'react'
+import {FormProvider, useForm} from 'react-hook-form'
+import {DevTool} from '@hookform/devtools'
 import './HireForm.css'
 import InputComponent from './InputComponent'
 import TextInput from './TextInput'
@@ -10,53 +12,46 @@ function HireForm() {
     document.title='Hire Us '
   },[])
 
-  const [inputs,setInputs]= useState({
-    fname:'',
-    lname:'',
-    email:'',
-    cname:'',
-    phone:'',
-    services:'marketing',
-    spec:''
+  const methods= useForm({
+    defaultValues:{
+      services:'marketing'
+    }
   })
 
-  const changeInputs= e=>{
+  const { control,handleSubmit}=methods
 
-    setInputs({
-      ...inputs,
-    [e.target.name]: e.target.value
-    })
-  }
-
-  const submitInputs= event=>{
-    alert(JSON.stringify(inputs))
-    event.preventDefault()
-  }
+  const submitInputs= handleSubmit((data)=>{
+    console.log('inputs',data)
+  })
 
   return (
     <div className='hire-form-container'>
       <FixedHeader logo_link="/#home" services="/#services" about="/#abtUs" hireUs=""/>
       <div className='form-container' id="top">
-        <form className='hire-form' onSubmit={submitInputs}>
-            <InputComponent label="First Name" type="text" id="fname" name="fname" placeholder='Enter First Name' classNm='form-inputs' value={inputs.fname} onchange={changeInputs}/>
-            <InputComponent label="Last Name" type="text" id="lname" name="lname" placeholder='Enter Last Name' classNm='form-inputs' value={inputs.lname} onchange={changeInputs} />
-            <InputComponent  label="Email" type="Email" id="email" name="email" placeholder='Enter your email' classNm='form-inputs' value={inputs.email} onchange={changeInputs}/>
-            <InputComponent label="Company Name" type="text" id="cname" name="cname" placeholder='Enter Company Name' classNm='form-inputs' value={inputs.cname} onchange={changeInputs}/>
-            <InputComponent label="Phone" type="tel" id="phone" name="phone" placeholder='Enter Phone Number' classNm='form-inputs' value={inputs.phone} onchange={changeInputs}/>
-            
-            <label>
-               Tell us how we could be of help
-            </label><br/>
-            
-            <RadioComponent value="marketing" label="Marketing" name="services" checked={inputs.services === 'marketing'}  onchange={changeInputs}/>
-            <RadioComponent value="accMgmt" label="Accounting Management" name="services" checked={inputs.services === 'accMgmt'}  onchange={changeInputs}/>
-            <RadioComponent value="content" label="Content Creation" name="services" checked={inputs.services === 'content'}  onchange={changeInputs}/>
-            <RadioComponent value="other" label="Other" name="services" checked={inputs.services === 'other'}  onchange={changeInputs}/>
-            
-            <TextInput textLabel="Specify" name="spec"  placeholder='Specify your choice above' value={inputs.spec} onchange={changeInputs}/>
+        <FormProvider {...methods}>
+          <form className='hire-form' onSubmit={e => e.preventDefault()} noValidate>
+              <InputComponent label="First Name" type="text" id="fname" name="fname" placeholder='Enter First Name' classNm='form-inputs' />
+              <InputComponent label="Last Name" type="text" id="lname" name="lname" placeholder='Enter Last Name' classNm='form-inputs'/>
+              <InputComponent  label="Email" type="Email" id="email" name="email" placeholder='Enter your email' classNm='form-inputs' />
+              <InputComponent label="Company Name" type="text" id="cname" name="cname" placeholder='Enter Company Name' classNm='form-inputs' />
+              <InputComponent label="Phone" type="tel" id="phone" name="phone" placeholder='Enter Phone Number' classNm='form-inputs'/>
+              
+              <label>
+                Tell us how we could be of help
+              </label><br/>
+              
+              <RadioComponent value="marketing" label="Marketing" name="services" />
+              <RadioComponent value="accMgmt" label="Accounting Management" name="services" />
+              <RadioComponent value="content" label="Content Creation" name="services"/>
+              <RadioComponent value="other" label="Other" name="services"/>
+              
+              <TextInput textLabel="Specify" name="spec"  placeholder='Specify your choice above' required={false}/>
 
-            <InputComponent type="submit" name="submit" value="Submit" classNm='form-inputs'/>
-        </form>
+              <button  className='form-btn' onClick={submitInputs}>Submit</button>
+          </form>
+        </FormProvider>
+       
+        <DevTool control={control}/>
       </div>
         
     </div>

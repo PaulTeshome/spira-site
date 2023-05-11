@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import './HireForm.css'
 import InputComponent from './InputComponent'
 import TextInput from './TextInput'
@@ -6,6 +6,9 @@ import FixedHeader from './FixedHeader'
 import RadioComponent from './RadioComponent'
 
 function HireForm() {
+  useEffect(()=>{
+    document.title='Hire Us '
+  },[])
 
   const [inputs,setInputs]= useState({
     fname:'',

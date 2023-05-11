@@ -1,5 +1,6 @@
 // import logo from '../images/spira_logo1 1.png';
 import './Home.css';
+import { useEffect } from 'react';
 import LandingHeader from './LandingHeader';
 import MottoSection from './MottoSection';
 import Services from './Services';
@@ -9,6 +10,11 @@ import AboutUs from './AboutUs';
 
 
 function Home() {
+
+  useEffect(()=>{
+    document.title='Spira Agency '
+  },[])
+
   return (
     <div>
       <LandingHeader/>

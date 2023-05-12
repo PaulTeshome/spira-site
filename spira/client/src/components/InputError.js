@@ -1,6 +1,7 @@
 import React from 'react'
 import './InputError.css'
 import {motion} from 'framer-motion'
+import {BiErrorCircle} from 'react-icons/bi'
 
 function InputError({message}) {
     const framer_error = {
@@ -15,6 +16,8 @@ function InputError({message}) {
             className="error-msg"
             {...framer_error}
           >
+            <BiErrorCircle/>
+            &nbsp;
             {message}
           </motion.p>
         )

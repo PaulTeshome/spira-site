@@ -1,10 +1,16 @@
-import React from 'react'
-import InputComponent from './InputComponent'
+import React,{useState} from 'react'
+
 
 function TableRow({ReqId,fname,lname,email,compName,phone,service,specify,status}) {
-    const stat= status?'new':'seen'
-    const placeholder= status?'make seen':'make new'
-    const classNm =status?'table-btn2':'table-btn'
+    const [stat,setStat]=useState(status)
+    const statTxt= stat?'new':'seen'
+    const placeholder= stat?'make seen':'make new'
+    const classNm =stat?'table-btn2':'table-btn'
+
+    const changeStat= ()=>{
+      setStat(stat=> !stat)
+    }
+
   return (
     <tbody>
         <tr>
@@ -16,9 +22,9 @@ function TableRow({ReqId,fname,lname,email,compName,phone,service,specify,status
             <td>{phone}</td>
             <td>{service}</td>
             <td>{specify}</td>
-            <td className={stat}>{stat}</td>
+            <td className={statTxt}>{statTxt}</td>
             <td>
-                <InputComponent type="submit"  value={placeholder} classNm={classNm}/>
+                <button type="button" className={classNm} onClick={changeStat}>{placeholder}</button>
             </td>
         </tr>
     </tbody>

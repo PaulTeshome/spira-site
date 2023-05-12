@@ -1,5 +1,4 @@
 .recent-card{
-    background-image:   url('../images/stockholm1.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     min-height:200px;
@@ -9,10 +8,7 @@
     box-shadow: 4px 6px 6px rgba(0, 0, 0, 0.5);
 }
 
-.recent-card:hover{
-    transform: scale(1.04,1.04);
-    background-image:  linear-gradient(to right, rgba(6, 16, 32, 0.729),rgba(6, 16, 32, 0.729), rgba(0, 0, 2, 0.52)), url('../images/stockholm1.jpg');
-} 
+
 
 .recent-card-header{
     

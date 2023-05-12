@@ -2,14 +2,18 @@ import React from 'react'
 import { useFormContext } from 'react-hook-form'
 import { AnimatePresence } from 'framer-motion';
 import './InputComponent.css'
+import isFormInvalid from './utils/isFormInvalid'
+import findInputError from './utils/findInputError'
 import InputError from './InputError';
 
-function InputComponent({label, type, name, id, placeholder,classNm}) {
+function InputComponent({label, type, name, id, placeholder,classNm,validation}) {
 
   const {register, formState: { errors },
         } = useFormContext()
 
-  console.log(errors.name?.message)
+  const inputError = findInputError(errors, name)
+  const isInvalid = isFormInvalid(inputError)
+
   return (
     <div className='input-holder'>
       <div className='label-info'>
@@ -17,19 +21,19 @@ function InputComponent({label, type, name, id, placeholder,classNm}) {
             {label}
         </label>
         <AnimatePresence mode="wait" initial={false}>
+           {isInvalid && ( 
             <InputError
-              message={errors.name?.message}
-            />
+                message={inputError.error.message}
+                key={inputError.error.message}
+              />
+            )            
+            }
+    
         </AnimatePresence>
       </div>
        
         <input type={type} id={id} placeholder={placeholder} className={classNm} 
-          {...register(name, {
-            required: {
-              value: true,
-              message:`${label} is required`,
-            },
-          })}
+          {...register(name, validation)}
 
         /><br/>
     </div>

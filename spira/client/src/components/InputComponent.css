@@ -10,12 +10,13 @@
     margin: 0;
     margin-left: 5%;
     padding: 5px;
-    padding-block: 2px;
 }
 
 .label-info{
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content:flex-start;
     flex-wrap: wrap;
     height: auto;
 }

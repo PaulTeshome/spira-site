@@ -42,6 +42,9 @@
 }
 
 .hire-form{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
   background-image: linear-gradient(to bottom, rgba(240, 238, 238,0.5), rgba(240, 238, 238,0.5)), url('../images/hire_us_illustration.svg');
   background-repeat: no-repeat;
   background-size: 100px 100px;
@@ -51,7 +54,7 @@
   margin-inline: 10%;
   padding: 5%;
   width: 70%;
-  height: 100%;
+  min-height: 100%;
   font-size: 8px;
 }
 
@@ -93,6 +96,13 @@ label{
 
 .invisible-hire{
   display: none;
+}
+
+.success-msg{
+  font-size: 8px;
+  color: rgb(13, 197, 13);
+  text-align: center;
+  width:auto;
 }
 
 
@@ -142,5 +152,7 @@ label{
     width: 100%;
   }
   
-  
+  .success-msg{
+    font-size: 16px;
+  }
 }

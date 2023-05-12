@@ -1,12 +1,13 @@
 import React from 'react'
 import './OurTeam.css'
 import MemberCard from './MemberCard'
-import profile from '../images/default_profile.png'
-import profile2 from '../images/stockholm2.jpg'
 import { HashLink as Link } from 'react-router-hash-link'
 
 
 function OurTeam() {
+
+  const images = require.context('../images', true)
+
   return (
     <div className='team-container'>
         <span className='team-header'>OUR TEAM</span>
@@ -18,9 +19,9 @@ function OurTeam() {
             <br/><Link to="/#contact" smooth>Contact us</Link>  today to learn more about how we can help your business thrive.
         </p>
         <div className='team-cards-container'>
-            <MemberCard name="Sidiki Daiwara" title="Creative Director" source={profile}/>
-            <MemberCard name="Evelina Goussi" title="Graphic Designer" source={profile}/>
-            <MemberCard name="Kevin Jabro" title="Marketor" source={profile2}/>
+            <MemberCard name="Sidiki Daiwara" title="Creative Director" source={images('./stockholm2.jpg')}/>
+            <MemberCard name="Evelina Goussi" title="Graphic Designer" source={images('./stockholm2.jpg')}/>
+            <MemberCard name="Kevin Jabro" title="Marketor" source={images('./default_profile.png')}/>
         </div>
     </div>
   )

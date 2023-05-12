@@ -7,7 +7,18 @@ import { HashLink as Link } from 'react-router-hash-link'
 function OurTeam() {
 
   const images = require.context('../images', true)
+  let img;
 
+  try{
+    img= images('./stockholm1.jpg')
+  }catch(err){
+    console.log(err)
+   
+      img= images('./default_profile.png')
+  
+   
+  }
+ 
   return (
     <div className='team-container'>
         <span className='team-header'>OUR TEAM</span>
@@ -19,7 +30,7 @@ function OurTeam() {
             <br/><Link to="/#contact" smooth>Contact us</Link>  today to learn more about how we can help your business thrive.
         </p>
         <div className='team-cards-container'>
-            <MemberCard name="Sidiki Daiwara" title="Creative Director" source={images('./stockholm2.jpg')}/>
+            <MemberCard name="Sidiki Daiwara" title="Creative Director" source={img}/>
             <MemberCard name="Evelina Goussi" title="Graphic Designer" source={images('./stockholm2.jpg')}/>
             <MemberCard name="Kevin Jabro" title="Marketor" source={images('./default_profile.png')}/>
         </div>

@@ -3,7 +3,6 @@ import './RecentWorksCard.css'
 
 function RecentWorksCard({proj_title, proj_desc}) {
   const images = require.context('../images', true)
-
   return (
     <>
       <style>
@@ -15,7 +14,7 @@ function RecentWorksCard({proj_title, proj_desc}) {
 
             .recent-card:hover{
               transform: scale(1.04,1.04);
-              background-image:  linear-gradient(to right, rgba(6, 16, 32, 0.729),rgba(6, 16, 32, 0.729), rgba(0, 0, 2, 0.52)), url('${images('./stockholm2.jpg')}');
+              background-image:  linear-gradient(to right, rgba(0, 0, 0, 0.729),rgba(0, 0, 0, 0.729), rgba(0, 0, 2, 0.52)), url('${images('./stockholm2.jpg')}');
             } 
             `
             }

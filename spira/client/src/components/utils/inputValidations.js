@@ -12,6 +12,20 @@ export const name_validation = {
     
   }
 
+export const forgot_psd_validation = {
+    validation: {
+      required: {
+          value: true,
+          message: 'required',
+      },
+      pattern: {
+          value:  /^((([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,})))|(^[A-Za-z][A-Za-z0-9_]+)$/,
+          message: 'insert valid email or username',
+      },
+  }
+  
+}
+
 export const email_validation = {
     validation: {
       required: {
@@ -62,6 +76,18 @@ export const password_validation = {
     }
     
   }
+
+
+export const code_validation = {
+    validation: {
+      required: {
+          value: true,
+          message: 'required',
+      },
+        
+  }
+  
+}
 
 export const phone_validation = {
       validation: {

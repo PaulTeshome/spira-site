@@ -5,7 +5,7 @@
     justify-content: center;
     align-items: center;
     width:100%;
-    min-height: 900px;
+    min-height: 750px;
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0.729),rgba(0, 0, 0, 0.729), rgba(0, 0, 2, 0.52)), url('./images/stockholm2.jpg');
     background-attachment: fixed;
     background-size: cover;
@@ -23,7 +23,7 @@
 
 @media only screen and (min-width: 650px) {
     .login-page{
-        min-height: 1200px;
+        min-height: 900px;
     }
 
     .login-card{

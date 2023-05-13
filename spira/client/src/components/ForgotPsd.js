@@ -4,8 +4,8 @@ import InputComponent from './InputComponent'
 import { forgot_psd_validation} from './utils/inputValidations'
 import { HashLink as Link} from 'react-router-hash-link'
 import { motion } from 'framer-motion'
-import './ForgotPsd.css'
 import { BsFillCheckSquareFill } from 'react-icons/bs'
+import './ForgotPsd.css'
 
 function ForgotPsd() {
     const [submitSuccess,setSubmitSuccess]= useState(false)

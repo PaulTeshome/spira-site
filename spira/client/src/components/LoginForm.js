@@ -9,7 +9,9 @@ import { HashLink as Link} from 'react-router-hash-link'
 import './LoginForm.css'
 
 function LoginForm() {
-    const [success,setSuccess]= useState(false)
+    const [submitSuccess,setSubmitSuccess]= useState(false)
+    const [failure,setFailure]= useState(false)
+    
     useEffect(()=>{
       document.title='Admin Login'
     },[])
@@ -20,25 +22,34 @@ function LoginForm() {
   
     const submitInputs= handleSubmit((data)=>{
       console.log('inputs',data)
-      setSuccess(true)
+      setSubmitSuccess(true)
+      setFailure(false)
     })
+
+    const success_msg_class= failure?"login-error-msg":"success-msg"
+    const success_msg= failure?"Incorrect Username or Password!":"Login sucessfull redirecting..."
+    const checkLogo=failure?"":<BsFillCheckSquareFill/> 
+
   return (
     <div className='login-form-container'>
         <span className='login-form-title'>Admin Login</span>
+        
         <FormProvider {...methods}>
           <form className='login-form' onSubmit={e => e.preventDefault()} noValidate>
-              <InputComponent label="Username" type="text" id="usrname" name="usrname" placeholder='Enter Username' classNm='form-inputs' {...name_validation}/>
-              <PasswordInputComponent label="Password" type="password" id="password" name="password" placeholder="Enter Password" classNm='psd-form-inputs' {...name_validation}/>
-              {success && (
-                <motion.p className="success-msg"
+          {submitSuccess && (
+                <motion.p className={success_msg_class}
                   initial= {{ opacity: 0, y: 10 }}
                   animate= {{ opacity: 1, y: 0 }}
                   exit= {{ opacity: 0, y: 10 }}
                   transition= {{ duration: 0.5 }}
                 >
-                  <BsFillCheckSquareFill /> Form has been submitted successfully
+                  
+                  {checkLogo}&nbsp;{success_msg}
                 </motion.p>
               )}
+              <InputComponent label="Username" type="text" id="username" name="username" placeholder='Enter Username' classNm='form-inputs' {...name_validation}/>
+              <PasswordInputComponent label="Password" type="password" id="password" name="password" placeholder="Enter Password" classNm='psd-form-inputs' {...name_validation}/>
+             
               <button  className='login-btn' onClick={submitInputs}>Login</button>
               
           </form>

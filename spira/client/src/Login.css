@@ -1,0 +1,50 @@
+.login-page{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    min-height: 900px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.729),rgba(0, 0, 0, 0.729), rgba(0, 0, 2, 0.52)), url('./images/stockholm2.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+
+.login-card{
+    width:60%;
+    height: 30%;
+    padding: 5%;
+    padding-inline: 2%;
+    background-color: rgb(191, 195, 199);
+    border-radius: 20px;
+}
+
+@media only screen and (min-width: 650px) {
+    .login-page{
+        min-height: 1200px;
+    }
+
+    .login-card{
+        width:35%;
+        height: 40%;
+        padding: 5%;
+        padding-inline: 2%;
+    }
+
+}
+
+@media only screen and (min-width: 850px) {
+    .login-page{
+        min-height: 800px;
+    }
+
+    .login-card{
+        width:40%;
+        height: 40%;
+        padding: 5%;
+        padding-inline: 2%;
+    }
+
+}

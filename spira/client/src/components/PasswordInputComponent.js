@@ -21,7 +21,7 @@ function PasswordInputComponent({label, name, id, placeholder,classNm,validation
     const psdToggle = ()=>{
         setVisible(visibility=> !visibility)
     }
-    
+
   return (
     <div className='input-holder'>
       <div className='label-info'>
@@ -32,10 +32,9 @@ function PasswordInputComponent({label, name, id, placeholder,classNm,validation
            {isInvalid && ( 
             <InputError
                 message={inputError.error.message}
-                key={inputError.error.name}
+                key={inputError.error.message}
               />
-              )   
-
+            )            
             }
     
         </AnimatePresence>

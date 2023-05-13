@@ -1,0 +1,45 @@
+.get-code-holder{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width:40%;
+    align-self: flex-start;
+    margin-left: 5%;
+    padding-left: 5%;
+    justify-content: space-between;
+}
+.get-code{
+    text-decoration: none;
+    color: blue;
+    align-self: flex-start;
+    font-size: 8px;
+}
+
+.get-code-disabled{
+    color: grey;
+    align-self: flex-start;
+    font-size: 8px;
+}
+
+
+@media only screen and (min-width: 650px) {
+    .get-code{
+        font-size: 12px;
+    }
+    
+    .get-code-disabled{
+        font-size: 12px;
+    }
+  }
+  
+  
+  @media only screen and (min-width: 850px) {
+    /* For desktop: */
+    .get-code{
+        font-size: 16px;
+    }
+    
+    .get-code-disabled{
+        font-size: 16px;
+    }
+  }

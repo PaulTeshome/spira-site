@@ -1,0 +1,116 @@
+.login-btn{
+  align-self:flex-start;
+  width: 20%;
+  height: 20px;
+  font-size: 8px;
+  background-color: #061020;
+  color: white;
+  margin: 5% 0;
+  margin-left: 10%;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.login-form-container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.login-form-title{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.login-form{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    border-radius: 5px;
+    padding: 5%;
+    width: 90%;
+    min-height: 100%;
+    font-size: 8px;
+}
+
+.success-msg{
+    font-size: 8px;
+    color: rgb(13, 197, 13);
+    text-align: center;
+    width:auto;
+  }
+  
+
+  @media only screen and (min-width: 650px) {
+    /* For desktop: */
+    
+    .login-form{
+      border-radius: 5px;
+      padding: 5%;
+      width: 90%;
+      height: 90%;
+      font-size: 16px;
+    }
+
+    .login-form-title{
+        font-size: 34px;
+        font-weight: bold;
+    }
+    
+    .success-msg{
+      font-size: 16px;
+    }
+
+    .login-btn{
+        align-self:flex-start;
+        width: 30%;
+        height: 35px;
+        background-color: #061020;
+        color: white;
+        margin: 5% 0;
+        margin-left: 10%;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 12px;
+      }
+  }
+  
+  
+  @media only screen and (min-width: 850px) {
+    /* For desktop: */
+    
+    .login-form{
+      border-radius: 5px;
+      padding: 5%;
+      width: 90%;
+      height: 90%;
+      font-size: 16px;
+    }
+
+    .login-form-title{
+        font-size: 34px;
+        font-weight: bold;
+    }
+    
+    .success-msg{
+      font-size: 16px;
+    }
+
+    .login-btn{
+        align-self:flex-start;
+        width: 30%;
+        height: 40px;
+        background-color: #061020;
+        color: white;
+        margin: 5% 0;
+        margin-left: 10%;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+  }

@@ -33,6 +33,19 @@
     font-size: 8px;
 }
 
+@media only screen and (min-width: 650px) {
+    /* For desktop: */
+
+    .input-holder{
+        height: 80px;
+    }
+
+    .form-inputs{
+        font-size: 12px;
+        height: 26px;
+    }
+}
+
 @media only screen and (min-width: 850px) {
     /* For desktop: */
 
@@ -42,5 +55,6 @@
 
     .form-inputs{
         font-size: 16px;
+        height: 40px;
     }
 }

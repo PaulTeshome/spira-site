@@ -47,8 +47,8 @@ function UpdatePassword() {
               {checkLogo}&nbsp;{success_msg}
             </motion.p>
           )}
-          
-          <PasswordInputComponent label="New Password" type="password" id="password" name="password" placeholder="Enter Password" classNm='psd-form-inputs' {...password_validation}/>
+
+          <PasswordInputComponent label="New Password" type="password" id="ipdate_password" name="update_password" placeholder="Enter Password" classNm='psd-form-inputs' {...password_validation}/>
           <PasswordInputComponent label="Confirm Password" type="password" id="confirm_password" name="confirm_password" placeholder="Confirm Password" classNm='psd-form-inputs' {...password_validation}/>
        
           <button  className='login-btn' onClick={submitInputs}>Update</button>

@@ -3,7 +3,7 @@ import './InputError.css'
 import {motion} from 'framer-motion'
 import {BiErrorCircle} from 'react-icons/bi'
 
-function InputError({message,key}) {
+function InputError({message}) {
     const framer_error = {
         initial: { opacity: 0, y: 10 },
         animate: { opacity: 1, y: 0 },
@@ -14,7 +14,6 @@ function InputError({message,key}) {
    
           <motion.p
             className="error-msg"
-            key={key}
             {...framer_error}
           >
             <BiErrorCircle/>

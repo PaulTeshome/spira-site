@@ -4,6 +4,7 @@ import './Login.css'
 import LoginForm from './components/LoginForm'
 import ForgotPsd from './components/ForgotPsd'
 import ForgotPsdCode from './components/ForgotPsdCode'
+import UpdatePassword from './components/UpdatePassword'
 
 function Login() {
   return (
@@ -14,6 +15,7 @@ function Login() {
           <Route exact path="*" element={<LoginForm/>}/>
           <Route exact path="*/forgotpsd/*" element={<ForgotPsd/>}/>
           <Route exact path="*/forgotpsdcode/*" element={<ForgotPsdCode/>}/>
+          <Route exact path="*/updatepsd/*" element={<UpdatePassword/>}/>
         </Routes>
       </div>
     </div>

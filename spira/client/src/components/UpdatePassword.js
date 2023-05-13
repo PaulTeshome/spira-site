@@ -28,7 +28,7 @@ function UpdatePassword() {
     })
 
     const success_msg_class= failure?"login-error-msg":"success-msg"
-    const success_msg= failure?"No such username or email is registered!":"Successful redirecting..."
+    const success_msg= failure?"Not right!":"Successful redirecting..."
     const checkLogo=failure?"":<BsFillCheckSquareFill/> 
 
   return (

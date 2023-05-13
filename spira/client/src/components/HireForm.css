@@ -148,10 +148,6 @@ label{
     font-size: 16px;
   }
   
-  input[type=submit] {
-    width: 100%;
-  }
-  
   .success-msg{
     font-size: 16px;
   }

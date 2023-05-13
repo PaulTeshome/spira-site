@@ -8,7 +8,6 @@ import './ForgotPsdCode.css'
 import { BsFillCheckSquareFill } from 'react-icons/bs'
 
 function ForgotPsdCode() {
-    const [success,setSuccess]= useState(false)
     const[newCode,setNewCode]= useState(false)
 
     const [ minutes, setMinutes ] = useState(1);
@@ -17,11 +16,7 @@ function ForgotPsdCode() {
     const [submitSuccess,setSubmitSuccess]= useState(false)
     const [failure,setFailure]= useState(false)
 
-    const methods= useForm({
-        defaultValues:{
-          services:'marketing'
-        }
-      })
+    const methods= useForm()
 
     useEffect(()=>{
     document.title='Code reset'
@@ -52,8 +47,7 @@ function ForgotPsdCode() {
   
     const submitInputs= handleSubmit((data)=>{
       console.log('inputs',data)
-      setSuccess(true)
-      success?console.log("success"):console.log("not success")
+      ?console.log("success"):console.log("not success")
       setSubmitSuccess(true)
       setFailure(false)
     }) 
@@ -71,7 +65,7 @@ function ForgotPsdCode() {
 
   return (
     <div className='login-form-container'>
-        <span className='login-form-title'>Code</span>
+        <span className='login-form-title'>Code Reset</span>
         <FormProvider {...methods}>
           <form className='login-form' onSubmit={e => e.preventDefault()} noValidate>
           {submitSuccess && (

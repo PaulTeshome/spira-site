@@ -98,6 +98,8 @@ function ForgotPsdCode() {
           </form>
         </FormProvider>
         <Link to='/login'>Return to Login</Link>
+        <Link to='../*/updatepsd/*'>Update</Link>
+
 
     </div>
   )

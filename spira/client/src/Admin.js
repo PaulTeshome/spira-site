@@ -1,4 +1,4 @@
-import React from 'react'
+import {React,useEffect} from 'react'
 import './Admin.css'
 import AdminHeader from './components/AdminHeader'
 import AdminNav from './components/AdminNav'
@@ -8,6 +8,9 @@ import CustomizationPage from './components/CustomizationPage'
 import ManageAdmins from './components/ManageAdmins'
 
 function Admin() {
+  useEffect(()=>{
+    document.title='Admin Dashboard'
+  },[])
   return (
     <div className='admin-page'>
         <AdminHeader adminName="Kevin J"/>

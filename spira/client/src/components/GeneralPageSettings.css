@@ -1,0 +1,67 @@
+.general-settings-container{
+    width: 70%;
+    padding: 5% 5%;
+    margin-bottom: 5%;
+    border-radius: 20px;
+    background-color: aliceblue;
+}
+
+.general-settings-title{
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.general-settings-form{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    min-height: 100%;
+    font-size: 8px;
+}
+
+.general-settings-edit-btn,
+.general-settings-save-btn{
+    align-self: center;
+    width:20%;
+    height:40px;
+    border-radius: 10px;
+    border: 0px solid;
+    background-color: #061020;
+    color: aliceblue;
+}
+
+.general-settings-edit-btn:hover{
+    background-color: greenyellow;
+    color: #061020;
+}
+
+.general-settings-save-btn:hover{
+    background-color: red;
+    color:aliceblue;
+}
+
+
+
+@media only screen and (min-width: 850px) {
+    /* For desktop: */
+    .general-settings-form{
+        font-size: 16px;
+    }
+
+    .general-settings-title{
+        font-size: 24px;
+    }
+
+    .general-settings-edit-btn,
+    .general-settings-save-btn{
+        align-self: center;
+        width:20%;
+        height:40px;
+        border-radius: 10px;
+        border: 0px solid;
+        background-color: #061020;
+        color: aliceblue;
+    }
+  }

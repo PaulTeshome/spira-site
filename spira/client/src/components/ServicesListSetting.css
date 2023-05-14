@@ -1,0 +1,55 @@
+.services-settings-holder{
+    width: 90%;
+    background-color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.services-settings-title{
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.services-settings-edit-btn,
+.services-settings-save-btn{
+    align-self: center;
+    width:40%;
+    height:30px;
+    border-radius: 10px;
+    border: 0px solid;
+    background-color: #061020;
+    color: aliceblue;
+    margin-top: 5%;
+    font-size: 8px;
+}
+
+.services-settings-edit-btn:hover{
+    background-color: greenyellow;
+    color: #061020;
+}
+
+.services-settings-save-btn:hover{
+    background-color: red;
+    color:aliceblue;
+}
+
+@media only screen and (min-width: 850px) {
+    /* For desktop: */
+    .services-settings-form{
+        font-size: 16px;
+    }
+
+    .services-settings-title{
+        font-size: 24px;
+    }
+
+    .services-settings-edit-btn,
+    .services-settings-save-btn{
+        width:20%;
+        height:40px;
+        font-size: 16px;
+    }
+  }

@@ -12,6 +12,17 @@ export const name_validation = {
     
   }
 
+
+export const optional_settings_validation = {
+    validation: { 
+        maxLength: {
+            value: 200,
+            message: 'maximum 200 characters',
+        },
+    }
+
+}
+
 export const forgot_psd_validation = {
     validation: {
       required: {

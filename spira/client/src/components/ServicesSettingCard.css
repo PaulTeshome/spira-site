@@ -1,0 +1,84 @@
+.service-setting-card{
+    width:90%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    border-radius:20px ;
+    border: 2px solid #061020;
+    background-color: #7894c6;
+    margin: 3% 0;
+}
+
+.service-setting-form{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.service-setting-inputs{
+    width:70%;
+    margin: 0;
+    
+}
+
+.service-setting-controls{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    width:30%;
+    margin: 0;
+}
+
+.service-success-msg{
+    font-size:8px;
+    color: greenyellow;
+}
+
+.service-setting-edit-btn,
+.service-setting-save-btn{
+    align-self: center;
+    width:80%;
+    height:30px;
+    border-radius: 10px;
+    border: 0px solid;
+    background-color: #061020;
+    color: aliceblue;
+    margin-top: 5%;
+    font-size: 8px;
+}
+
+.service-setting-edit-btn:hover{
+    background-color: greenyellow;
+    color: #061020;
+}
+
+.service-setting-save-btn:hover{
+    background-color: red;
+    color:aliceblue;
+}
+
+@media only screen and (min-width: 850px) {
+    /* For desktop: */
+    .service-setting-form{
+        font-size: 16px;
+    }
+
+    .service-setting-title{
+        font-size: 24px;
+    }
+
+    .service-setting-edit-btn,
+    .service-setting-save-btn{
+        width:60%;
+        height:40px;
+        font-size: 16px;
+    }
+
+    .service-success-msg{
+        font-size:16px;
+        color: greenyellow;
+    }
+  }

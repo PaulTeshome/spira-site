@@ -1,6 +1,5 @@
 import React,{useEffect, useState} from 'react'
 import {FormProvider, useForm} from 'react-hook-form'
-import {  password_validation} from './utils/inputValidations'
 import { HashLink as Link} from 'react-router-hash-link'
 import { motion } from 'framer-motion'
 import { BsFillCheckSquareFill } from 'react-icons/bs'
@@ -19,7 +18,7 @@ function UpdatePassword() {
   
     const methods= useForm()
   
-    const {control,handleSubmit}=methods
+    const {getValues, control,handleSubmit}=methods
   
     const submitInputs= handleSubmit((data)=>{
       console.log('inputs',data)
@@ -30,6 +29,33 @@ function UpdatePassword() {
     const success_msg_class= failure?"login-error-msg":"success-msg"
     const success_msg= failure?"Not right!":"Successful redirecting..."
     const checkLogo=failure?"":<BsFillCheckSquareFill/> 
+
+    const conf_password_validation = {
+        validation: {
+          required: {
+              value: true,
+              message: 'required',
+          },
+          minLength: {
+              value: 6,
+              message: 'minimum 6 characters',
+          },
+          maxLength: {
+              value: 30,
+              message: 'maximum 30 characters',
+          },
+          pattern: {
+              value:  /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{6,}$/,
+              message: 'include Uppercase, Lowercase, digit and special character',
+          },
+
+          validate: (value) => {
+            const { update_password,confirm_password } = getValues();
+            return update_password === confirm_password || "Passwords should match!";
+          },
+      }
+      
+    }
 
   return (
     <div className='login-form-container'>
@@ -48,8 +74,8 @@ function UpdatePassword() {
             </motion.p>
           )}
 
-          <PasswordInputComponent label="New Password" type="password" id="ipdate_password" name="update_password" placeholder="Enter Password" classNm='psd-form-inputs' {...password_validation}/>
-          <PasswordInputComponent label="Confirm Password" type="password" id="confirm_password" name="confirm_password" placeholder="Confirm Password" classNm='psd-form-inputs' {...password_validation}/>
+          <PasswordInputComponent label="New Password" type="password" id="update_password" name="update_password" placeholder="Enter Password" classNm='psd-form-inputs' {...conf_password_validation}/>
+          <PasswordInputComponent label="Confirm Password" type="password" id="confirm_password" name="confirm_password" placeholder="Confirm Password" classNm='psd-form-inputs' {...conf_password_validation}/>
        
           <button  className='login-btn' onClick={submitInputs}>Update</button>
           

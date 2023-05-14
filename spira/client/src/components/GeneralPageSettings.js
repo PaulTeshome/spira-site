@@ -1,10 +1,9 @@
 import React,{useEffect, useState} from 'react'
 import {FormProvider, useForm} from 'react-hook-form'
 import { motion } from 'framer-motion'
-import {DevTool} from '@hookform/devtools'
 import InputComponent from './InputComponent'
 import TextInput from './TextInput'
-import { email_validation, name_validation, phone_validation, text_validation } from './utils/inputValidations'
+import { email_validation,  phone_validation, optional_settings_validation, text_validation } from './utils/inputValidations'
 import {BsFillCheckSquareFill} from 'react-icons/bs'
 import './GeneralPageSettings.css'
 
@@ -21,16 +20,16 @@ function GeneralPageSettings() {
         setEditor(false)
     }
     useEffect(()=>{
-      document.title='Hire Us '
+      document.title='Admin Dashboard'
     },[])
   
     const methods= useForm({
       defaultValues:{
-        fname:'marketing'
+        motto:'EMPOWERING YOUR BRAND IN THE DIGITAL SPACE'
       }
     })
   
-    const { control,handleSubmit}=methods
+    const {handleSubmit}=methods
   
     const submitInputs= handleSubmit((data)=>{
       console.log('inputs',data)
@@ -45,13 +44,17 @@ function GeneralPageSettings() {
         <span className='general-settings-title'> General Page Elements Edit Form</span>
         <FormProvider {...methods}>
           <form className='general-settings-form' onSubmit={e => e.preventDefault()} noValidate>
-              <InputComponent label="First Name" type="text" id="fname" name="fname" placeholder='Enter First Name' classNm='form-inputs' disabled={disabledTxt} {...name_validation}/>
-              <InputComponent label="Last Name" type="text" id="lname" name="lname" placeholder='Enter Last Name' classNm='form-inputs' disabled={disabledTxt} {...name_validation}/>
-              <InputComponent  label="Email" type="Email" id="email" name="email" placeholder='Enter your email' classNm='form-inputs' disabled={disabledTxt} {...email_validation}/>
-              <InputComponent label="Company Name" type="text" id="cname" name="cname" placeholder='Enter Company Name' classNm='form-inputs' disabled={disabledTxt} {...name_validation}/>
-              <InputComponent label="Phone" type="text" id="phone" name="phone" placeholder='Enter Phone Number (+46762727223)' classNm='form-inputs' disabled={disabledTxt} {...phone_validation}/>
+              <InputComponent label="Company Motto" type="text" id="motto" name="motto" placeholder='Enter company motto...' classNm='form-inputs' disabled={disabledTxt} {...text_validation}/>
+              <TextInput textLabel="Company Mission" name="comp_mission"  placeholder='Enter company mission' disabled={disabledTxt} {...text_validation}/>
+              <TextInput textLabel="Company 'About Us'" name="comp_abt"  placeholder='Enter about us description...' disabled={disabledTxt} {...text_validation}/>
+              <InputComponent  label="Company Email" type="email" id="comp_email" name="comp_email" placeholder='Enter company email...' classNm='form-inputs' disabled={disabledTxt} {...email_validation}/>
+              <InputComponent label="Company Phone 1" type="text" id="comp_phone1" name="comp_phone1" placeholder='Enter company phone number (+46762727223)' classNm='form-inputs' disabled={disabledTxt} {...phone_validation}/>
+              <InputComponent label="Company Phone 2" type="text" id="comp_phone2" name="comp_phone2" placeholder='Enter company phone number (+46731443749)' classNm='form-inputs' disabled={disabledTxt} {...phone_validation}/>
+              <InputComponent label="Company Location" type="text" id="comp_location" name="comp_location" placeholder='Enter company location...' classNm='form-inputs' disabled={disabledTxt} {...text_validation}/>
+              <InputComponent label="Instagram Link" type="text" id="comp_insta" name="comp_insta" placeholder='Enter company instagram account link...' classNm='form-inputs' disabled={disabledTxt} {...text_validation}/>
+              <InputComponent label="Other Social Media" type="text" id="comp_social" name="comp_social" placeholder='Enter other social media link (optional)...' classNm='form-inputs' disabled={disabledTxt} {...optional_settings_validation}/>
+              
                     
-              <TextInput textLabel="Specify" name="spec"  placeholder='Specify your choice above' disabled={disabledTxt} {...text_validation}/>
               {success && (
                 <motion.p className="success-msg"
                   initial= {{ opacity: 0, y: 10 }}
@@ -75,8 +78,6 @@ function GeneralPageSettings() {
              
           </form>
         </FormProvider>
-       
-        <DevTool control={control}/>
     </div>
     
   )

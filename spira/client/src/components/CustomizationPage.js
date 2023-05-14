@@ -3,6 +3,7 @@ import './CustomizationPage.css'
 import  {Route, Routes} from "react-router-dom"
 import CustomSettingChoice from './CustomSettingChoice'
 import GeneralPageSettings from './GeneralPageSettings'
+import ServicesListSetting from './ServicesListSetting'
 
 function CustomizationPage() {
   return (
@@ -14,6 +15,7 @@ function CustomizationPage() {
         <Routes>
             <Route exact path="*" element={<CustomSettingChoice/>}/>
             <Route exact path="*/generalpage" element={<GeneralPageSettings/>}/>
+            <Route exact path="*/servicessetting" element={<ServicesListSetting/>}/>
         </Routes>
 
         </div>                       

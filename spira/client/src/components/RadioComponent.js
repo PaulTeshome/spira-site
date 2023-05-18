@@ -1,6 +1,6 @@
 import React from 'react'
 import { useFormContext } from 'react-hook-form';
-import './RadioComponent.css'
+import './styles/RadioComponent.css'
 
 function RadioComponent({value,label,name}) {
   const {register} =useFormContext();

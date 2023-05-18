@@ -5,7 +5,7 @@ import { forgot_psd_validation} from './utils/inputValidations'
 import { HashLink as Link} from 'react-router-hash-link'
 import { motion } from 'framer-motion'
 import { BsFillCheckSquareFill } from 'react-icons/bs'
-import './ForgotPsd.css'
+import './styles/ForgotPsd.css'
 
 function ForgotPsd() {
     const [submitSuccess,setSubmitSuccess]= useState(false)

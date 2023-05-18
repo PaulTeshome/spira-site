@@ -1,5 +1,5 @@
 import React from 'react'
-import './ServicesListSetting.css'
+import './styles/ServicesListSetting.css'
 import ServicesSettingCard from './ServicesSettingCard'
 
 function ServicesListSetting() {

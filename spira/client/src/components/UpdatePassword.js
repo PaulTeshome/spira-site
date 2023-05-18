@@ -3,7 +3,7 @@ import {FormProvider, useForm} from 'react-hook-form'
 import { HashLink as Link} from 'react-router-hash-link'
 import { motion } from 'framer-motion'
 import { BsFillCheckSquareFill } from 'react-icons/bs'
-import './UpdatePassword.css'
+import './styles/UpdatePassword.css'
 import PasswordInputComponent from './PasswordInputComponent'
 import { DevTool } from '@hookform/devtools'
 

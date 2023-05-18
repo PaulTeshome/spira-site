@@ -1,5 +1,5 @@
 // import logo from '../images/spira_logo1 1.png';
-import './Home.css';
+import './styles/Home.css';
 import { useEffect } from 'react';
 import LandingHeader from './LandingHeader';
 import MottoSection from './MottoSection';

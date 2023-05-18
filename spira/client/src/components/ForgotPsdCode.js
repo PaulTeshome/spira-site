@@ -4,7 +4,7 @@ import InputComponent from './InputComponent'
 import { code_validation} from './utils/inputValidations'
 import { motion } from 'framer-motion'
 import { HashLink as Link} from 'react-router-hash-link'
-import './ForgotPsdCode.css'
+import './styles/ForgotPsdCode.css'
 import { BsFillCheckSquareFill } from 'react-icons/bs'
 
 function ForgotPsdCode() {

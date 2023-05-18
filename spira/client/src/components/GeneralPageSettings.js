@@ -5,7 +5,7 @@ import InputComponent from './InputComponent'
 import TextInput from './TextInput'
 import { email_validation,  phone_validation, optional_settings_validation, text_validation } from './utils/inputValidations'
 import {BsFillCheckSquareFill} from 'react-icons/bs'
-import './GeneralPageSettings.css'
+import './styles/GeneralPageSettings.css'
 
 function GeneralPageSettings() {
 

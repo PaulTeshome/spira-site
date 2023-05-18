@@ -1,5 +1,5 @@
 import React from 'react'
-import './Footer.css'
+import './styles/Footer.css'
 import tg_logo from '../images/tg logo.png'
 import insta_logo from '../images/insta logo.png'
 import mail_logo from '../images/mail logo.png'

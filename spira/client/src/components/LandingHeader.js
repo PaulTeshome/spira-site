@@ -1,5 +1,5 @@
 import React from 'react'
-import './LandingHeader.css'
+import './styles/LandingHeader.css'
 import FixedHeader from './FixedHeader'
 import { motion } from 'framer-motion'
 

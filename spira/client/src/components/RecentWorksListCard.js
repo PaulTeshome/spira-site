@@ -5,10 +5,9 @@ import InputComponent from './InputComponent'
 import TextInput from './TextInput'
 import { text_validation } from './utils/inputValidations'
 import {BsFillCheckSquareFill} from 'react-icons/bs'
-import './styles/ServicesSettingCard.css'
+import './styles/RecentWorksListCard.css'
 
-function ServicesSettingCard({service_id,service_name, service_description}) {
-
+function RecentWorksListCard({project_id,project_title, project_description,project_image}) {
     const [success,setSuccess]= useState(false)
     const [disabled,setDisabled]= useState(true)
     const [editor,setEditor]= useState(true)
@@ -26,29 +25,28 @@ function ServicesSettingCard({service_id,service_name, service_description}) {
   
     const methods= useForm({
       defaultValues:{
-        service_name:service_name,
-        service_description:service_description,
+        project_title:project_title,
+        project_description:project_description,
       }
     })
     
     const {handleSubmit}=methods
   
     const submitInputs= handleSubmit((data)=>{
-      const newData={...data,service_id}
+      const newData={...data,project_id}
       console.log('inputs',newData)
       setSuccess(true)
       setEditor(true)
       setDisabled(true)
       setTimeout(()=>{setSuccess(false)},2000)
     })
-
   return (
     <div className='service-setting-card'>
         <FormProvider {...methods}>
           <form className='service-setting-form' onSubmit={e => e.preventDefault()} noValidate>
             <div className='service-setting-inputs'>
-                <InputComponent label="Service Name" type="text" id="service_name" name="service_name" placeholder='Enter service name...' classNm='form-inputs' disabled={disabledTxt} {...text_validation}/>
-                <TextInput textLabel="Service Description" name="service_description"  placeholder='Enter service description' disabled={disabledTxt} {...text_validation}/>
+                <InputComponent label="Project Title" type="text" id="project_title" name="project_title" placeholder='Enter project title...' classNm='form-inputs' disabled={disabledTxt} {...text_validation}/>
+                <TextInput textLabel="Project Description" name="project_description"  placeholder='Enter project description' disabled={disabledTxt} {...text_validation}/>
             </div>
             <div className='service-setting-controls'>
                 {success && (
@@ -78,4 +76,4 @@ function ServicesSettingCard({service_id,service_name, service_description}) {
   )
 }
 
-export default ServicesSettingCard
+export default RecentWorksListCard

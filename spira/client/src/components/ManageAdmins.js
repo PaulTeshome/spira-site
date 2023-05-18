@@ -1,5 +1,5 @@
 import React from 'react'
-import './ManageAdmins.css'
+import './styles/ManageAdmins.css'
 import SettingCard from './SettingCard'
 
 function ManageAdmins() {

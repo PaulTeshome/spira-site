@@ -1,5 +1,5 @@
 import React from 'react'
-import './AdminHeader.css'
+import './styles/AdminHeader.css'
 import logo from '../images/spira_logo1 1.png'
 import { HashLink as Link } from 'react-router-hash-link'
 

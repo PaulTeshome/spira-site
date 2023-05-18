@@ -1,5 +1,5 @@
 import React from 'react'
-import './RecentWorksCard.css'
+import './styles/RecentWorksCard.css'
 
 function RecentWorksCard({proj_title, proj_desc}) {
   const images = require.context('../images', true)

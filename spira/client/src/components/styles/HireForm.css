@@ -30,7 +30,7 @@
 .form-container {
   height: 100%;
   width: 70%;
-  background-image: url("../images/stockholm2.jpg");
+  background-image: url("../../images/stockholm2.jpg");
   background-size:cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -45,7 +45,7 @@
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
-  background-image: linear-gradient(to bottom, rgba(240, 238, 238,0.5), rgba(240, 238, 238,0.5)), url('../images/hire_us_illustration.svg');
+  background-image: linear-gradient(to bottom, rgba(240, 238, 238,0.5), rgba(240, 238, 238,0.5)), url('../../images/hire_us_illustration.svg');
   background-repeat: no-repeat;
   background-size: 100px 100px;
   background-position:top right;

@@ -4,7 +4,7 @@ import isFormInvalid from './utils/isFormInvalid'
 import findInputError from './utils/findInputError'
 import { AnimatePresence } from 'framer-motion'
 import InputError from './InputError';
-import './TextInput.css'
+import './styles/TextInput.css'
 
 function TextInput({textLabel,name,placeholder, validation,disabled}) {
 

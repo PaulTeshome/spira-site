@@ -1,5 +1,5 @@
 import React from 'react'
-import './SettingCard.css'
+import './styles/SettingCard.css'
 import { HashLink as Link } from 'react-router-hash-link'
 
 function SettingCard({title,desc,link}) {

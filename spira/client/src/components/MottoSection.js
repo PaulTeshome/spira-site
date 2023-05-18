@@ -1,7 +1,7 @@
 // written by Paul T. Hailemeskel
 
 import React,{useState} from 'react'
-import './MottoSection.css'
+import './styles/MottoSection.css'
 import illust1 from '../images/ad_illustration.svg'
 import illust2 from '../images/client_illustration.svg'
 import { motion } from 'framer-motion'

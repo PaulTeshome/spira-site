@@ -62,7 +62,6 @@
 @media only screen and (min-width: 850px) {
 /* For desktop: */
     .recent-card{
-        background-image: url('../images/stockholm1.jpg');
         min-height:600px;
         width:30%;
         border-radius: 40px;

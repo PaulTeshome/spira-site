@@ -1,5 +1,5 @@
 import React from 'react'
-import './OurTeam.css'
+import './styles/OurTeam.css'
 import MemberCard from './MemberCard'
 import { HashLink as Link } from 'react-router-hash-link'
 

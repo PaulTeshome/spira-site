@@ -1,7 +1,7 @@
 import React from 'react'
 import { useFormContext } from 'react-hook-form'
 import { AnimatePresence } from 'framer-motion';
-import './InputComponent.css'
+import './styles/InputComponent.css'
 import isFormInvalid from './utils/isFormInvalid'
 import findInputError from './utils/findInputError'
 import InputError from './InputError';

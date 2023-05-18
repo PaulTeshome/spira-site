@@ -4,7 +4,7 @@
 }
 
 .landing-header-bg{
-  background-image: url("../images/stockholm1.jpg");
+  background-image: url("../../images/stockholm1.jpg");
   filter: blur(.11rem) brightness(0.7);
   -webkit-filter: blur(0.11rem) brightness(0.7);
   height: 100%;

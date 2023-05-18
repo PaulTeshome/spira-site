@@ -1,9 +1,9 @@
 import React from 'react'
 import TestimonialCard from './TestimonialCard'
-import './AboutUs.css'
 import illust4 from '../images/about us illustration.svg'
 import profile from '../images/default_profile.png'
 import { HashLink as Link } from 'react-router-hash-link'
+import './styles/AboutUs.css'
 
 function AboutUs() {
   return (

@@ -1,5 +1,5 @@
 import React from 'react'
-import './InputError.css'
+import './styles/InputError.css'
 import {motion} from 'framer-motion'
 import {BiErrorCircle} from 'react-icons/bi'
 

@@ -6,7 +6,7 @@ import PasswordInputComponent from './PasswordInputComponent'
 import { name_validation} from './utils/inputValidations'
 import {BsFillCheckSquareFill} from 'react-icons/bs'
 import { HashLink as Link} from 'react-router-hash-link'
-import './LoginForm.css'
+import './styles/LoginForm.css'
 
 function LoginForm() {
     const [submitSuccess,setSubmitSuccess]= useState(false)

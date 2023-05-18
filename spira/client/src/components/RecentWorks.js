@@ -1,5 +1,5 @@
 import React from 'react'
-import './RecentWorks.css'
+import './styles/RecentWorks.css'
 import RecentWorksCard from './RecentWorksCard'
 
 function RecentWorks() {

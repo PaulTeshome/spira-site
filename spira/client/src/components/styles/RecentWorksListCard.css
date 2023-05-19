@@ -1,0 +1,102 @@
+
+.recent-setting-card{
+    width:90%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    border-radius:20px ;
+    border: 2px solid #061020;
+    background-color: #7894c6;
+    margin: 3% 0;
+}
+
+.recent-setting-form{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.recent-setting-inputs{
+    width:70%;
+    margin: 0;
+    
+}
+
+.recent-setting-controls{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    width:30%;
+    margin: 0;
+}
+
+.service-success-msg{
+    font-size:8px;
+    color: greenyellow;
+}
+
+.form-file-inputs{
+    width: 80%;
+    padding: 2% 5%;
+    margin: 1% 5%;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    font-size: 8px;
+    min-height: auto;
+}
+
+
+.recent-settings-edit-btn,
+.recent-settings-save-btn{
+    align-self: center;
+    width:80%;
+    height:30px;
+    border-radius: 10px;
+    border: 0px solid;
+    background-color: #061020;
+    color: aliceblue;
+    margin-top: 5%;
+    font-size: 8px;
+}
+
+.recent-settings-edit-btn:hover{
+    background-color: greenyellow;
+    color: #061020;
+}
+
+.recent-settings-save-btn:hover{
+    background-color: red;
+    color:aliceblue;
+}
+
+@media only screen and (min-width: 650px) {
+    /* For desktop: */
+
+    .form-file-inputs{
+        font-size: 12px;
+        min-height: 35px;
+    }
+}
+
+@media only screen and (min-width: 850px) {
+    /* For desktop: */
+   
+    
+    .recent-settings-edit-btn,
+    .recent-settings-save-btn{
+        width:40%;
+        height:40px;
+        font-size: 16px;
+    }
+
+    .form-file-inputs{
+        font-size: 16px;
+        min-height: 40px;
+    }
+  }

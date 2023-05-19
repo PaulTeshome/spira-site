@@ -44,12 +44,14 @@ function RecentWorksListCard({project_id,project_title, project_description,proj
       const imageData= new FormData();
       imageData.append('project_image',image)
       const newData={...data,project_id}
+      console.log("image name ",image)
       console.log('inputs',newData)
       setSuccess(true)
       setEditor(true)
       setDisabled(true)
       setTimeout(()=>{setSuccess(false)},2000)
     })
+    
   return (
     <div className='recent-setting-card'>
         <FormProvider {...methods}>

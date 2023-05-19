@@ -13,9 +13,17 @@
     text-align: center;
 }
 
+.recent-success-msg{
+    font-size: 8px;
+    color:greenyellow;
+    text-align: center;
+    width:auto;
+  }
+
+
 @media only screen and (min-width: 850px) {
     /* For desktop: */
-    .services-settings-form{
+    .recent-settings-form{
         font-size: 16px;
     }
 
@@ -23,10 +31,8 @@
         font-size: 24px;
     }
 
-    .services-settings-edit-btn,
-    .services-settings-save-btn{
-        width:20%;
-        height:40px;
+    .recent-success-msg{
         font-size: 16px;
     }
+
   }

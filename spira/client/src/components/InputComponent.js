@@ -6,7 +6,7 @@ import isFormInvalid from './utils/isFormInvalid'
 import findInputError from './utils/findInputError'
 import InputError from './InputError';
 
-function InputComponent({label, type, name, id, placeholder,classNm,validation, disabled,onchange}) {
+function InputComponent({label, type, name, id, placeholder,classNm,validation, disabled, onchange}) {
 
   const {register, formState: { errors },
         } = useFormContext()

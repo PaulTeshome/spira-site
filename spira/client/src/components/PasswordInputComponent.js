@@ -24,7 +24,7 @@ function PasswordInputComponent({label, name, id, placeholder,classNm,validation
 
   return (
     <div className='input-holder'>
-      <div className='label-info'>
+      <div className='psd-label-info'>
         <label htmlFor={name} className='label-text'>
             {label}
         </label>

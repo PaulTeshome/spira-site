@@ -19,6 +19,17 @@ function ServicesSettingCard({service_id,service_name, service_description}) {
         setDisabled(!disabled)
         setEditor(false)
     }
+
+    const deleteForm= ()=>{
+      let confDel= window.confirm("Are you sure you want to delete project data?")
+
+      if (confDel){
+        alert("Delete")
+      }else{
+        alert("no delete")
+      }
+  }
+
     useEffect(()=>{
       document.title='Admin Dashboard'
       
@@ -64,6 +75,11 @@ function ServicesSettingCard({service_id,service_name, service_description}) {
                 {
                 editor && (
                     <button  className='service-setting-edit-btn' onClick={enableForm}>Edit</button>
+                )}
+
+                {
+                editor && (
+                    <button  className='service-setting-save-btn' onClick={deleteForm}>Delete</button>
                 )}
 
                 {

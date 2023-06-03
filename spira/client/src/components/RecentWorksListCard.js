@@ -20,6 +20,16 @@ function RecentWorksListCard({project_id,project_title, project_description,proj
         setEditor(false)
     }
 
+    const deleteForm= ()=>{
+        let confDel= window.confirm("Are you sure you want to delete project data?")
+
+        if (confDel){
+          alert("Delete")
+        }else{
+          alert("no delete")
+        }
+    }
+
     function handleImage(e){
 
       console.log(e.target.files+"here are the files")
@@ -75,6 +85,10 @@ function RecentWorksListCard({project_id,project_title, project_description,proj
                 {
                 editor && (
                     <button  className='recent-settings-edit-btn' onClick={enableForm}>Edit</button>
+                )}
+
+               { editor && (
+                    <button  className='recent-settings-save-btn' onClick={deleteForm}>Delete</button>
                 )}
 
                 {

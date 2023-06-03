@@ -12,7 +12,7 @@ import AboutUs from './AboutUs';
 function Home() {
 
   useEffect(()=>{
-    document.title='Spira Agency '
+    document.title='Spira Agency'
   },[])
 
   return (

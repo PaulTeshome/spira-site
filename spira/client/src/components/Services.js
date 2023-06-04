@@ -8,7 +8,7 @@ function Services() {
   const [services, setServices] = useState([]);
 
   useEffect(() =>{
-    axios.get("/getServices")
+    axios.get("/services/getServices")
     .then(res => {
       setServices(res.data);
     })

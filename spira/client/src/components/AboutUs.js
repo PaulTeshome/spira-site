@@ -9,6 +9,7 @@ import axios from 'axios'
 function AboutUs() {
 
   const [aboutTxt,setAboutTxt]= useState([]);
+  const [testimonials, setTestimonials] = useState([]);
   useEffect(()=>{
 
     axios.get("/general/getAbout")
@@ -18,8 +19,17 @@ function AboutUs() {
     .catch(error => {
       console.log(error);
     });
+
+    axios.get("/testimonials/getTestimonials")
+    .then(res => {
+     setTestimonials(res.data)
+    })
+    .catch(error => {
+      console.log(error);
+    });
     
   },[])
+  
   return (
     <div className='aboutUs-container' id="abtUs">
               <span className='aboutUs-title'>ABOUT US</span>
@@ -35,14 +45,13 @@ function AboutUs() {
 
               <div className='aboutUs-testimonials'>
                 <div className='testimonials-scroller'>
-                  <TestimonialCard source={profile} testimonial="Best marketing agency to work with. Amazing services
-                  Best marketing agency to work with. Amazing services
-                  Best marketing agency to work with. Amazing services
-                  Best marketing agency to work with. Amazing services
-                  Best marketing agency to work with. Amazing services" owner="unknown1"/>
-                  <TestimonialCard source={profile} testimonial="Best marketing agency to work with. Amazing services" owner="unknown2"/>
-                  <TestimonialCard source={profile} testimonial="Best marketing agency to work with. Amazing services" owner="unknown3"/>
-                  <TestimonialCard source={profile} testimonial="Best marketing agency to work with. Amazing services" owner="unknown4"/>
+                  {
+                    testimonials.map(testimonial =>{
+                      return (
+                       <TestimonialCard source={profile} testimonial={testimonial.testimonial_text} owner={testimonial.testimonial_owner}/>
+                      )
+                    })
+                  }
                 </div>
                 <Link className='last-hire-btn' to="/hireUs#top">Hire Us</Link>
               </div>

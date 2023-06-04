@@ -5,6 +5,8 @@ import CustomSettingChoice from './CustomSettingChoice'
 import GeneralPageSettings from './GeneralPageSettings'
 import ServicesListSetting from './ServicesListSetting'
 import RecentWorksList from './RecentWorksList'
+import TeamSettingList from './TeamSettingList'
+import TestimonailSettingList from './TestimonialSettingList'
 
 function CustomizationPage() {
   return (
@@ -18,6 +20,8 @@ function CustomizationPage() {
             <Route exact path="*/generalpage" element={<GeneralPageSettings/>}/>
             <Route exact path="*/servicessetting" element={<ServicesListSetting/>}/>
             <Route exact path="*/recentsetting" element={<RecentWorksList/>}/>
+            <Route exact path="*/teamsetting" element={<TeamSettingList/>}/>
+            <Route exact path="*/testimonialsetting" element={<TestimonailSettingList/>}/>
         </Routes>
 
         </div>                       

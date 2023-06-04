@@ -1,15 +1,32 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './styles/RecentWorks.css'
 import RecentWorksCard from './RecentWorksCard'
+import axios from 'axios';
 
 function RecentWorks() {
+
+  const [projects, setProjects] = useState([])
+  useEffect(() =>{
+    axios.get("/getProjects")
+    .then(res => {
+      setProjects(res.data);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+  },[])
+
   return (
     <div className='recent-container'>
        <span>RECENT WORKS</span>
         <div className='work-list-container'>
-            <RecentWorksCard proj_title="Project 1" proj_desc=" this is the proj description" imgNme=""/>
-            <RecentWorksCard proj_title="Project 2" proj_desc=" this is the proj description"/>
-            <RecentWorksCard proj_title="Project 3" proj_desc=" this is the proj description"/>
+            {
+              projects.map(project =>{
+                return (
+                  <RecentWorksCard key={project.project_id} proj_title={project.project_title} proj_desc={project.project_description} imgName={project.project_image}/>
+                )
+              })
+            }
         </div>
     </div>
   )

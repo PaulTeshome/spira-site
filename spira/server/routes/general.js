@@ -1,11 +1,15 @@
 import express from "express";
-import { getFooter, getMotto, getAbout } from "../controllers/general.js";
+import { getFooter,updateFooter, getMotto, updateMotto, getAbout,updateAbout } from "../controllers/general.js";
 
 const router = express.Router();
 
 router.get('/getMotto', getMotto);
-router.get('/getFooter', getFooter);
-router.get('/getAbout', getAbout);
+router.put('/updateMotto', updateMotto);
 
+router.get('/getFooter', getFooter);
+router.put('/updateFooter', updateFooter);
+
+router.get('/getAbout', getAbout);
+router.put('/updateAbout', updateAbout);
 
 export default router

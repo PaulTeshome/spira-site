@@ -1,18 +1,20 @@
 import React from 'react'
 import './styles/RecentWorksCard.css'
 
-function RecentWorksCard({proj_title, proj_desc}) {
+function RecentWorksCard({proj_title, proj_desc, imgName}) {
   const images = require.context('../images', true)
   let img;
-  const imgName="./stockholm1.jpg"
-  try{
-    img= images(imgName)
-  }catch(err){
-    console.log(err)
+    if(imgName!==null) {
+      img= images(imgName)
+      console.log(imgName)
+    }
+    else{
+      console.log("f",imgName)
+      
+      img= images("./stockholm2.jpg")
+    }
+    
 
-      img= images('./default_profile.png')
-  }
-  
   return (
     <>
       <style>
@@ -24,7 +26,7 @@ function RecentWorksCard({proj_title, proj_desc}) {
 
             .recent-card:hover{
               transform: scale(1.04,1.04);
-              background-image:  linear-gradient(to right, rgba(0, 0, 0, 0.729),rgba(0, 0, 0, 0.729), rgba(0, 0, 2, 0.52)), url('${images('./stockholm2.jpg')}');
+              background-image:  linear-gradient(to right, rgba(0, 0, 0, 0.729),rgba(0, 0, 0, 0.729), rgba(0, 0, 2, 0.52)), url('${img}');
             } 
             `
             }

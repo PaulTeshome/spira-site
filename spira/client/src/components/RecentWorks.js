@@ -7,7 +7,7 @@ function RecentWorks() {
 
   const [projects, setProjects] = useState([])
   useEffect(() =>{
-    axios.get("/getProjects")
+    axios.get("/projects/getProjects")
     .then(res => {
       setProjects(res.data);
     })

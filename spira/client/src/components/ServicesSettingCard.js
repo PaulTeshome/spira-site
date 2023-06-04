@@ -9,7 +9,7 @@ import './styles/ServicesSettingCard.css'
 
 function ServicesSettingCard({service_id,service_name, service_description}) {
 
-    const [success,setSuccess]= useState(false)
+    const [successMsg,setSuccessMsg]= useState(false)
     const [disabled,setDisabled]= useState(true)
     const [editor,setEditor]= useState(true)
 
@@ -47,10 +47,10 @@ function ServicesSettingCard({service_id,service_name, service_description}) {
     const submitInputs= handleSubmit((data)=>{
       const newData={...data,service_id}
       console.log('inputs',newData)
-      setSuccess(true)
+      setSuccessMsg(true)
       setEditor(true)
       setDisabled(true)
-      setTimeout(()=>{setSuccess(false)},2000)
+      setTimeout(()=>{setSuccessMsg(false)},2000)
     })
 
   return (
@@ -62,7 +62,7 @@ function ServicesSettingCard({service_id,service_name, service_description}) {
                 <TextInput textLabel="Service Description" name="service_description"  placeholder='Enter service description' disabled={disabledTxt} {...text_validation}/>
             </div>
             <div className='service-setting-controls'>
-                {success && (
+                {successMsg && (
                     <motion.p className="service-success-msg"
                         initial= {{ opacity: 0, y: 10 }}
                         animate= {{ opacity: 1, y: 0 }}

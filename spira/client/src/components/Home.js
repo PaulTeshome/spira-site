@@ -18,7 +18,7 @@ function Home() {
   useEffect(()=>{
     document.title='Spira Agency'
 
-    axios.get("http://localhost:8800/getMotto")
+    axios.get("/getMotto")
     .then(res => {
       setMotto(res.data[0].comp_motto)
         setMission(res.data[0].comp_mission)

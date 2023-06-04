@@ -12,3 +12,15 @@ export const getServices= (req, res) => {
         }
     });
 }
+
+export const addService = (req, res) => {
+    
+}
+
+export const updateService = (req, res) => {
+    
+}
+
+export const deleteService = (req, res) => {
+    
+}

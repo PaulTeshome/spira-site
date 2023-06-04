@@ -17,6 +17,10 @@ export const addProject = (req, res) => {
     
 }
 
+export const updateProject = (req, res) => {
+    
+}
+
 export const deleteProject = (req, res) => {
     
 }

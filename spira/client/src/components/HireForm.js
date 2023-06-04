@@ -13,6 +13,7 @@ import {BsFillCheckSquareFill} from 'react-icons/bs'
 function HireForm() {
 
   const [success,setSuccess]= useState(false)
+  
   useEffect(()=>{
     document.title='Hire Us '
   },[])

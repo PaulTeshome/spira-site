@@ -1,25 +1,32 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import TestimonialCard from './TestimonialCard'
 import illust4 from '../images/about us illustration.svg'
 import profile from '../images/default_profile.png'
 import { HashLink as Link } from 'react-router-hash-link'
 import './styles/AboutUs.css'
+import axios from 'axios'
 
 function AboutUs() {
+
+  const [aboutTxt,setAboutTxt]= useState([]);
+  useEffect(()=>{
+
+    axios.get("/general/getAbout")
+    .then(res => {
+     setAboutTxt(res.data[0].comp_abt)
+    })
+    .catch(error => {
+      console.log(error);
+    });
+    
+  },[])
   return (
     <div className='aboutUs-container' id="abtUs">
               <span className='aboutUs-title'>ABOUT US</span>
 
               <div className='aboutUs-desc'>
                   <div className="aboutUs-description">
-                      <span >Welcome to Spira, your go-to digital marketing agency for all your social
-                        media and accounting management needs. We specialize in content creation, 
-                        marketing, and graphic design to help your brand stand out in the digital 
-                        world.<br/><br/>
-                        At Spira, our mission is to provide personalized and results-driven 
-                        solutions to help our clients achieve their business goals. We believe in
-                        building strong relationships with our clients and working closely with 
-                        them to understand their unique needs and challenges.</span>
+                      <span >{aboutTxt}</span>
                   </div>
                   <div className='aboutUs-illust'>
                       <img id='illust4' src={illust4} alt='about us illustration'/>

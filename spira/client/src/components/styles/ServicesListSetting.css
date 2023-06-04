@@ -36,6 +36,11 @@
     color:aliceblue;
 }
 
+.service-success-msg{
+    font-size:8px;
+    color: greenyellow;
+}
+
 @media only screen and (min-width: 850px) {
     /* For desktop: */
     .services-settings-form{
@@ -51,5 +56,10 @@
         width:20%;
         height:40px;
         font-size: 16px;
+    }
+
+    .service-success-msg{
+        font-size:16px;
+        color: greenyellow;
     }
   }

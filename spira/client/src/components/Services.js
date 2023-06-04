@@ -1,19 +1,33 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './styles/Services.css'
 import ServicesCard from './ServicesCard'
+import axios from 'axios'
 
 function Services() {
+
+  const [services, setServices] = useState([]);
+
+  useEffect(() =>{
+    axios.get("http://localhost:8800/getServices")
+    .then(res => {
+      setServices(res.data);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+  },[])
+  
   return (
-    // services.map((service)=>{
-    //     <ServicesCard service_name={service.name} service_desc={service.description}/>
-    // })
+    
     <div className='services-container' id='services'>
         <span className='services-title'>OUR SERVICES</span>
-        <ServicesCard service_name="SOCIAL MEDIA MANAGMENT" service_desc="we manage social media"/>
-        <ServicesCard service_name="SOCIAL MEDIA MANAGMENT" service_desc="we manage social media"/>
-        <ServicesCard service_name="SOCIAL MEDIA MANAGMENT" service_desc="we manage social media"/>
-        <ServicesCard service_name="SOCIAL MEDIA MANAGMENT" service_desc="we manage social media"/>
-        <ServicesCard service_name="SOCIAL MEDIA MANAGMENT" service_desc="we manage social media"/>
+        {
+        services.map((service)=>{
+          return(
+            <ServicesCard key={service.service_id} service_name={service.service_name} service_desc={service.service_description}/>
+          )
+          })
+        }
     </div>
   )
 }

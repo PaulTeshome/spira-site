@@ -8,7 +8,7 @@ import {BsFillCheckSquareFill} from 'react-icons/bs'
 import './styles/RecentWorksListCard.css'
 
 function RecentWorksListCard({project_id,project_title, project_description,project_image}) {
-    const [success,setSuccess]= useState(false)
+    const [successMsg,setSuccessMsg]= useState(false)
     const [disabled,setDisabled]= useState(true)
     const [editor,setEditor]= useState(true)
     const [image,setImage]= useState('')
@@ -56,10 +56,10 @@ function RecentWorksListCard({project_id,project_title, project_description,proj
       const newData={...data,project_id}
       console.log("image name ",image)
       console.log('inputs',newData)
-      setSuccess(true)
+      setSuccessMsg(true)
       setEditor(true)
       setDisabled(true)
-      setTimeout(()=>{setSuccess(false)},2000)
+      setTimeout(()=>{setSuccessMsg(false)},2000)
     })
     
   return (
@@ -72,7 +72,7 @@ function RecentWorksListCard({project_id,project_title, project_description,proj
               <TextInput textLabel="Project Description" name="project_description"  placeholder='Enter project description' disabled={disabledTxt} {...text_validation}/>
             </div>
             <div className='recent-setting-controls'>
-                {success && (
+                {successMsg && (
                     <motion.p className="recent-success-msg"
                         initial= {{ opacity: 0, y: 10 }}
                         animate= {{ opacity: 1, y: 0 }}

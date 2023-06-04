@@ -13,18 +13,6 @@ export const getMotto = (req, res) => {
     });
 }
 
-export const updateMotto = (req, res) => {
-    const q= ""
-
-    db.query(q, (err,data) => {
-
-        if (err) {
-            res.json(err)
-        }else {
-            res.json(data)
-        }
-    });
-}
 
 export const getFooter = (req, res) => {
     const q= "select * from main_data where data_id=1"
@@ -39,18 +27,6 @@ export const getFooter = (req, res) => {
     });
 }
 
-export const updateFooter = (req, res) => {
-    const q= ""
-
-    db.query(q, (err,data) => {
-
-        if (err) {
-            res.json(err)
-        }else {
-            res.json(data)
-        }
-    });
-}
 
 export const getAbout = (req, res) => {
     const q= "select comp_abt from main_data where data_id=1"
@@ -65,8 +41,21 @@ export const getAbout = (req, res) => {
     });
 }
 
-export const updateAbout = (req, res) => {
-    const q= ""
+export const getAll = (req, res) => {
+    const q= "select * from main_data where data_id=1"
+
+    db.query(q, (err,data) => {
+
+        if (err) {
+            res.json(err)
+        }else {
+            res.json(data)
+        }
+    });
+}
+
+export const updateAll = (req, res) => {
+    const q= "update "
 
     db.query(q, (err,data) => {
 

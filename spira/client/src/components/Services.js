@@ -24,7 +24,7 @@ function Services() {
         {
         services.map((service)=>{
           return(
-            <ServicesCard key={service.service_id} service_name={service.service_name} service_desc={service.service_description}/>
+            <ServicesCard key={service.service_id} service_id={service.service_id} service_name={service.service_name} service_desc={service.service_description}/>
           )
           })
         }

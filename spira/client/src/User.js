@@ -9,8 +9,6 @@ function User() {
 
   const [footerData, setFooterData]= useState([]);
   useEffect(()=>{
-    document.title='Spira Agency'
-
     axios.get("/general/getFooter")
     .then(res => {
      setFooterData(res.data[0])

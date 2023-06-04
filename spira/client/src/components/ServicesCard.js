@@ -37,14 +37,7 @@ function ServicesCard({service_name:name,service_desc:desc}) {
             ease: 'easeOut'
           }}
         >
-           {desc} {desc} {desc} {desc}
-           {desc} {desc} {desc} {desc}
-           {desc} {desc} {desc} {desc}
-           {desc} {desc} {desc} {desc}
-           {desc} {desc} {desc} {desc}
-           {desc} {desc} {desc} {desc}
-           {desc} {desc} {desc} {desc}
-           {desc} {desc} {desc} {desc}
+           {desc}
         </motion.div>
     </div>
   

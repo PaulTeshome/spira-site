@@ -29,7 +29,7 @@ function AboutUs() {
     });
     
   },[])
-  
+
   return (
     <div className='aboutUs-container' id="abtUs">
               <span className='aboutUs-title'>ABOUT US</span>
@@ -48,7 +48,7 @@ function AboutUs() {
                   {
                     testimonials.map(testimonial =>{
                       return (
-                       <TestimonialCard source={profile} testimonial={testimonial.testimonial_text} owner={testimonial.testimonial_owner}/>
+                       <TestimonialCard key={testimonial.testimonial_id} source={profile} testimonial={testimonial.testimonial_text} owner={testimonial.testimonial_owner}/>
                       )
                     })
                   }

@@ -1,18 +1,34 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Home from './components/Home'
 import Footer from './components/Footer'
 import HireForm from './components/HireForm'
 import  {Route, Routes} from "react-router-dom"
+import axios from 'axios'
 
 function User() {
+
+  const [footerData, setFooterData]= useState([]);
+  useEffect(()=>{
+    document.title='Spira Agency'
+
+    axios.get("http://localhost:8800/getFooter")
+    .then(res => {
+     setFooterData(res.data[0])
+    })
+    .catch(error => {
+      console.log(error);
+    });
+    
+  },[])
+
   return (
     <div className="User">
     <Routes>
       <Route exact path="/" element={<Home/>}/>
       <Route exact path="/hireUs" element={<HireForm/>}/>
     </Routes>
-    <Footer telegram_link="#tg" insta_link="#insta" gmail_link="email" phone1="+46731443749" 
-            phone2="+46762727223" email="info@spiraagency.com" location="Stockholm, Sweden"/>
+    <Footer telegram_link={footerData.other_socials} insta_link={footerData.insta_link} gmail_link={footerData.comp_email} phone1={footerData.comp_phone1} phone2={footerData.comp_phone2} 
+            email={footerData.comp_email} location={footerData.comp_location}/>
   </div>
   )
 }

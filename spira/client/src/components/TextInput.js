@@ -6,7 +6,7 @@ import { AnimatePresence } from 'framer-motion'
 import InputError from './InputError';
 import './styles/TextInput.css'
 
-function TextInput({textLabel,name,placeholder, validation,disabled}) {
+function TextInput({textLabel,name,placeholder, validation,disabled, defaultValue}) {
 
   const {register, formState: { errors },
 } = useFormContext()
@@ -31,7 +31,7 @@ const isInvalid = isFormInvalid(inputError)
     
         </AnimatePresence>
       </div>
-            <textarea className='text-inputs' placeholder={placeholder} disabled={disabled}
+            <textarea className='text-inputs' placeholder={placeholder} disabled={disabled} defaultValue={defaultValue}
             {...register(name,validation)}/>
        
     </div>

@@ -4,13 +4,15 @@ import { motion } from 'framer-motion'
 import InputComponent from './InputComponent'
 import TextInput from './TextInput'
 import { email_validation,  phone_validation, optional_settings_validation, text_validation } from './utils/inputValidations'
-import {BsFillCheckSquareFill} from 'react-icons/bs'
+import {BsFillCheckSquareFill, BsFillXSquareFill} from 'react-icons/bs'
 import './styles/GeneralPageSettings.css'
 import axios from 'axios'
 
 function GeneralPageSettings() {
 
     const [successMsg,setSuccessMsg]= useState(false)
+    const [errorMsg,setErrorMsg]= useState(false)
+    const [errorData,setErrorData]= useState(" ")
     const [disabled,setDisabled]= useState(true)
     const [editor,setEditor]= useState(true)
     const [pageElements,setPageElements]= useState({})
@@ -52,19 +54,34 @@ function GeneralPageSettings() {
     
   
     const submitInputs= handleSubmit((data)=>{
-      console.log('inputs',data)
-      setSuccessMsg(true)
-      setEditor(true)
-      setDisabled(true)
+      
+
+      axios.put("/general/updateAll", data)
+      .then(res => {
+        setSuccessMsg(true)
+        setEditor(true)
+        setDisabled(true)
+        setTimeout(()=>{setSuccessMsg(false)},4000)
+
+      })
+      .catch(error => {
+        console.error('Error updating value:', error);
+        const errorMessage = error.response ? error.response.data.error : 'Failed to update value. Please Try again.';
+        setErrorMsg(true)
+        setErrorData(errorMessage)
+        setEditor(true)
+        setDisabled(true)
+        setTimeout(()=>{setErrorMsg(false)},10000)
+      });
+
+    
     })
 
   return (
     
     <div className='general-settings-container' >
         <span className='general-settings-title'> General Page Elements Edit Form</span>
-        {
-          console.log(pageElements)
-        }
+       
         <FormProvider {...methods}>
           <form className='general-settings-form' onSubmit={e => e.preventDefault()} noValidate>
               <InputComponent label="Company Motto" type="text" id="comp_motto" name="comp_motto" placeholder='Enter company motto...' classNm='form-inputs'  disabled={disabledTxt} {...text_validation}/>
@@ -87,6 +104,16 @@ function GeneralPageSettings() {
                   <BsFillCheckSquareFill /> Form has been submitted successfully
                 </motion.p>
               )}
+
+              {errorMsg && (
+                <motion.p className="error-msg"
+                  initial= {{ opacity: 0, y: 10 }}
+                  animate= {{ opacity: 1, y: 0 }}
+                  exit= {{ opacity: 0, y: 10 }}
+                  transition= {{ duration: 0.5 }}>
+                  <BsFillXSquareFill /> {errorData}
+                </motion.p>
+              )}  
 
                 {
                 editor && (

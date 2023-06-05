@@ -1,14 +1,58 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './styles/RecentWorksList.css'
+import axios from 'axios'
+import NewMemberCard from './NewMemberCard'
 import TeamSettingListCard from './TeamSettingListCard'
 
 function TeamSettingList() {
+  const [newMember,setNewMember] = useState(false)
+  const [newRender,setRender] = useState(false)
+
+  const [members, setMembers] = useState([]);
+
+  const addMember = () => {
+    setNewMember(true)
+  }
+
+  const closeNewMemberCard = () => {
+    setNewMember(false);
+  };
+
+  useEffect(() =>{
+    axios.get("/team/getMembers")
+    .then(res => {
+      setMembers(res.data);
+    })
+    .catch(error => {
+      console.log(error);
+    });
+  },[newMember,newRender])
+
+  const updateList=() => {
+    setRender(!newRender)
+  }
+
   return (
     <div className='recent-settings-holder'>
     <span className='recent-settings-title'> Team Member List Edit Form</span>
-    <TeamSettingListCard key="1" member_name="proj 1"  project_id={1} member_position="this is the desc of proj 1" member_image="image"/>  
-     
-</div>
+        {newMember?
+        
+        <NewMemberCard onClose={closeNewMemberCard}/>
+        :
+        <>
+        <button className='service-setting-edit-btn' onClick={addMember}>Add new Member</button>
+        {
+        members.map((member)=>{
+          return(
+            <TeamSettingListCard key={member.member_id} member_id={member.member_id}  member_name={member.member_name}  old_image={member.member_image}  member_position={member.member_position}  update={updateList}/>  
+          )
+          })
+        }
+        </>
+        }
+        
+
+    </div>
   )
 }
 

@@ -45,7 +45,7 @@ function RecentWorksList() {
         {
         projects.map((project)=>{
           return(
-          <RecentWorksListCard key={project.project_id} project_id={project.project_id}  project_title={project.project_title}    project_description={project.project_description}  update={updateList}/>  
+          <RecentWorksListCard key={project.project_id} project_id={project.project_id}  project_title={project.project_title}  old_image={project.project_image}  project_description={project.project_description}  update={updateList}/>  
           )
           })
         }

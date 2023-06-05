@@ -1,15 +1,20 @@
 import React from 'react'
 
 function MemberCard({id,name,title,imgName}) {
-  const images = require.context('../images', true)
+  const images = require.context('../images/profiles', true)
 
   let imgUrl;
+  try{
     if(imgName!==null) {
       // console.log("is not null")
       imgUrl= images(`./${imgName}`)
     }else{
       imgUrl= images("./default_profile.png")
     }
+  }catch(error){
+    imgUrl= images("./default_profile.png")
+  }
+    
   return (
     <div className='member-card'>
         <div className='member-profile-holder'>

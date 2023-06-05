@@ -1,15 +1,18 @@
-import React,{useEffect, useState} from 'react'
+import React,{useState} from 'react'
 import {FormProvider, useForm} from 'react-hook-form'
 import { motion } from 'framer-motion'
 import InputComponent from './InputComponent'
 import TextInput from './TextInput'
 import { text_validation } from './utils/inputValidations'
-import {BsFillCheckSquareFill} from 'react-icons/bs'
+import {BsFillCheckSquareFill, BsFillXSquareFill} from 'react-icons/bs'
 import './styles/ServicesSettingCard.css'
+import axios from 'axios'
 
 function ServicesSettingCard({service_id,service_name, service_description}) {
 
     const [successMsg,setSuccessMsg]= useState(false)
+    const [errorMsg,setErrorMsg]= useState(false)
+    const [errorData,setErrorData]= useState(" ")
     const [disabled,setDisabled]= useState(true)
     const [editor,setEditor]= useState(true)
 
@@ -30,11 +33,7 @@ function ServicesSettingCard({service_id,service_name, service_description}) {
       }
   }
 
-    useEffect(()=>{
-      document.title='Admin Dashboard'
-      
-    },[])
-  
+   
     const methods= useForm({
       defaultValues:{
         service_name:service_name,
@@ -42,15 +41,32 @@ function ServicesSettingCard({service_id,service_name, service_description}) {
       }
     })
     
-    const {handleSubmit}=methods
+    const {handleSubmit,reset}=methods
   
     const submitInputs= handleSubmit((data)=>{
       const newData={...data,service_id}
+      axios.put("/services/updateService", newData)
+        .then(res => {
+          setSuccessMsg(true)
+          setEditor(true)
+          setDisabled(true)
+          setTimeout(()=>{setSuccessMsg(false)},2000)
+        })
+        .catch(error => {
+          console.error('Error updating value:', error);
+          const errorMessage = error.response ? error.response.data.error : 'Failed to update value. Please Try again.';
+          setErrorMsg(true)
+          setErrorData(errorMessage)
+          setTimeout(()=>{
+            setErrorMsg(false)
+            reset()
+            setEditor(true)
+            setDisabled(true)
+            },3000)
+        });
+
       console.log('inputs',newData)
-      setSuccessMsg(true)
-      setEditor(true)
-      setDisabled(true)
-      setTimeout(()=>{setSuccessMsg(false)},2000)
+      
     })
 
   return (
@@ -71,6 +87,16 @@ function ServicesSettingCard({service_id,service_name, service_description}) {
                     <BsFillCheckSquareFill /> Service updated successfully
                     </motion.p>
                 )}
+
+                {errorMsg && (
+                    <motion.p className="error-msg"
+                    initial= {{ opacity: 0, y: 10 }}
+                    animate= {{ opacity: 1, y: 0 }}
+                    exit= {{ opacity: 0, y: 10 }}
+                    transition= {{ duration: 0.5 }}>
+                    <BsFillXSquareFill /> {errorData}
+                    </motion.p>
+                )}  
 
                 {
                 editor && (

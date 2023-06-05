@@ -4,7 +4,7 @@ import tg_logo from '../images/tg logo.png'
 import insta_logo from '../images/insta logo.png'
 import mail_logo from '../images/mail logo.png'
 
-function Footer({telegram_link,insta_link,gmail_link,phone1,phone2,email,location}) {
+function Footer({telegram_link,insta_link,phone1,phone2,email,location}) {
   let date = new Date();
   return (
     <footer className='spira-footer'>

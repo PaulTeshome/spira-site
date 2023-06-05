@@ -32,7 +32,6 @@ function RecentWorksCard({proj_title, proj_desc, imgName}) {
     <>
    
       <div className='recent-card' style={cardStyle} onMouseEnter={hoverEffect} onMouseLeave={leaveEffect}>
-      <div className="card-overlay" style={{ backgroundImage: `${gradient}url(${imgUrl})` }}></div>
           <div className='recent-card-desc'>
             <span className='recent-card-header'>{proj_title}</span>
             <span className='recent-card-text'>{proj_desc}</span>

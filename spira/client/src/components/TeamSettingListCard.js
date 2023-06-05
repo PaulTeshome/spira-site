@@ -5,7 +5,7 @@ import InputComponent from './InputComponent'
 import TextInput from './TextInput'
 import { name_validation, text_validation } from './utils/inputValidations'
 import {BsFillCheckSquareFill} from 'react-icons/bs'
-import './styles/RecentWorksListCard.css'
+import './styles/RecentWorksListCard.css' 
 
 function TeamSettingListCard({key,member_name, member_position,member_image}) {
     const [successMsg,setSuccessMsg]= useState(false)

@@ -11,7 +11,7 @@ import { unlink } from 'fs/promises';
     filename: function (req, file, cb) {   
         cb(null, Date.now() + '-' + file.originalname )  
     }
-    })
+    });
 
 export const getMembers = (req, res) => {
     const q= "select * from team"
@@ -41,6 +41,7 @@ export const addMember = (req, res) => {
 
             const uploadedFile = req.file? {fileName: req.file.filename}: {fileName: null};
             
+            console.log("file name",uploadedFile.fileName)
 
             const q= "INSERT INTO team (member_name,member_position,member_image) VALUES (?,?,?)"
 
@@ -77,6 +78,9 @@ export const updateMember = (req, res) => {
 
             const uploadedFile = req.file? {fileName: req.file.filename}: {fileName: null};
 
+            console.log("fname",uploadedFile.fileName)
+
+            if(req.body.old_image!==null){
                 const filename = req.body.old_image;
                 const directoryPath = '../../client/src/images/profiles/';
                 
@@ -89,8 +93,9 @@ export const updateMember = (req, res) => {
                   .catch((err) => {
                     console.error(err);
                   });
-        
-            
+            }
+
+                
             const q= "UPDATE team SET member_name=?, member_position=? ,member_image=? WHERE member_id=?"
 
             db.query(q, [req.body.member_name,req.body.member_position,uploadedFile.fileName,req.body.member_id], (err, data) => {  
@@ -112,7 +117,6 @@ export const updateMember = (req, res) => {
 
 export const deleteMember = (req, res) => {
     
-
     const q= " DELETE FROM team WHERE member_id=?"
     db.query(q,[req.body.member_id], (err,data) => {
 
@@ -120,6 +124,7 @@ export const deleteMember = (req, res) => {
             console.log(err)
             res.status(500).json({ error: 'Failed to delete member information in database. Please try again.' })
         }else {
+            if(req.body.old_image!==null){
                 const filename = req.body.old_image;
                 const directoryPath = '../../client/src/images/profiles/';
                 const filePath = path.join(__dirname,directoryPath, filename);
@@ -131,6 +136,8 @@ export const deleteMember = (req, res) => {
                   .catch((err) => {
                     console.error(err);
                   });
+            }
+
 
             res.json(data)
         }

@@ -12,7 +12,7 @@ function NewProjectCard({onClose}) {
     const [successMsg,setSuccessMsg]= useState(false)
     const [errorMsg,setErrorMsg]= useState(false)
     const [errorData,setErrorData]= useState(" ")
-    const [image,setImage]= useState(null)
+    const [image,setImage]= useState({file:[]})
 
 
   
@@ -22,15 +22,18 @@ function NewProjectCard({onClose}) {
   
     const submitInputs= handleSubmit((data)=>{
         
-        // const imageData = new FormData();
-        // imageData.append('project_image', );
-        const imageName=  image.name
-        const newData={...data,imageName}
+        const formData = new FormData();
+        formData.append('project_title', data.project_title);
+        formData.append('project_description', data.project_description);
+        formData.append('project_image', image.file);
         
-        console.log("image name", image.name)
-        console.log("new data", newData)
+        
+        console.log("form data:.....", formData)
 
-        axios.post("/projects/addProject", newData)
+        axios.post("/projects/addProject", formData,
+        {   
+            headers: { "Content-Type": "multipart/form-data" } 
+        })
         .then(res => {
             setSuccessMsg(true)
             setTimeout(()=>{
@@ -54,7 +57,16 @@ function NewProjectCard({onClose}) {
 
     const handleImage = (event) => {
         const file = event.target.files[0];
-        setImage(file);
+        const allowedTypes = ['image/jpeg', 'image/png', 'image/gif']; 
+
+        if (allowedTypes.includes(file.type)) {
+            setErrorMsg(false);
+            setImage({...image,file:file});
+        } else {
+            setErrorMsg(true);
+            setErrorData('Please upload a valid image file (JPEG, PNG, or GIF)');
+        }
+
       };
 
   return (

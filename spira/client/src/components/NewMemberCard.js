@@ -25,9 +25,6 @@ function NewMemberCard({onClose}) {
         formData.append('member_position', data.member_position);
         formData.append('member_image', image.file);
         
-        
-        console.log("form data:.....", formData)
-
         axios.post("/team/addMember", formData,
         {   
             headers: { "Content-Type": "multipart/form-data" } 

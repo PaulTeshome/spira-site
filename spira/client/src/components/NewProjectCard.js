@@ -27,9 +27,6 @@ function NewProjectCard({onClose}) {
         formData.append('project_description', data.project_description);
         formData.append('project_image', image.file);
         
-        
-        console.log("form data:.....", formData)
-
         axios.post("/projects/addProject", formData,
         {   
             headers: { "Content-Type": "multipart/form-data" } 

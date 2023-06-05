@@ -4,15 +4,15 @@ import * as path from 'path';
 import * as url from 'url';
 import { unlink } from 'fs/promises';
 
-    const __filename = url.fileURLToPath(import.meta.url);
+    
     const __dirname = url.fileURLToPath(new URL('.', import.meta.url));
 
-const storage = multer.diskStorage({
+    const storage = multer.diskStorage({
     destination: path.join(__dirname, '../../client/src/images/', 'projectBg'),
     filename: function (req, file, cb) {   
         cb(null, Date.now() + '-' + file.originalname )  
     }
-})
+    })
 
 export const getProjects = (req, res) => {
     const q= "select * from projects"
@@ -76,11 +76,10 @@ export const updateProject = (req, res) => {
 
             const uploadedFile = req.file? {fileName: req.file.filename}: {fileName: null};
 
-            if(req.file){
                 const filename = req.body.old_image;
-                const directoryPath = '../client/src/images/projectBg/';
+                const directoryPath = '../../client/src/images/projectBg/';
                 
-                const filePath = path.join(directoryPath, filename);
+                const filePath = path.join(__dirname,directoryPath, filename);
                 
                 unlink(filePath)
                   .then(() => {
@@ -89,7 +88,7 @@ export const updateProject = (req, res) => {
                   .catch((err) => {
                     console.error(err);
                   });
-            }
+        
             
             const q= "UPDATE projects SET project_title=?, project_description=? ,project_image=? WHERE project_id=?"
 
@@ -120,8 +119,8 @@ export const deleteProject = (req, res) => {
             res.status(500).json({ error: 'Failed to delete project in database. Please try again.' })
         }else {
                 const filename = req.body.old_image;
-                const directoryPath = '../client/src/images/projectBg/';
-                const filePath = path.join(directoryPath, filename);
+                const directoryPath = '../../client/src/images/projectBg/';
+                const filePath = path.join(__dirname,directoryPath, filename);
                 
                 unlink(filePath)
                   .then(() => {

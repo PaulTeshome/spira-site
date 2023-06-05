@@ -1,9 +1,10 @@
 import express from "express";
-import { getRequests, addRequest } from "../controllers/hire.js";
+import { getRequests, makeRequest, updateStatus } from "../controllers/hire.js";
 
 const router = express.Router();
 
 router.get('/getRequests', getRequests);
-router.post('/addRequest', addRequest);
+router.post('/makeRequest', makeRequest);
+router.post('/updateStatus', updateStatus);
 
 export default router

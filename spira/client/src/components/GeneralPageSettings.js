@@ -55,7 +55,6 @@ function GeneralPageSettings() {
   
     const submitInputs= handleSubmit((data)=>{
       
-
       axios.put("/general/updateAll", data)
       .then(res => {
         setSuccessMsg(true)
@@ -88,6 +87,7 @@ function GeneralPageSettings() {
               <TextInput textLabel="Company Mission" name="comp_mission"  placeholder='Enter company mission' disabled={disabledTxt} {...text_validation}/>
               <TextInput textLabel="Company 'About Us'" name="comp_abt"  placeholder='Enter about us description...'  disabled={disabledTxt} {...text_validation}/>
               <InputComponent  label="Company Email" type="email" id="comp_email" name="comp_email" placeholder='Enter company email...' classNm='form-inputs' disabled={disabledTxt} {...email_validation}/>
+              <InputComponent  label="Recipient Email (for recieving hire requests)" type="email" id="recipient_email" name="recipient_email" placeholder='Enter recipient email...' classNm='form-inputs' disabled={disabledTxt} {...email_validation}/>
               <InputComponent label="Company Phone 1" type="text" id="comp_phone1" name="comp_phone1" placeholder='Enter company phone number (+46762727223)' classNm='form-inputs'  disabled={disabledTxt} {...phone_validation}/>
               <InputComponent label="Company Phone 2" type="text" id="comp_phone2" name="comp_phone2" placeholder='Enter company phone number (+46731443749)' classNm='form-inputs' disabled={disabledTxt} {...phone_validation}/>
               <InputComponent label="Company Location" type="text" id="comp_location" name="comp_location" placeholder='Enter company location...' classNm='form-inputs' disabled={disabledTxt} {...text_validation}/>

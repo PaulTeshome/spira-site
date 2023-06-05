@@ -42,5 +42,17 @@ export const updateService = (req, res) => {
 }
 
 export const deleteService = (req, res) => {
+
+    const q= " DELETE FROM services WHERE service_id=?"
+    console.log("del id: ", req.body.service_id) 
+    db.query(q,[req.body.service_id], (err,data) => {
+
+        if (err) {
+            console.log(err)
+            res.status(500).json({ error: 'Failed to delete service in database. Please try again.' })
+        }else {
+            res.json(data)
+        }
+    });
     
 }

@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React,{useState} from 'react'
 
 
@@ -7,8 +8,17 @@ function TableRow({ReqId,fname,lname,email,compName,phone,service,specify,status
     const placeholder= stat?'make seen':'make new'
     const classNm =stat?'table-btn2':'table-btn'
 
+
     const changeStat= ()=>{
       setStat(stat=> !stat)
+
+      axios.post('/hire/updateStatus',{status:stat, request_id: ReqId})
+      .then(res=>{
+
+      })
+      .catch(err=>{
+        console.log(err)
+      });
     }
 
   return (

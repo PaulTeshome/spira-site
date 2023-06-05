@@ -8,13 +8,23 @@ import {BsFillCheckSquareFill, BsFillXSquareFill} from 'react-icons/bs'
 import './styles/ServicesSettingCard.css'
 import axios from 'axios'
 
-function ServicesSettingCard({service_id,service_name, service_description}) {
+function ServicesSettingCard({service_id,service_name, service_description, update}) {
 
     const [successMsg,setSuccessMsg]= useState(false)
+    const [deleteMsg,setDeleteMsg]= useState(false)
     const [errorMsg,setErrorMsg]= useState(false)
     const [errorData,setErrorData]= useState(" ")
     const [disabled,setDisabled]= useState(true)
     const [editor,setEditor]= useState(true)
+
+    const methods= useForm({
+      defaultValues:{
+        service_name:service_name,
+        service_description:service_description,
+      }
+    })
+    
+    const {handleSubmit}=methods
 
     const disabledTxt = disabled?"disabled":""
 
@@ -23,25 +33,38 @@ function ServicesSettingCard({service_id,service_name, service_description}) {
         setEditor(false)
     }
 
-    const deleteForm= ()=>{
-      let confDel= window.confirm("Are you sure you want to delete project data?")
+    const deleteForm= handleSubmit((data)=>{
+      let confDel= window.confirm(`Are you sure you want to delete ${service_name}?`)
 
       if (confDel){
-        alert("Delete")
+        axios.delete("/services/deleteService", { data: { service_id: service_id }})
+        .then(res => {
+          setDeleteMsg(true)
+          setTimeout(()=>{
+            setDeleteMsg(false)
+            update()
+          },2000)
+          
+        })
+        .catch(error => {
+          console.error('Error deleting value:', error);
+          const errorMessage = error.response ? error.response.data.error : 'Failed to delete value. Please Try again.';
+          setErrorMsg(true)
+          setErrorData(errorMessage)
+          setTimeout(()=>{
+            setErrorMsg(false)
+            setEditor(true)
+            setDisabled(true)
+            update()
+            },3000)
+        });
       }else{
-        alert("no delete")
-      }
-  }
-
-   
-    const methods= useForm({
-      defaultValues:{
-        service_name:service_name,
-        service_description:service_description,
+        setEditor(true)
+        setDisabled(true)
+        
       }
     })
-    
-    const {handleSubmit,reset}=methods
+
   
     const submitInputs= handleSubmit((data)=>{
       const newData={...data,service_id}
@@ -50,7 +73,10 @@ function ServicesSettingCard({service_id,service_name, service_description}) {
           setSuccessMsg(true)
           setEditor(true)
           setDisabled(true)
-          setTimeout(()=>{setSuccessMsg(false)},2000)
+          setTimeout(()=>{
+            setSuccessMsg(false)
+            update()
+          },2000)
         })
         .catch(error => {
           console.error('Error updating value:', error);
@@ -59,13 +85,11 @@ function ServicesSettingCard({service_id,service_name, service_description}) {
           setErrorData(errorMessage)
           setTimeout(()=>{
             setErrorMsg(false)
-            reset()
             setEditor(true)
             setDisabled(true)
+            update()
             },3000)
         });
-
-      console.log('inputs',newData)
       
     })
 
@@ -85,6 +109,16 @@ function ServicesSettingCard({service_id,service_name, service_description}) {
                         exit= {{ opacity: 0, y: 10 }}
                         transition= {{ duration: 0.5 , ease: 'easeInOut'}}>
                     <BsFillCheckSquareFill /> Service updated successfully
+                    </motion.p>
+                )}
+
+                {deleteMsg && (
+                    <motion.p className="service-success-msg"
+                        initial= {{ opacity: 0, y: 10 }}
+                        animate= {{ opacity: 1, y: 0 }}
+                        exit= {{ opacity: 0, y: 10 }}
+                        transition= {{ duration: 0.5 , ease: 'easeInOut'}}>
+                    <BsFillCheckSquareFill /> Service deleted successfully
                     </motion.p>
                 )}
 

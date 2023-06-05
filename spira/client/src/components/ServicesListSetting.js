@@ -6,6 +6,8 @@ import axios from 'axios'
 
 function ServicesListSetting() {
   const [newService,setNewService] = useState(false)
+  const [newRender,setRender] = useState(false)
+
   const [services, setServices] = useState([]);
 
   const addService = () => {
@@ -24,8 +26,11 @@ function ServicesListSetting() {
     .catch(error => {
       console.log(error);
     });
-  },[])
+  },[newService,newRender])
 
+  const updateList=() => {
+    setRender(!newRender)
+  }
   return (
     <div className='services-settings-holder'>
         <span className='services-settings-title'> Services List Edit Form</span>
@@ -38,7 +43,7 @@ function ServicesListSetting() {
         {
         services.map((service)=>{
           return(
-            <ServicesSettingCard key={service.service_id} service_id={service.service_id} service_name={service.service_name} service_description={service.service_description}/>
+            <ServicesSettingCard key={service.service_id} service_id={service.service_id} service_name={service.service_name} service_description={service.service_description} update={updateList}/>
           )
           })
         }

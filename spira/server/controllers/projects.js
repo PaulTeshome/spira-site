@@ -76,18 +76,20 @@ export const updateProject = (req, res) => {
 
             const uploadedFile = req.file? {fileName: req.file.filename}: {fileName: null};
 
-                const filename = req.body.old_image;
-                const directoryPath = '../../client/src/images/projectBg/';
-                
-                const filePath = path.join(__dirname,directoryPath, filename);
-                
-                unlink(filePath)
-                  .then(() => {
-                    console.log('File deleted successfully');
-                  })
-                  .catch((err) => {
-                    console.error(err);
-                  });
+                if(req.body.old_image!==null){
+                    const filename = req.body.old_image;
+                    const directoryPath = '../../client/src/images/projectBg/';
+                    
+                    const filePath = path.join(__dirname,directoryPath, filename);
+                    
+                    unlink(filePath)
+                    .then(() => {
+                        console.log('File deleted successfully');
+                    })
+                    .catch((err) => {
+                        console.error(err);
+                    });
+                }
         
             
             const q= "UPDATE projects SET project_title=?, project_description=? ,project_image=? WHERE project_id=?"
@@ -118,17 +120,20 @@ export const deleteProject = (req, res) => {
             console.log(err)
             res.status(500).json({ error: 'Failed to delete project in database. Please try again.' })
         }else {
+            if(req.body.old_image!==null){
                 const filename = req.body.old_image;
                 const directoryPath = '../../client/src/images/projectBg/';
+                
                 const filePath = path.join(__dirname,directoryPath, filename);
                 
                 unlink(filePath)
-                  .then(() => {
+                .then(() => {
                     console.log('File deleted successfully');
-                  })
-                  .catch((err) => {
+                })
+                .catch((err) => {
                     console.error(err);
-                  });
+                });
+            }
 
             res.json(data)
         }

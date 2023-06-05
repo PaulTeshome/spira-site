@@ -73,7 +73,7 @@ function NewMemberCard({onClose}) {
           <form className='recent-setting-form' onSubmit={e => e.preventDefault()} noValidate>
             <div className='recent-setting-inputs'>
               <InputComponent label="Member Name" type="text" id="member_name" name="member_name" placeholder='Enter Member Name...' classNm='form-inputs'  {...name_validation}/>
-              <InputComponent label="Member Image" type="file" id="member_image" name="member_image" classNm='form-file-inputs'  onchange={handleImage} />
+              <InputComponent label="Member Image" type="file" id="member_image" name="member_image" classNm='form-file-inputs'  oninput={handleImage} />
               <TextInput textLabel="Member Position" name="member_position"  placeholder='Enter Member Position'  {...text_validation}/>
             </div>
             <div className='recent-setting-controls'>
@@ -83,7 +83,7 @@ function NewMemberCard({onClose}) {
                     animate= {{ opacity: 1, y: 0 }}
                     exit= {{ opacity: 0, y: 10 }}
                     transition= {{ duration: 0.5 , ease: 'easeInOut'}}>
-                <BsFillCheckSquareFill /> Project updated successfully
+                <BsFillCheckSquareFill /> Member added successfully
                 </motion.p>
             )}
 
@@ -98,7 +98,7 @@ function NewMemberCard({onClose}) {
                 )}  
 
                
-                    <button  className='service-setting-edit-btn' onClick={submitInputs}>Add Project</button>
+                    <button  className='service-setting-edit-btn' onClick={submitInputs}>Add Member</button>
                     <button  className='service-setting-save-btn' onClick={onClose}>Cancel</button>
                 
             </div>

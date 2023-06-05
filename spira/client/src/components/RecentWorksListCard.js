@@ -7,7 +7,7 @@ import { text_validation } from './utils/inputValidations'
 import {BsFillCheckSquareFill} from 'react-icons/bs'
 import './styles/RecentWorksListCard.css'
 
-function RecentWorksListCard({project_id,project_title, project_description,project_image}) {
+function RecentWorksListCard({project_id,project_title, project_description,update}) {
     const [successMsg,setSuccessMsg]= useState(false)
     const [disabled,setDisabled]= useState(true)
     const [editor,setEditor]= useState(true)
@@ -53,7 +53,7 @@ function RecentWorksListCard({project_id,project_title, project_description,proj
     const submitInputs= handleSubmit((data)=>{
       const imageData= new FormData();
       imageData.append('project_image',image)
-      const newData={...data,project_id}
+      const newData={...data,project_id,imageData}
       console.log("image name ",image)
       console.log('inputs',newData)
       setSuccessMsg(true)

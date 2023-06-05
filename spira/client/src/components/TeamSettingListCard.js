@@ -1,17 +1,33 @@
-import React,{useEffect, useState} from 'react'
+import React,{useState} from 'react'
 import {FormProvider, useForm} from 'react-hook-form'
 import { motion } from 'framer-motion'
 import InputComponent from './InputComponent'
 import TextInput from './TextInput'
 import { name_validation, text_validation } from './utils/inputValidations'
-import {BsFillCheckSquareFill} from 'react-icons/bs'
-import './styles/RecentWorksListCard.css' 
+import {BsFillCheckSquareFill, BsFillXSquareFill} from 'react-icons/bs'
+import './styles/RecentWorksListCard.css'
+import axios from 'axios'
 
-function TeamSettingListCard({key,member_name, member_position,member_image}) {
-    const [successMsg,setSuccessMsg]= useState(false)
-    const [disabled,setDisabled]= useState(true)
-    const [editor,setEditor]= useState(true)
-    const [image,setImage]= useState('')
+function TeamSettingListCard({member_id,member_name, member_position,old_image,update}) {
+
+  const [successMsg,setSuccessMsg]= useState(false)
+  const [deleteMsg,setDeleteMsg]= useState(false)
+  const [errorMsg,setErrorMsg]= useState(false)
+  const [errorData,setErrorData]= useState(" ")
+  const [disabled,setDisabled]= useState(true)
+  const [editor,setEditor]= useState(true)
+  const [image,setImage]= useState({file:[]})
+
+    
+  const methods= useForm({
+    defaultValues:{
+      member_name:member_name,
+      member_position:member_position,
+    }
+  })
+  
+  const {handleSubmit}=methods
+
 
     const disabledTxt = disabled?"disabled":""
 
@@ -20,47 +36,92 @@ function TeamSettingListCard({key,member_name, member_position,member_image}) {
         setEditor(false)
     }
 
-    const deleteForm= ()=>{
-        let confDel= window.confirm("Are you sure you want to delete project data?")
+    const deleteForm= handleSubmit((data)=>{
+      let confDel= window.confirm(`Are you sure you want to delete ${member_name}?`)
 
-        if (confDel){
-          alert("Delete")
-        }else{
-          alert("no delete")
-        }
-    }
-
-    function handleImage(e){
-
-      console.log(e.target.files+"here are the files")
-      setImage(e.target.files[0])
-    }
-
-    useEffect(()=>{
-      document.title='Admin Dashboard'
-      
-    },[])
-  
-    const methods= useForm({
-      defaultValues:{
-        member_name:member_name,
-        member_position:member_position,
+      if (confDel){
+        axios.delete("/team/deleteMember", { data: { member_id: member_id, old_image: old_image}})
+        .then(res => {
+          setDeleteMsg(true)
+          setTimeout(()=>{
+            setDeleteMsg(false)
+            update()
+          },2000)
+          
+        })
+        .catch(error => {
+          console.error('Error deleting value:', error);
+          const errorMessage = error.response ? error.response.data.error : 'Failed to delete value. Please Try again.';
+          setErrorMsg(true)
+          setErrorData(errorMessage)
+          setTimeout(()=>{
+            setErrorMsg(false)
+            setEditor(true)
+            setDisabled(true)
+            update()
+            },3000)
+        });
+      }else{
+        setEditor(true)
+        setDisabled(true)
+        
       }
     })
-    
-    const {handleSubmit}=methods
-  
+
     const submitInputs= handleSubmit((data)=>{
-      const imageData= new FormData();
-      imageData.append('member_image',image)
-      const newData={...data,key}
-      console.log("image name ",image)
-      console.log('inputs',newData)
-      setSuccessMsg(true)
-      setEditor(true)
-      setDisabled(true)
-      setTimeout(()=>{setSuccessMsg(false)},2000)
-    })
+        
+      const formData = new FormData();
+      formData.append('member_id', member_id);
+      formData.append('member_name', data.member_name);
+      formData.append('member_position', data.member_position);
+      formData.append('old_image',old_image);
+      formData.append('member_image', image.file);
+      
+      
+
+      axios.put("/team/updateMember", formData,
+      {   
+          headers: { "Content-Type": "multipart/form-data" } 
+      })
+      .then(res => {
+          setSuccessMsg(true)
+          setTimeout(()=>{
+                        setSuccessMsg(false)
+                        setEditor(true)
+                        setDisabled(true)
+                        update();
+                    },2000)
+          
+      })
+      .catch(error => {
+        console.error('Error updating value:', error);
+        const errorMessage = error.response ? error.response.data.error : 'Failed to update value. Please Try again.';
+        setErrorMsg(true)
+        setErrorData(errorMessage)
+        setTimeout(()=>{
+          setErrorMsg(false)
+          setEditor(true)
+          setDisabled(true)
+           update();
+          },5000)
+      });
+
+  })
+
+  const handleImage = (event) => {
+    const file = event.target.files[0];
+    const allowedTypes = ['image/jpeg', 'image/png', 'image/gif']; 
+
+    if (allowedTypes.includes(file.type)) {
+        setErrorMsg(false);
+        setImage({...image,file:file});
+    } else {
+        setErrorMsg(true);
+        setErrorData('Please upload a valid image file (JPEG, PNG, or GIF)');
+    }
+
+  };
+
     
   return (
     <div className='recent-setting-card'>
@@ -68,7 +129,7 @@ function TeamSettingListCard({key,member_name, member_position,member_image}) {
           <form className='recent-setting-form' onSubmit={e => e.preventDefault()} noValidate>
             <div className='recent-setting-inputs'>
               <InputComponent label="Member Name" type="text" id="member_name" name="member_name" placeholder='Enter Member Name...' classNm='form-inputs' disabled={disabledTxt} {...name_validation}/>
-              <InputComponent label="Member Image" type="file" id="member_image" name="member_image" classNm='form-file-inputs' disabled={disabledTxt} onchange={handleImage} />
+              <InputComponent label="Member Image" type="file" id="member_image" name="member_image" classNm='form-file-inputs' disabled={disabledTxt} oninput={handleImage} />
               <TextInput textLabel="Member Position" name="member_position"  placeholder='Enter Member Position' disabled={disabledTxt} {...text_validation}/>
             </div>
             <div className='recent-setting-controls'>
@@ -78,9 +139,29 @@ function TeamSettingListCard({key,member_name, member_position,member_image}) {
                         animate= {{ opacity: 1, y: 0 }}
                         exit= {{ opacity: 0, y: 10 }}
                         transition= {{ duration: 0.5 , ease: 'easeInOut'}}>
-                    <BsFillCheckSquareFill /> Member Updated successfully
+                    <BsFillCheckSquareFill /> Member updated successfully
                     </motion.p>
                 )}
+
+                {deleteMsg && (
+                    <motion.p className="service-success-msg"
+                        initial= {{ opacity: 0, y: 10 }}
+                        animate= {{ opacity: 1, y: 0 }}
+                        exit= {{ opacity: 0, y: 10 }}
+                        transition= {{ duration: 0.5 , ease: 'easeInOut'}}>
+                    <BsFillCheckSquareFill /> Member deleted successfully
+                    </motion.p>
+                )}
+
+                {errorMsg && (
+                    <motion.p className="error-msg"
+                    initial= {{ opacity: 0, y: 10 }}
+                    animate= {{ opacity: 1, y: 0 }}
+                    exit= {{ opacity: 0, y: 10 }}
+                    transition= {{ duration: 0.5 }}>
+                    <BsFillXSquareFill /> {errorData}
+                    </motion.p>
+                )}  
 
                 {
                 editor && (

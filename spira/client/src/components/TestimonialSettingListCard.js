@@ -1,56 +1,97 @@
-import React,{useEffect, useState} from 'react'
+import React,{useState} from 'react'
 import {FormProvider, useForm} from 'react-hook-form'
 import { motion } from 'framer-motion'
 import InputComponent from './InputComponent'
 import TextInput from './TextInput'
 import { name_validation, text_validation } from './utils/inputValidations'
-import {BsFillCheckSquareFill} from 'react-icons/bs'
+import {BsFillCheckSquareFill, BsFillXSquareFill} from 'react-icons/bs'
 import './styles/ServicesSettingCard.css'
+import axios from 'axios'
 
-function TestimonailSettingListCard({testimonial_id,testimonial_owner, testimonial_text}) {
+function TestimonailSettingListCard({testimonial_id,testimonial_owner, testimonial_text,update}) {
 
-    const [successMsg,setSuccessMsg]= useState(false)
-    const [disabled,setDisabled]= useState(true)
-    const [editor,setEditor]= useState(true)
+  const [successMsg,setSuccessMsg]= useState(false)
+  const [deleteMsg,setDeleteMsg]= useState(false)
+  const [errorMsg,setErrorMsg]= useState(false)
+  const [errorData,setErrorData]= useState(" ")
+  const [disabled,setDisabled]= useState(true)
+  const [editor,setEditor]= useState(true)
 
     const disabledTxt = disabled?"disabled":""
-
-    const enableForm= ()=>{
-        setDisabled(!disabled)
-        setEditor(false)
-    }
-
-    const deleteForm= ()=>{
-      let confDel= window.confirm("Are you sure you want to delete project data?")
-
-      if (confDel){
-        alert("Delete")
-      }else{
-        alert("no delete")
-      }
-  }
-
-    useEffect(()=>{
-      document.title='Admin Dashboard'
-      
-    },[])
-  
     const methods= useForm({
       defaultValues:{
         testimonial_owner:testimonial_owner,
         testimonial_text:testimonial_text,
       }
     })
-    
     const {handleSubmit}=methods
+
+    const enableForm= ()=>{
+        setDisabled(!disabled)
+        setEditor(false)
+    }
+
+    
+    const deleteForm= handleSubmit((data)=>{
+      let confDel= window.confirm(`Are you sure you want to delete ${testimonial_owner}'s testimonial?`)
+
+      if (confDel){
+        axios.delete("/testimonials/deleteTestimonial", { data: { testimonial_id: testimonial_id }})
+        .then(res => {
+          setDeleteMsg(true)
+          setTimeout(()=>{
+            setDeleteMsg(false)
+            update()
+          },2000)
+          
+        })
+        .catch(error => {
+          console.error('Error deleting value:', error);
+          const errorMessage = error.response ? error.response.data.error : 'Failed to delete value. Please Try again.';
+          setErrorMsg(true)
+          setErrorData(errorMessage)
+          setTimeout(()=>{
+            setErrorMsg(false)
+            setEditor(true)
+            setDisabled(true)
+            update()
+            },3000)
+        });
+      }else{
+        setEditor(true)
+        setDisabled(true)
+        
+      }
+    })
+   
+    
+   
   
     const submitInputs= handleSubmit((data)=>{
       const newData={...data,testimonial_id}
-      console.log('inputs',newData)
-      setSuccessMsg(true)
-      setEditor(true)
-      setDisabled(true)
-      setTimeout(()=>{setSuccessMsg(false)},2000)
+      axios.put("/testimonials/updateTestimonial", newData)
+        .then(res => {
+          setSuccessMsg(true)
+          setEditor(true)
+          setDisabled(true)
+          setTimeout(()=>{
+            setSuccessMsg(false)
+            update()
+          },2000)
+        })
+        .catch(error => {
+          console.error('Error updating value:', error);
+          const errorMessage = error.response ? error.response.data.error : 'Failed to update value. Please Try again.';
+          setErrorMsg(true)
+          setErrorData(errorMessage)
+          setTimeout(()=>{
+            setErrorMsg(false)
+            setEditor(true)
+            setDisabled(true)
+            update()
+            },3000)
+        });
+      
     })
 
   return (
@@ -62,7 +103,7 @@ function TestimonailSettingListCard({testimonial_id,testimonial_owner, testimoni
                 <TextInput textLabel="Testimonial Text" name="testimonial_text"  placeholder='Enter testimonial' disabled={disabledTxt} {...text_validation}/>
             </div>
             <div className='service-setting-controls'>
-                {successMsg && (
+            {successMsg && (
                     <motion.p className="service-success-msg"
                         initial= {{ opacity: 0, y: 10 }}
                         animate= {{ opacity: 1, y: 0 }}
@@ -71,6 +112,26 @@ function TestimonailSettingListCard({testimonial_id,testimonial_owner, testimoni
                     <BsFillCheckSquareFill /> Testimonial updated successfully
                     </motion.p>
                 )}
+
+                {deleteMsg && (
+                    <motion.p className="service-success-msg"
+                        initial= {{ opacity: 0, y: 10 }}
+                        animate= {{ opacity: 1, y: 0 }}
+                        exit= {{ opacity: 0, y: 10 }}
+                        transition= {{ duration: 0.5 , ease: 'easeInOut'}}>
+                    <BsFillCheckSquareFill /> Testimonial deleted successfully
+                    </motion.p>
+                )}
+
+                {errorMsg && (
+                    <motion.p className="error-msg"
+                    initial= {{ opacity: 0, y: 10 }}
+                    animate= {{ opacity: 1, y: 0 }}
+                    exit= {{ opacity: 0, y: 10 }}
+                    transition= {{ duration: 0.5 }}>
+                    <BsFillXSquareFill /> {errorData}
+                    </motion.p>
+                )}  
 
                 {
                 editor && (

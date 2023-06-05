@@ -1,8 +1,21 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './styles/Dashboard.css'
 import TableRow from './TableRow'
+import axios from 'axios';
 
 function Dashboard() {
+
+  const [rows,setRows] = useState([]);
+
+  useEffect(() =>{
+    axios.get('/hire/getRequests')
+    .then(res=>{
+      setRows(res.data);
+    })
+    .catch(err=>{
+      console.log(err)
+    });
+  },[])
   return (
     <div className='dashboard-holder' id='dashtop'>
         <span className='dashboard-title'>Dashboard</span>
@@ -24,10 +37,13 @@ function Dashboard() {
                     <th>Edit Status</th>
                 </tr>                
             </thead>
-            <TableRow ReqId="1" fname="paul" lname="teshe" email="aaa@gmail.com" compName="pied piper" phone="107232801" service="marketing management" specify="null" status={true}/>
-            <TableRow ReqId="2" fname="Jared" lname="Dunn" email="aaa@gmail.com" compName="pied piper" phone="107232801" service="marketing management" specify="null" status={false}/>
-            <TableRow ReqId="3" fname="Richard" lname="Hendricks" email="aaa@gmail.com" compName="pied piper" phone="107232801" service="marketing management" specify="null" status={true}/>
-            <TableRow ReqId="4" fname="Erich" lname="Bachman" email="aaa@gmail.com" compName="pied piper" phone="107232801" service="marketing management" specify="null" status={true}/>
+            {
+              rows.map(row =>{
+                return(
+                  <TableRow key={row.request_id} ReqId={row.request_id} fname={row.first_name} lname={row.last_name} email={row.email} compName={row.comp_name} phone={row.phone} service={row.chosen_service} specify={row.specify} status={row.status}/>
+                )
+              })
+            }
         </table>
         </div>
     </div>

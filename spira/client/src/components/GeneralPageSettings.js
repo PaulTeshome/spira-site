@@ -91,8 +91,8 @@ function GeneralPageSettings() {
               <InputComponent label="Company Phone 1" type="text" id="comp_phone1" name="comp_phone1" placeholder='Enter company phone number (+46762727223)' classNm='form-inputs'  disabled={disabledTxt} {...phone_validation}/>
               <InputComponent label="Company Phone 2" type="text" id="comp_phone2" name="comp_phone2" placeholder='Enter company phone number (+46731443749)' classNm='form-inputs' disabled={disabledTxt} {...phone_validation}/>
               <InputComponent label="Company Location" type="text" id="comp_location" name="comp_location" placeholder='Enter company location...' classNm='form-inputs' disabled={disabledTxt} {...text_validation}/>
-              <InputComponent label="Instagram Link" type="text" id="insta_link" name="insta_link" placeholder='Enter company instagram account link...' classNm='form-inputs'  disabled={disabledTxt} {...text_validation}/>
-              <InputComponent label="Other Social Media" type="text" id="other_socials" name="other_socials" placeholder='Enter other social media link (optional)...' classNm='form-inputs' disabled={disabledTxt} {...optional_settings_validation}/>
+              <InputComponent label="Instagram Link" type="text" id="insta_link" name="insta_link" placeholder='Enter company instagram account link(use https:// format)...' classNm='form-inputs'  disabled={disabledTxt} {...text_validation}/>
+              <InputComponent label="Other Social Media" type="text" id="other_socials" name="other_socials" placeholder='Enter other social media link (optional, use https:// format)...' classNm='form-inputs' disabled={disabledTxt} {...optional_settings_validation}/>
               
                     
               {successMsg && (

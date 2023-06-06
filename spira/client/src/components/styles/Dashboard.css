@@ -24,6 +24,15 @@
     width: 90%;
 }
 
+.dashboard-msg{
+    text-align: center;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
+    font-size: 8px;
+    margin-bottom: 2%;
+    margin-inline:5%;
+    width: 90%;
+}
+
 .table-holder{
     overflow-x: auto;
     width: 100%;
@@ -79,12 +88,12 @@
 .request-table tr:hover {background-color: #c7daf9;}
 
 .new{
-    background-color: rgba(173, 255, 47,.7);
+    background-color: rgba(116, 255, 47, 0.8);
     color: red;
 }
 
 .seen{
-    background-color: rgba(128, 128, 128,.7);
+    background-color: rgba(128, 128, 128,.4);
 }
 
 .table-btn, .table-btn2{
@@ -113,7 +122,7 @@
         font-weight: bold;
     }
     
-    .dashboard-intro{
+    .dashboard-intro, .dashboard-msg{
         font-size: 14px;
         margin-bottom: 2%;
     }
@@ -135,7 +144,7 @@
         font-weight: bold;
     }
     
-    .dashboard-intro{
+    .dashboard-intro, .dashboard-msg{
         font-size: 16px;
         margin-bottom: 2%;
     }

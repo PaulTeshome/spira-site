@@ -5,6 +5,7 @@ import projectRoutes from "./routes/projects.js";
 import teamRoutes from "./routes/team.js";
 import testimonialRoutes from "./routes/testimonials.js"; 
 import hireRoutes from "./routes/hire.js";
+import resetPasswordRoutes from "./routes/reset.js";
 
 import cors from "cors";
 
@@ -25,6 +26,7 @@ app.use('/api/projects', projectRoutes)
 app.use('/api/team', teamRoutes)
 app.use('/api/testimonials', testimonialRoutes)
 app.use('/api/hire', hireRoutes)
+app.use('/api/reset-password', resetPasswordRoutes)
 
 
 app.get('/', (req, res) => {

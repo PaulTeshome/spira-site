@@ -12,7 +12,7 @@ function AdminHeader({adminName}) {
         <span className='admin-title'>Dashboard</span>
         <div className='admin-data'>
             Admin: {adminName}
-            <Link to="/admin">Logout</Link>
+            {/* <Link className='nav-comp-logout' to="/admin">Logout</Link> */}
         </div>   
     </div>
   )

@@ -43,6 +43,12 @@
     width:auto;
   }
 
+  .login-form-container a{
+    font-size: 8px;
+    text-align: center;
+    width:auto;
+  }
+
   .error-msg{
     font-size: 8px;
     color: red;
@@ -74,7 +80,8 @@
         font-weight: bold;
     }
     
-    .success-msg{
+    .success-msg, 
+    .login-form-container a{
       font-size: 14px;
     }
 
@@ -119,7 +126,8 @@
         font-weight: bold;
     }
     
-    .success-msg{
+    .success-msg, 
+    .login-form-container a{
       font-size: 16px;
     }
 

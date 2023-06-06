@@ -1,4 +1,19 @@
 import { db } from "../db.js";
+import dotenv from 'dotenv';
+import nodemailer from 'nodemailer';
+dotenv.config();
+
+let transporter = nodemailer.createTransport({
+  host: process.env.EMAIL_HOST,
+  port: process.env.EMAIL_PORT,
+  secure: process.env.EMAIL_SECURE === 'true',
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS
+  }
+});
+
+
 
 export const getRequests = (req, res) => {
     const q= "select * from hire_requests"
@@ -24,6 +39,16 @@ export const makeRequest = (req, res) => {
             res.json(data)
         }
     });
+
+    let info = transporter.sendMail({
+        from: '"Sender Name" <your-email@example.com>', // sender address
+        to: "recipient@example.com", // list of receivers
+        subject: "Hello ✔", // Subject line
+        text: "Hello world?", // plain text body
+        html: "<b>Hello world?</b>" // html body
+      });
+
+    console.log("Message sent: %s", info.messageId);
 }
 
 export const updateStatus = (req, res) => {

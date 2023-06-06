@@ -9,6 +9,7 @@ function AdminHeader({adminName}) {
         <Link  to="/#home" smooth>
             <img className='home-logo' src={logo} alt="spira logo"/>
         </Link>
+        <span className='admin-title'>Dashboard</span>
         <div className='admin-data'>
             Admin: {adminName}
             <Link to="/admin">Logout</Link>

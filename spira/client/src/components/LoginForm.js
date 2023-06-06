@@ -4,17 +4,22 @@ import { motion } from 'framer-motion'
 import InputComponent from './InputComponent'
 import PasswordInputComponent from './PasswordInputComponent'
 import { name_validation} from './utils/inputValidations'
-import {BsFillCheckSquareFill} from 'react-icons/bs'
+import {BsFillCheckSquareFill, BsFillXSquareFill} from 'react-icons/bs'
 import { HashLink as Link} from 'react-router-hash-link'
 import './styles/LoginForm.css'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 function LoginForm() {
     const [submitSuccess,setSubmitSuccess]= useState(false)
     const [failure,setFailure]= useState(false)
+    const [success_msg,setMsg] = useState('')
     
+    const navigate= useNavigate();
     useEffect(()=>{
       document.title='Admin Login'
     },[])
+    
   
     const methods= useForm()
   
@@ -22,13 +27,31 @@ function LoginForm() {
   
     const submitInputs= handleSubmit((data)=>{
       console.log('inputs',data)
-      setSubmitSuccess(true)
-      setFailure(false)
+
+      axios.post('/auth/login',data)
+      .then(res=>{
+        setSubmitSuccess(true)
+        setMsg(res.data.message)
+        setFailure(false)
+        setTimeout(()=>{
+          setSubmitSuccess(false)
+          navigate('/admin')
+        },2000)
+
+      })
+      .catch((error) =>{
+        setSubmitSuccess(true)
+        setMsg(error.response.data.message)
+        console.log(success_msg)
+        setFailure(true)
+        setTimeout(()=>{setSubmitSuccess(false)},2000)
+      })
+     
     })
 
     const success_msg_class= failure?"login-error-msg":"success-msg"
-    const success_msg= failure?"Incorrect Username or Password!":"Login sucessfull redirecting..."
-    const checkLogo=failure?"":<BsFillCheckSquareFill/> 
+    
+    const checkLogo=failure?<BsFillXSquareFill/> :<BsFillCheckSquareFill/> 
 
   return (
     <div className='login-form-container'>
@@ -36,14 +59,14 @@ function LoginForm() {
         
         <FormProvider {...methods}>
           <form className='login-form' onSubmit={e => e.preventDefault()} noValidate>
-          {submitSuccess && (
+          {submitSuccess && ( 
                 <motion.p className={success_msg_class}
-                  initial= {{ opacity: 0, y: 10 }}
-                  animate= {{ opacity: 1, y: 0 }}
-                  exit= {{ opacity: 0, y: 10 }}
-                  transition= {{ duration: 0.5 }}
-                >
-                  
+                key="loginMsg"
+                exit={{ opacity: 0}}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+              >
                   {checkLogo}&nbsp;{success_msg}
                 </motion.p>
               )}

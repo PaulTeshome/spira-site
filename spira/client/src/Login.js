@@ -1,12 +1,24 @@
-import React from 'react'
-import  {Route, Routes} from "react-router-dom"
+import React, { useEffect} from 'react'
+import  {Route, Routes, useNavigate} from "react-router-dom"
 import './Login.css'
 import LoginForm from './components/LoginForm'
 import ForgotPsd from './components/ForgotPsd'
 import ForgotPsdCode from './components/ForgotPsdCode'
 import UpdatePassword from './components/UpdatePassword'
+import axios from 'axios'
 
 function Login() {
+
+  const navigate = useNavigate();
+
+    useEffect(() => {
+      axios.get('/auth/check-login')
+        .then(response => {
+          navigate("/admin")
+        })
+        .catch(error => {
+        });
+    }, [navigate]);
   return (
     <div className='login-page'>
       

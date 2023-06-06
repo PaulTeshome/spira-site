@@ -18,7 +18,7 @@ function Dashboard() {
   },[])
   return (
     <div className='dashboard-holder' id='dashtop'>
-        <span className='dashboard-title'>Dashboard</span>
+        <span className='dashboard-title'>Hire Requests</span>
         <span className='dashboard-intro'>This is the list of customers that have sent a request for hire, ordered from latest to earliest.</span>
         <div className='table-holder'>
         <table className='request-table'>
@@ -39,13 +39,18 @@ function Dashboard() {
             </thead>
             {
               rows.map(row =>{
-                return(
-                  <TableRow key={row.request_id} ReqId={row.request_id} fname={row.first_name} lname={row.last_name} email={row.email} compName={row.comp_name} phone={row.phone} service={row.chosen_service} specify={row.specify} status={row.status}/>
-                )
-              })
+                  return(
+                    <TableRow key={row.request_id} ReqId={row.request_id} fname={row.first_name} lname={row.last_name} email={row.email} compName={row.comp_name} phone={row.phone} service={row.chosen_service} specify={row.specify} status={row.status}/>
+                  )
+                })             
             }
         </table>
         </div>
+        {
+          (rows.length>0) ? <></>
+          :<span className='dashboard-msg'>No hire requests have been made yet.</span>
+
+        } 
     </div>
   )
 }

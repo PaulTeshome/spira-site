@@ -20,12 +20,17 @@
 }
 
 .admin-data{
-    margin-right: 2%;
+    padding-right: 2%;
+    padding-left: 2%;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
     text-align: right;
+    justify-content: center;
+    align-items: center;
     font-size: 10px;
+    background-color: #203c69;
+    height: 100%;
 }
 
 .admin-title{

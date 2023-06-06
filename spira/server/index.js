@@ -6,6 +6,9 @@ import teamRoutes from "./routes/team.js";
 import testimonialRoutes from "./routes/testimonials.js"; 
 import hireRoutes from "./routes/hire.js";
 import resetPasswordRoutes from "./routes/reset.js";
+import authRoutes from "./routes/auth.js";
+import session from 'express-session';
+import cookieParser from 'cookie-parser';
 
 import cors from "cors";
 
@@ -18,8 +21,15 @@ app.use(cors({
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
 }));
+app.use(cookieParser());
 
+app.use(session({
+    secret: 'mysecretkey',
+    resave: false,
+    saveUninitialized: false,
+  }));
 
+app.use('/api/auth', authRoutes)
 app.use('/api/services', serviceRoutes)
 app.use('/api/general', generalRoutes)
 app.use('/api/projects', projectRoutes)

@@ -47,18 +47,14 @@ export const getAllAdmins= (req, res) => {
         
             }else {
                 if(data.length>0){
-                    console.log(
-                        "data: " + data.length
-                    )
                     res.json(data)
                 }else{
-                    console.log("no damin data found")
                 return res.status(404).send({ message: 'No admin accounts added by you found' });
 
                 }
             }
         });
-    }else{
+    }else if(userId===1 || userId===2){
         q= "select * from admins where admin_id>2"
         db.query(q, (err,data) => {
 
@@ -67,9 +63,6 @@ export const getAllAdmins= (req, res) => {
         
             }else {
                 if(data.length>0){
-                    console.log(
-                        "data: " + data.length
-                    )
                     res.json(data)
                 }else{
                     console.log("no damin data found")
@@ -83,20 +76,39 @@ export const getAllAdmins= (req, res) => {
 }
 
 export const addAdmin = (req, res) => {
-    const q= "INSERT INTO admins (admin_username,admin_email,admin_password) VALUES (?,?,?)"
 
-    const salt = bcrypt.genSaltSync(10);
-    const hash = bcrypt.hashSync(req.body.admin_password, salt);
+    const q1= "SELECT * FROM admins WHERE admin_username=? OR admin_email=?"
 
-    db.query(q,[req.body.admin_username,req.body.admin_email,hash], (err,data) => {
+    db.query(q1,[req.body.admin_username,req.body.admin_email], (err,data) => {
 
         if (err) {
-            console.log(err)
-            res.status(500).json({ error: 'Failed to insert value in database. Please try again.' })
+            return res.status(401).send({ message: 'Connection error try again.' });
+    
         }else {
-            res.json(data)
+            if(data.length>0){
+                return res.status(409).send({ message: 'Admin with this username or email already exists. Please use new credentials.' });
+            }else{
+
+                const q= "INSERT INTO admins (admin_username,admin_email,admin_password,added_by) VALUES (?,?,?,?)"
+
+                const salt = bcrypt.genSaltSync(10);
+                const hash = bcrypt.hashSync(req.body.admin_password, salt);
+                
+                console.log("req body: ",req.body)
+                db.query(q,[req.body.admin_username,req.body.admin_email,hash, req.body.added_by], (err,data) => {
+            
+                    if (err) {
+                        console.log(err)
+                        res.status(500).json({ message: 'Failed to insert value in database. Please try again.' })
+                    }else {
+                        res.json(data)
+                    }
+                });
+            }
+            
         }
     });
+
 }
 
 export const updateAdmin = (req, res) => {

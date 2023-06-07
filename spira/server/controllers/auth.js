@@ -41,7 +41,7 @@ export const login= (req,res)=>{
         
         
         
-        const token = jwt.sign({ username: result[0].admin_username }, 'spira2121', { expiresIn: '1h' });
+        const token = jwt.sign({ username: result[0].admin_username, id: result[0].admin_id }, 'spira2121', { expiresIn: '1h' });
         res.cookie('token', token, { httpOnly: true });
         res.status(200).json({ message: 'Login successful. Redirecting...' });
     }

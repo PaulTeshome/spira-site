@@ -3,7 +3,7 @@ import  {Route, Routes, useNavigate} from "react-router-dom"
 import './Login.css'
 import LoginForm from './components/LoginForm'
 import ForgotPsd from './components/ForgotPsd'
-import ForgotPsdCode from './components/ForgotPsdCode'
+// import ForgotPsdCode from './components/ForgotPsdCode'
 import UpdatePassword from './components/UpdatePassword'
 import axios from 'axios'
 
@@ -26,7 +26,6 @@ function Login() {
         <Routes>
           <Route exact path="*" element={<LoginForm/>}/>
           <Route exact path="*/forgotpsd/*" element={<ForgotPsd/>}/>
-          <Route exact path="*/forgotpsdcode/*" element={<ForgotPsdCode/>}/>
           <Route exact path="*/updatepsd/*" element={<UpdatePassword/>}/>
         </Routes>
       </div>

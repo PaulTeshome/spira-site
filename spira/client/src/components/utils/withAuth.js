@@ -8,7 +8,6 @@ const withAuth = (Component) => {
     const [user,setUser]= useState('')
     const [userId,setUserId]= useState('')
 
-    const [alertShown, setAlertShown] = useState(false);
 
    
     useEffect(() => {
@@ -21,19 +20,20 @@ const withAuth = (Component) => {
             const expirationTime = (response.data.user.exp - response.data.user.iat) * 1000;
             setTimeout(() => {
               
-              if (!alertShown) {
                 alert('Your session has expired. Please log in again.');
-                setAlertShown(true);
-              }
+                axios.get('/auth/logout')
+                .then((res) => {
+                  navigate('/login')
+                })
+              
             }, expirationTime);
         })
         .catch(error => {
             navigate("/login")
         });
-    }, [navigate, alertShown]);
+    }, [navigate]);
 
    
-
     
     return( <Component {...props} user={user} userId={userId}/>);
   };

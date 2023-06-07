@@ -25,7 +25,7 @@ function ServicesCard({service_name:name,service_desc:desc}) {
         </div>
         <motion.div className='services-desc-card'
           animate={{
-            y:isOpen?0:-35,
+            y:isOpen?0:-32,
             height: isOpen?'auto':'0'
           }}
 

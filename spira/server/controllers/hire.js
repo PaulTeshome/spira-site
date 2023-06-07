@@ -63,7 +63,7 @@ export const makeRequest = (req, res) => {
                         Company name: ${comp_name},\n 
                         Phone number: ${phone},\n 
                         Chosen service: ${services},\n 
-                        Specification: ${specify}\n Have a great day!`,
+                        Specification:\n ${specify}\n Have a great day!`,
                         html: "" 
                       });
                 }catch(err){

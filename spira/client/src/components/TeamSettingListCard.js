@@ -129,7 +129,7 @@ function TeamSettingListCard({member_id,member_name, member_position,old_image,u
           <form className='recent-setting-form' onSubmit={e => e.preventDefault()} noValidate>
             <div className='recent-setting-inputs'>
               <InputComponent label="Member Name" type="text" id="member_name" name="member_name" placeholder='Enter Member Name...' classNm='form-inputs' disabled={disabledTxt} {...name_validation}/>
-              <InputComponent label="Member Image" type="file" id="member_image" name="member_image" classNm='form-file-inputs' disabled={disabledTxt} oninput={handleImage} />
+              <InputComponent label="Member Image (When editing reupload image)" type="file" id="member_image" name="member_image" classNm='form-file-inputs' disabled={disabledTxt} oninput={handleImage} />
               <TextInput textLabel="Member Position" name="member_position"  placeholder='Enter Member Position' disabled={disabledTxt} {...text_validation}/>
             </div>
             <div className='recent-setting-controls'>

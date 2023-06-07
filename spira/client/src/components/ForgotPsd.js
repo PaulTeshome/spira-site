@@ -41,6 +41,9 @@ function ForgotPsd() {
         setMsg(err.response.data.message)
         setSubmitSuccess(true)
         setFailure(true)
+        setTimeout(()=>{
+          setSubmitSuccess(false)
+          navigate('/login')},5000)
       });
      
     })

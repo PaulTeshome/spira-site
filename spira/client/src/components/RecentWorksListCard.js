@@ -130,7 +130,7 @@ function RecentWorksListCard({project_id,project_title, project_description,old_
           <form className='recent-setting-form' onSubmit={e => e.preventDefault()} noValidate>
             <div className='recent-setting-inputs'>
               <InputComponent label="Project Title" type="text" id="project_title" name="project_title" placeholder='Enter project title...' classNm='form-inputs' disabled={disabledTxt} {...text_validation}/>
-              <InputComponent label="Project Image" type="file" id="project_image" name="project_image" classNm='form-file-inputs' disabled={disabledTxt} oninput={handleImage} />
+              <InputComponent label="Project Image (When editing reupload image)" type="file" id="project_image" name="project_image" classNm='form-file-inputs' disabled={disabledTxt} oninput={handleImage} />
               <TextInput textLabel="Project Description" name="project_description"  placeholder='Enter project description' disabled={disabledTxt} {...text_validation}/>
             </div>
             <div className='recent-setting-controls'>

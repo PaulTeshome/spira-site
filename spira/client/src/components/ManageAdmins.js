@@ -1,6 +1,9 @@
 import React from 'react'
 import './styles/ManageAdmins.css'
-import SettingCard from './SettingCard'
+import { Route, Routes } from 'react-router-dom'
+import ManageAdminSettingChoice from './ManageAdminSettingChoice'
+import OtherAdminSettings from './OtherAdminSettings'
+import OwnAdminSettings from './OwnAdminSettings'
 
 function ManageAdmins() {
   return (
@@ -8,8 +11,13 @@ function ManageAdmins() {
       <span className='manage-title'>Admin Managment</span>
       <span className='manage-intro'>Welcome to admin manage! Here you can edit, add or remove admins for your system.
                                              Please select from the options below to proceed accordingly.</span>
-        <SettingCard title="Edit own credentials" desc="Edit current logged in admin's account detail" link="/"/>
-        <SettingCard title="Add/Remove admin" desc="Add or remove admin to/from the system" link="/"/>
+          <div className='manage-body'>
+            <Routes>
+                <Route exact path="*" element={<ManageAdminSettingChoice/>}/>
+                <Route exact path="*/other-admins/*" element={<OtherAdminSettings/>}/>
+                <Route exact path="*/own-creds/*" element={<OwnAdminSettings/>}/>
+              </Routes>
+          </div>       
     </div>
   )
 }

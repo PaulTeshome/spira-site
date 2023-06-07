@@ -14,7 +14,7 @@ function ManageAdmins({userId}) {
           <div className='manage-body'>
             <Routes>
                 <Route exact path="*" element={<ManageAdminSettingChoice/>}/>
-                <Route exact path="*/other-admins/*" element={<OtherAdminSettings/>}/>
+                <Route exact path="*/other-admins/*" element={<OtherAdminSettings userId={userId}/>}/>
                 <Route exact path="*/own-creds/*" element={<OwnAdminSettings userId={userId}/>}/>
               </Routes>
           </div>       

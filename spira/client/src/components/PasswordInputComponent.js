@@ -6,7 +6,7 @@ import isFormInvalid from './utils/isFormInvalid'
 import findInputError from './utils/findInputError'
 import InputError from './InputError';
 
-function PasswordInputComponent({label, name, id, placeholder,classNm,validation}) {
+function PasswordInputComponent({label, name, id, placeholder,classNm,validation,disabled}) {
 
     const [visible,setVisible] =useState(false)
 
@@ -40,7 +40,7 @@ function PasswordInputComponent({label, name, id, placeholder,classNm,validation
         </AnimatePresence>
       </div>
        <div className='psd-holder'>
-        <input type={type} id={id} placeholder={placeholder} className={classNm} 
+        <input type={type} id={id} placeholder={placeholder} className={classNm} disabled={disabled}
             {...register(name, validation)}
 
             />

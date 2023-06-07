@@ -6,7 +6,7 @@ import TextInput from './TextInput'
 import { text_validation } from './utils/inputValidations'
 import {BsFillCheckSquareFill, BsFillXSquareFill} from 'react-icons/bs'
 import './styles/ServicesSettingCard.css'
-import axios from 'axios'
+import axios from 'axios' 
 
 function ServicesSettingCard({service_id,service_name, service_description, update}) {
 

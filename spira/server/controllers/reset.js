@@ -1,5 +1,6 @@
 import crypto from "crypto"
 import { db } from "../db.js";
+import bcrypt from 'bcryptjs';
 import dotenv from 'dotenv';
 import nodemailer from 'nodemailer';
 dotenv.config();
@@ -17,11 +18,11 @@ let transporter = nodemailer.createTransport({
 export const passwordReset = (req, res) => {
     
     const { email } = req.body;
-
+    console.log("emailReset", email)
 
       db.query("SELECT * FROM admins WHERE admin_email = ?", [email], (err,data) => {
         if (err) {
-            res.json(err)
+            return res.status(404).json({ message: "Admin not found. Please try a registered admin." }); 
         }
         else {
             const user = data.rows[0];
@@ -37,9 +38,13 @@ export const passwordReset = (req, res) => {
                 [token, expires, email],(err,data) => {
 
                     if (err) {
-                        res.json(err)
+                        return res.status(404).json({ message: "Error updating database with token. Please try again" }); 
+              
                     }else {
-                        const resetURL = `http://localhost:3000/password-reset?token=${token}`;
+                        const resetURL = `http://localhost:3000/login/*/updatepsd/?token=${token}`;
+                        
+                        console.log("resetUrl: ",resetURL);
+                        console.log("email: ",email);
 
                         try{
                             transporter.sendMail({
@@ -49,12 +54,13 @@ export const passwordReset = (req, res) => {
                                 \n\nPlease click the following link to reset your password:\n\n${resetURL}\n\n
                                 If you did not request this reset, please ignore this email and your password will remain unchanged.\n`,
                               });
+
                         } catch (error) {
                             console.error(error);
-                            res.status(500).json({ message: "Error sending password reset email" });
+                           return res.status(500).json({ message: "Error sending password reset email" });
                         } 
                         
-                        res.json({ message: "Password reset email sent" });
+                        res.json({ message: "Password reset email has been sent" });
                     }
                 });
         }
@@ -73,17 +79,19 @@ export const passwordResetSubmit = (req, res) => {
       ],(err,data) => {
 
         if (err) {
-            res.status(500).json( "Error resetting password. ", err)
+            res.status(500).json( "Error resetting password. Please try again ", err)
         }
         else {
             const user = data.rows[0];
 
             if (!user) {
-              return res.status(400).json({ message: "Invalid or expired token" });
+              return res.status(400).json({ message: "Invalid or expired token. Please try again" });
             }
 
+            const hash = bcrypt.hashSync(password, salt);
+
             db.query("UPDATE admins SET admin_password = ?, password_reset_token = NULL, password_reset_expires = NULL WHERE email = ?", [
-                password,
+                hash,
                 user.email,
                     ], (err,data) => {
         

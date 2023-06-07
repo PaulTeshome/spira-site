@@ -26,8 +26,6 @@ function LoginForm() {
     const {handleSubmit}=methods
   
     const submitInputs= handleSubmit((data)=>{
-      console.log('inputs',data)
-
       axios.post('/auth/login',data)
       .then(res=>{
         setSubmitSuccess(true)
@@ -42,7 +40,6 @@ function LoginForm() {
       .catch((error) =>{
         setSubmitSuccess(true)
         setMsg(error.response.data.message)
-        console.log(success_msg)
         setFailure(true)
         setTimeout(()=>{setSubmitSuccess(false)},2000)
       })

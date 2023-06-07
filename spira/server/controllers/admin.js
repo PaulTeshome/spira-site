@@ -33,6 +33,55 @@ export const getAdmin= (req, res) => {
     }
 }
 
+export const getAllAdmins= (req, res) => {
+
+    const userId= req.query.id;
+    let q;
+
+    if(userId>2) {
+        q= "select * from admins where added_by=?"
+        db.query(q,[userId], (err,data) => {
+
+            if (err) {
+                return res.status(404).send({ message: 'No admin accounts added by you found' });
+        
+            }else {
+                if(data.length>0){
+                    console.log(
+                        "data: " + data.length
+                    )
+                    res.json(data)
+                }else{
+                    console.log("no damin data found")
+                return res.status(404).send({ message: 'No admin accounts added by you found' });
+
+                }
+            }
+        });
+    }else{
+        q= "select * from admins where admin_id>2"
+        db.query(q, (err,data) => {
+
+            if (err) {
+                return res.status(404).send({ message: 'Error! 404 Not found' });
+        
+            }else {
+                if(data.length>0){
+                    console.log(
+                        "data: " + data.length
+                    )
+                    res.json(data)
+                }else{
+                    console.log("no damin data found")
+                return res.status(404).send({ message: 'No admin accounts added by you found' });
+
+                }
+                
+            }
+        });
+    }
+}
+
 export const addAdmin = (req, res) => {
     const q= "INSERT INTO admins (admin_username,admin_email,admin_password) VALUES (?,?,?)"
 
@@ -53,7 +102,7 @@ export const addAdmin = (req, res) => {
 export const updateAdmin = (req, res) => {
 
     const salt = bcrypt.genSaltSync(10);
-    
+
     const query= "SELECT * FROM admins WHERE admin_id=? "
 
     db.query(query,[req.body.admin_id], (err,data) => {

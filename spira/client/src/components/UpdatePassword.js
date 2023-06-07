@@ -6,11 +6,17 @@ import { BsFillCheckSquareFill } from 'react-icons/bs'
 import './styles/UpdatePassword.css'
 import PasswordInputComponent from './PasswordInputComponent'
 import { DevTool } from '@hookform/devtools'
+import { useNavigate, useParams } from 'react-router-dom'
+import axios from 'axios'
 
 function UpdatePassword() {
 
     const [submitSuccess,setSubmitSuccess]= useState(false)
     const [failure,setFailure]= useState(false)
+    const [success_msg,setMsg] = useState('')
+
+    const { token } = useParams();
+    const navigate= useNavigate()
 
     useEffect(()=>{
       document.title='Update Password'
@@ -22,12 +28,25 @@ function UpdatePassword() {
   
     const submitInputs= handleSubmit((data)=>{
       console.log('inputs',data)
-      setSubmitSuccess(true)
-      setFailure(false)
+      
+      axios.post('/reset-password/submit',{token: token, password: data.update_password})
+      .then(res=>{
+        setMsg(res.data.message)
+        setSubmitSuccess(true)
+        setFailure(false)
+
+        setTimeout(()=>{
+          setSubmitSuccess(false)
+          navigate('/')},2000)
+      })
+      .catch(err=>{
+        setMsg(err.response.data.message)
+        setSubmitSuccess(true)
+        setFailure(true)
+      });
     })
 
     const success_msg_class= failure?"login-error-msg":"success-msg"
-    const success_msg= failure?"Not right!":"Successful redirecting..."
     const checkLogo=failure?"":<BsFillCheckSquareFill/> 
 
     const conf_password_validation = {

@@ -45,7 +45,21 @@
     font-size: 8px;
 }
 
-.service-setting-edit-btn:hover{
+.service-password-edit-btn{
+    align-self: center;
+    width:60%;
+    height:30px;
+    border-radius: 10px;
+    border: 0px solid;
+    background-color: #061020;
+    color: aliceblue;
+    margin-inline: 20%;
+    margin-block: 5%;
+    font-size: 8px;
+}
+
+.service-setting-edit-btn:hover,
+.service-password-edit-btn:hover{
     background-color: greenyellow;
     color: #061020;
 }
@@ -66,10 +80,15 @@
     }
 
     .service-setting-edit-btn,
-    .service-setting-save-btn{
+    .service-setting-save-btn,
+    .service-password-edit-btn{
         width:60%;
         height:40px;
         font-size: 16px;
     }
 
+    .service-password-edit-btn{
+        width:40%;
+        margin-inline: 30%;
+    }
   }

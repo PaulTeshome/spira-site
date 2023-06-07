@@ -7,6 +7,15 @@
     align-items: center;
 }
 
+.manage-body{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
 .manage-title{
     font-family: 'Times New Roman', Times, serif;
     font-size: 12px;

@@ -5,19 +5,13 @@ import axios from 'axios'
 function OwnAdminSettings() {
 
     const [admin, setAdmin] = useState([]);
-    const [user,setUser]= useState('')
 
     useEffect(() =>{
-        axios.get('/auth/check-login')
-        .then(response => {
-            setUser(response.data.user.username)
-
-        })
-
-        //axios
+       
         axios.get("/admin/getAdmin")
         .then(res => {
           setAdmin(res.data);
+          console.log("get admin res: " + res.data[0])
         })
         .catch(error => {
           console.log(error);
@@ -31,7 +25,7 @@ function OwnAdminSettings() {
         {
          admin.map((adm)=>{
           return(
-            <OwnAdminSettingCard key={service.service_id} service_id={service.service_id} service_name={service.service_name} service_description={service.service_description} update={updateList}/>
+            <OwnAdminSettingCard key={adm.admin_id} admin_id={adm.admin_id} admin_username={adm.admin_username} />
           )
           })
         }

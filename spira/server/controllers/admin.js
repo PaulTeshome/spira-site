@@ -2,6 +2,8 @@ import { db } from "../db.js";
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 
+
+
 export const getAdmin= (req, res) => {
     const token = req.cookies.token;
     if (!token) {
@@ -12,19 +14,16 @@ export const getAdmin= (req, res) => {
         const decoded = jwt.verify(token, 'spira2121');
         req.user = decoded;
 
-        const username= req.user.username
+        const id= req.user.id
 
-        console.log("username: " + username);
+        const q= "select * from admins where admin_id=?"
 
-        const q= "select * from admins where admin_username=?"
-
-        db.query(q,[username], (err,data) => {
+        db.query(q,[id], (err,data) => {
 
             if (err) {
                 return res.status(401).send({ message: 'Unauthorized' });
         
             }else {
-                console.log("data: " + data)
                 res.json(data)
             }
         });
@@ -35,9 +34,12 @@ export const getAdmin= (req, res) => {
 }
 
 export const addAdmin = (req, res) => {
-    const q= "INSERT INTO admins (admin_name,admin_description) VALUES (?,?)"
+    const q= "INSERT INTO admins (admin_username,admin_email,admin_password) VALUES (?,?,?)"
 
-    db.query(q,[req.body.admin_name,req.body.admin_description], (err,data) => {
+    const salt = bcrypt.genSaltSync(10);
+    const hash = bcrypt.hashSync(req.body.admin_password, salt);
+
+    db.query(q,[req.body.admin_username,req.body.admin_email,hash], (err,data) => {
 
         if (err) {
             console.log(err)
@@ -49,9 +51,53 @@ export const addAdmin = (req, res) => {
 }
 
 export const updateAdmin = (req, res) => {
-    const q= "UPDATE admins SET admin_name=?, admin_description=?  WHERE admin_id=?"
 
-    db.query(q,[req.body.admin_name,req.body.admin_description,req.body.admin_id], (err,data) => {
+    const salt = bcrypt.genSaltSync(10);
+    
+    const query= "SELECT * FROM admins WHERE admin_id=? "
+
+    db.query(query,[req.body.admin_id], (err,data) => {
+
+        if (err) {
+            return res.status(404).json({ error: 'Failed to update value in database. Insert proper previous password and try again.' })
+    
+        }else {
+
+            try{
+                const isMatch = bcrypt.compareSync(req.body.old_password, data[0].admin_password);
+                if(!isMatch){
+                    return res.status(404).json({ error: 'Failed to update value in database. Insert proper previous password and try again.' })
+                }else{
+                    const hash = bcrypt.hashSync(req.body.update_password, salt);
+                    const q= "UPDATE admins SET admin_username=?, admin_email=? ,admin_password=?  WHERE admin_id=?"
+
+
+                    db.query(q,[req.body.admin_username,req.body.admin_email,hash,req.body.admin_id], (err,data) => {
+
+                        if (err) {
+                            console.log(err)
+                            return res.status(500).json({ error: 'Connection Error! please try again.' })
+                        }else {
+                            res.json(data)
+                        }
+                    });
+                }
+              }catch(err){
+                console.log("bcryp err")
+                return res.status(404).json({ error: 'Failed to update value in database. Insert proper previous password and try again.' })
+              }
+
+            
+        }
+    });
+
+    
+}
+
+export const updateAdminProfile = (req, res) => {
+    const q= "UPDATE admins SET admin_username=?, admin_email=?  WHERE admin_id=?"
+
+    db.query(q,[req.body.admin_username,req.body.admin_email,req.body.admin_id], (err,data) => {
 
         if (err) {
             console.log(err)

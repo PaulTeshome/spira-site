@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './styles/ServicesListSetting.css'
 import OwnAdminSettingCard from './OwnAdminSettingCard'
 import axios from 'axios'
-function OwnAdminSettings() {
+function OwnAdminSettings({userId}) {
 
     const [admin, setAdmin] = useState([]);
 
@@ -25,7 +25,7 @@ function OwnAdminSettings() {
         {
          admin.map((adm)=>{
           return(
-            <OwnAdminSettingCard key={adm.admin_id} admin_id={adm.admin_id} admin_username={adm.admin_username} />
+            <OwnAdminSettingCard key={adm.admin_id} userId={userId} admin_id={adm.admin_id} admin_username={adm.admin_username} admin_email={adm.admin_email} />
           )
           })
         }

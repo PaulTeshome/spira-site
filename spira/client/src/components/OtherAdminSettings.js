@@ -46,7 +46,7 @@ function OtherAdminSettings({userId}) {
         <span className='services-settings-title'> Add/Remove Admin Form</span>
         {newAdmin?
         
-        <NewAdminCard onClose={closeNewAdminCard}/>
+        <NewAdminCard onClose={closeNewAdminCard} userId={userId}/>
         :
         <>
         <button className='service-setting-edit-btn' onClick={addAdmin}>Add new Admin</button>

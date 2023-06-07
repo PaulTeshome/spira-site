@@ -18,14 +18,12 @@ let transporter = nodemailer.createTransport({
 export const passwordReset = (req, res) => {
     
     const { email } = req.body;
-    console.log("emailReset", email)
-
       db.query("SELECT * FROM admins WHERE admin_email = ?", [email], (err,data) => {
         if (err) {
             return res.status(404).json({ message: "Admin not found. Please try a registered admin." }); 
         }
         else {
-            const user = data.rows[0];
+            const user = data[0];
   
             if (!user) {
               return res.status(404).json({ message: "Admin not found. Please try a registered admin." }); 
@@ -34,7 +32,7 @@ export const passwordReset = (req, res) => {
             const token = crypto.randomBytes(20).toString("hex");
             const expires = Date.now() + 3600000; // 1 hour
 
-            db.query("UPDATE admins SET password_reset_token = ?, password_reset_expires = ? WHERE admin_email = $3",
+            db.query("UPDATE admins SET password_reset_token = ?, password_reset_expires = ? WHERE admin_email = ?",
                 [token, expires, email],(err,data) => {
 
                     if (err) {
@@ -42,9 +40,7 @@ export const passwordReset = (req, res) => {
               
                     }else {
                         const resetURL = `http://localhost:3000/login/*/updatepsd/?token=${token}`;
-                        
-                        console.log("resetUrl: ",resetURL);
-                        console.log("email: ",email);
+
 
                         try{
                             transporter.sendMail({
@@ -72,33 +68,30 @@ export const passwordReset = (req, res) => {
 
 export const passwordResetSubmit = (req, res) => {
     const { token, password } = req.body;
-    
-    db.query("SELECT * FROM admins WHERE password_reset_token = ? AND password_reset_expires > ?", [
-        token,
-        new Date(),
-      ],(err,data) => {
+    const dateNow= new Date()
+
+    db.query("SELECT * FROM admins WHERE password_reset_token = ? AND password_reset_expires > ?", 
+    [token,dateNow],(err,data) => {
 
         if (err) {
             res.status(500).json( "Error resetting password. Please try again ", err)
         }
         else {
-            const user = data.rows[0];
-
+            const user = data[0];
             if (!user) {
               return res.status(400).json({ message: "Invalid or expired token. Please try again" });
             }
 
+            const salt = bcrypt.genSaltSync(10);
             const hash = bcrypt.hashSync(password, salt);
 
-            db.query("UPDATE admins SET admin_password = ?, password_reset_token = NULL, password_reset_expires = NULL WHERE email = ?", [
-                hash,
-                user.email,
-                    ], (err,data) => {
+            db.query("UPDATE admins SET admin_password = ?, password_reset_token = NULL, password_reset_expires = NULL WHERE admin_email = ?", 
+            [hash, user.admin_email], (err,data) => {
         
                         if (err) {
-                            res.status(500).json( "Error resetting password. ", err)
+                            res.status(404).json( "Error resetting password. ")
                         }else {
-                            res.json("Password reset successful");
+                            res.status(200).json("Password reset successful");
                         }
                 });
         }

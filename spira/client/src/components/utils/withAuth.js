@@ -2,16 +2,27 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+
+
+
+// Define the reducer function
+
 const withAuth = (Component) => {
     const AuthenticatedComponent = (props) => {
     const navigate = useNavigate();
     const [user,setUser]= useState('')
+    const [userId,setUserId]= useState('')
+
     const [alertShown, setAlertShown] = useState(false);
 
+   
     useEffect(() => {
+
       axios.get('/auth/check-login')
         .then(response => {
             setUser(response.data.user.username)
+            setUserId(response.data.user.id)
+
             const expirationTime = (response.data.user.exp - response.data.user.iat) * 1000;
             setTimeout(() => {
               
@@ -26,8 +37,10 @@ const withAuth = (Component) => {
         });
     }, [navigate, alertShown]);
 
+   
 
-    return <Component {...props} user={user}/>;
+    
+    return( <Component {...props} user={user} userId={userId}/>);
   };
 
   return AuthenticatedComponent;

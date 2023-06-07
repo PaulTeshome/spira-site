@@ -13,6 +13,11 @@
     text-align: center;
 }
 
+.empty-data-msg{
+    font-size:10px;
+    margin-block: 10%;
+}
+
 .services-settings-edit-btn,
 .services-settings-save-btn{
     align-self: center;
@@ -61,5 +66,9 @@
     .service-success-msg{
         font-size:16px;
         color: greenyellow;
+    }
+
+    .empty-data-msg{
+        font-size:16px;
     }
   }

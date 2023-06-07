@@ -9,7 +9,7 @@ import axios from 'axios'
 import PasswordInputComponent from './PasswordInputComponent'
 
 
-function NewAdminCard({onClose}) {
+function NewAdminCard({onClose, userId}) {
 
     
     const [successMsg,setSuccessMsg]= useState(false)
@@ -21,7 +21,10 @@ function NewAdminCard({onClose}) {
     const {handleSubmit,getValues}=methods
   
     const submitInputs= handleSubmit((data)=>{
-        axios.post("/services/addAdmin", data)
+        
+        const newData={...data, added_by: userId}
+        console.log("new data: " + JSON.stringify(newData))
+        axios.post("/admin/addAdmin", newData)
         .then(res => {
             setSuccessMsg(true)
             setTimeout(()=>{
@@ -31,13 +34,10 @@ function NewAdminCard({onClose}) {
             
         })
         .catch(error => {
-          console.error('Error updating value:', error);
-          const errorMessage = error.response ? error.response.data.error : 'Failed to update value. Please Try again.';
           setErrorMsg(true)
-          setErrorData(errorMessage)
+          setErrorData(error.response.data.message)
           setTimeout(()=>{
             setErrorMsg(false)
-             onClose();
             },5000)
         });
   
@@ -63,8 +63,8 @@ function NewAdminCard({onClose}) {
           },
 
           validate: (value) => {
-            const { update_password,confirm_password } = getValues();
-            return update_password === confirm_password || "Passwords should match!";
+            const { admin_password,confirm_password } = getValues();
+            return admin_password === confirm_password || "Passwords should match!";
           },
       }
       

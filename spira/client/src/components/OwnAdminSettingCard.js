@@ -9,14 +9,9 @@ import axios from 'axios'
 import PasswordInputComponent from './PasswordInputComponent'
 import { useNavigate } from 'react-router-dom'
 
-// import {  useDispatch } from "react-redux";
-
-
 function OwnAdminSettingCard({admin_id, admin_email,admin_username}) {
 
 
-    // const count = useSelector((state) => state.reRenderState);
-    // const dispatch = useDispatch();
     const [successMsg,setSuccessMsg]= useState(false)
     const [errorMsg,setErrorMsg]= useState(false)
     const [errorData,setErrorData]= useState(" ")
@@ -25,9 +20,6 @@ function OwnAdminSettingCard({admin_id, admin_email,admin_username}) {
     const [psdEditor,setPsdEditor]= useState(true)
     const navigate= useNavigate();
 
-    // const handleUpdate = () => {
-    //     dispatch({ type: "INCREMENT" });
-    //   };
 
     const methods= useForm({
         defaultValues:{

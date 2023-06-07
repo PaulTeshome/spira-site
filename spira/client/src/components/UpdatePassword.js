@@ -41,7 +41,7 @@ function UpdatePassword() {
       
       axios.post('/reset-password/submit',{token: token, password: data.update_password})
       .then(res=>{
-        setMsg(res.data)
+        setMsg(res.data.message)
         setSubmitSuccess(true)
         setFailure(false)
 
@@ -50,7 +50,8 @@ function UpdatePassword() {
           navigate('/login')},2000)
       })
       .catch(err=>{
-        setMsg(err.response.data)
+        console.log("error: ", err.response.data.message)
+        setMsg(err.response.data.message)
         setSubmitSuccess(true)
         setFailure(true)
         setTimeout(()=>{

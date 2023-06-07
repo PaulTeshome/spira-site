@@ -11,7 +11,6 @@ function OwnAdminSettings({userId}) {
         axios.get("/admin/getAdmin")
         .then(res => {
           setAdmin(res.data);
-          console.log("get admin res: " + res.data[0])
         })
         .catch(error => {
           console.log(error);

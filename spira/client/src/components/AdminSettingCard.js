@@ -58,7 +58,7 @@ function AdminSettingCard({admin_id,admin_username,update}) {
         <FormProvider {...methods}>
           <form className='service-setting-form' onSubmit={e => e.preventDefault()} noValidate>
             <div className='service-setting-inputs'>
-                <InputComponent label="Admin Username" type="text" id="admin_username" name="admin_username" placeholder='Enter service name...' classNm='form-inputs' disabled="disabled" {...text_validation}/>
+                <InputComponent label="Admin Account" type="text" id="admin_username" name="admin_username" placeholder='Enter service name...' classNm='form-inputs' disabled="disabled" {...text_validation}/>
             </div>
             <div className='service-setting-controls'>
              

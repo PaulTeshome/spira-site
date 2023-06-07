@@ -26,7 +26,6 @@ function LoginForm() {
     const {handleSubmit}=methods
   
     const submitInputs= handleSubmit((data)=>{
-      console.log("login: ",data)
       axios.post('/auth/login',data)
       .then(res=>{
         setSubmitSuccess(true)

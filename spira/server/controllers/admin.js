@@ -54,7 +54,7 @@ export const getAllAdmins= (req, res) => {
                 }
             }
         });
-    }else if(userId===1 || userId===2){
+    }else if(userId<3 && userId>0){
         q= "select * from admins where admin_id>2"
         db.query(q, (err,data) => {
 
@@ -94,7 +94,6 @@ export const addAdmin = (req, res) => {
                 const salt = bcrypt.genSaltSync(10);
                 const hash = bcrypt.hashSync(req.body.admin_password, salt);
                 
-                console.log("req body: ",req.body)
                 db.query(q,[req.body.admin_username,req.body.admin_email,hash, req.body.added_by], (err,data) => {
             
                     if (err) {

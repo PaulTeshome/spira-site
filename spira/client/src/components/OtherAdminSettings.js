@@ -31,7 +31,6 @@ function OtherAdminSettings({userId}) {
       setAdmins(res.data);
     })
     .catch(error => {
-
       setAdmins([]);
       setEmptyMsg(error.response.data.message)
     });

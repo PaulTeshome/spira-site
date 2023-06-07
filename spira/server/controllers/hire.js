@@ -29,26 +29,56 @@ export const getRequests = (req, res) => {
 }
 
 export const makeRequest = (req, res) => {
+
+    const {first_name, last_name,email,comp_name, phone, services, specify} = req.body;
     const q= "INSERT INTO hire_requests (first_name,last_name,email,comp_name,phone,chosen_service,specify) VALUES (?,?,?,?,?,?,?)"
 
-    db.query(q, [req.body.first_name, req.body.last_name, req.body.email, req.body.comp_name, req.body.phone, req.body.services, req.body.specify],(err,data) => {
+    db.query(q, [first_name, last_name, email, comp_name, phone, services, specify],(err,data) => {
 
         if (err) {
-            res.json(err)
+           return res.status(500).json("Connection error. Please try again.")
         }else {
-            res.json(data)
+
+            const q= "select recipient_email from main_data where data_id=1"
+
+            db.query(q, (err,data) => {
+        
+                if (err) {
+                    return res.status(500).json("Cannot connect to recipient email. Please try again.")
+                }else {
+
+                    console.log("recipient_email",data[0].recipient_email)
+
+                   
+                }
+
+                try{
+                    let info = transporter.sendMail({
+                        from: '"Spira site" <info@spira.com>', 
+                        to: `${data[0].recipient_email}`, 
+                        subject: "New Request", 
+                        text: `Hello Boss!\n A new hire request has been submitted, please contact them whenever you can. Here is their request information\n
+                        First name: ${first_name},\n 
+                        Last name: ${last_name},\n 
+                        Company name: ${comp_name},\n 
+                        Phone number: ${phone},\n 
+                        Chosen service: ${services},\n 
+                        Specification: ${specify}\n Have a great day!`,
+                        html: "" 
+                      });
+                }catch(err){
+                    return res.status(500).json("Error! Cannot connect to recipient email. Please try again.")
+                }
+               
+            
+                return res.status(200).json("Your form has been submitted successfully.Thank you!")
+            });
+
+           
         }
     });
 
-    let info = transporter.sendMail({
-        from: '"Sender Name" <your-email@example.com>', // sender address
-        to: "recipient@example.com", // list of receivers
-        subject: "Hello ✔", // Subject line
-        text: "Hello world?", // plain text body
-        html: "<b>Hello world?</b>" // html body
-      });
-
-    console.log("Message sent: %s", info.messageId);
+   
 }
 
 export const updateStatus = (req, res) => {

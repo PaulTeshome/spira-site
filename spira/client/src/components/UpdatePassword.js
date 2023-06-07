@@ -2,11 +2,11 @@ import React,{useEffect, useState} from 'react'
 import {FormProvider, useForm} from 'react-hook-form'
 import { HashLink as Link} from 'react-router-hash-link'
 import { motion } from 'framer-motion'
-import { BsFillCheckSquareFill } from 'react-icons/bs'
+import { BsFillCheckSquareFill, BsFillXSquareFill } from 'react-icons/bs'
 import './styles/UpdatePassword.css'
 import PasswordInputComponent from './PasswordInputComponent'
 import { DevTool } from '@hookform/devtools'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate} from 'react-router-dom'
 import axios from 'axios'
 
 function UpdatePassword() {
@@ -15,8 +15,18 @@ function UpdatePassword() {
     const [failure,setFailure]= useState(false)
     const [success_msg,setMsg] = useState('')
 
-    const { token } = useParams();
+    const [token, setToken] = useState(null);
+
     const navigate= useNavigate()
+
+    
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const tokenParam = urlParams.get('token');
+    if (tokenParam) {
+      setToken(tokenParam);
+    }
+  }, []);
 
     useEffect(()=>{
       document.title='Update Password'
@@ -31,23 +41,26 @@ function UpdatePassword() {
       
       axios.post('/reset-password/submit',{token: token, password: data.update_password})
       .then(res=>{
-        setMsg(res.data.message)
+        setMsg(res.data)
         setSubmitSuccess(true)
         setFailure(false)
 
         setTimeout(()=>{
           setSubmitSuccess(false)
-          navigate('/')},2000)
+          navigate('/login')},2000)
       })
       .catch(err=>{
-        setMsg(err.response.data.message)
+        setMsg(err.response.data)
         setSubmitSuccess(true)
         setFailure(true)
+        setTimeout(()=>{
+          setSubmitSuccess(false)
+          navigate('/login/*/forgotpsd')},2000)
       });
     })
 
     const success_msg_class= failure?"login-error-msg":"success-msg"
-    const checkLogo=failure?"":<BsFillCheckSquareFill/> 
+    const checkLogo=failure?<BsFillXSquareFill/>:<BsFillCheckSquareFill/> 
 
     const conf_password_validation = {
         validation: {

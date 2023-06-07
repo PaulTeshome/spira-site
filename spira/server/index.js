@@ -7,6 +7,7 @@ import testimonialRoutes from "./routes/testimonials.js";
 import hireRoutes from "./routes/hire.js";
 import resetPasswordRoutes from "./routes/reset.js";
 import authRoutes from "./routes/auth.js";
+import adminRoutes from "./routes/admin.js";
 import session from 'express-session';
 import cookieParser from 'cookie-parser';
 
@@ -37,6 +38,7 @@ app.use('/api/team', teamRoutes)
 app.use('/api/testimonials', testimonialRoutes)
 app.use('/api/hire', hireRoutes)
 app.use('/api/reset-password', resetPasswordRoutes)
+app.use('/api/admin', adminRoutes)
 
 
 app.get('/', (req, res) => {

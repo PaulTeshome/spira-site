@@ -89,9 +89,9 @@ export const passwordResetSubmit = (req, res) => {
             [hash, user.admin_email], (err,data) => {
         
                         if (err) {
-                            res.status(404).json( "Error resetting password. ")
+                            res.status(404).json( { message: "Error resetting password. "})
                         }else {
-                            res.status(200).json("Password reset successful");
+                            res.status(200).json({ message: "Password reset successful. Login with your new credentials"});
                         }
                 });
         }

@@ -8,7 +8,7 @@ import CustomizationPage from './components/CustomizationPage'
 import ManageAdmins from './components/ManageAdmins'
 import withAuth from './components/utils/withAuth'
 
-function Admin({user}) {
+function Admin({user, userId}) {
 
   useEffect(()=>{
     document.title='Admin Dashboard'
@@ -24,7 +24,7 @@ function Admin({user}) {
             <Routes>
               <Route exact path="*" element={<Dashboard/>}/>
               <Route exact path="*/pagecustom/*" element={<CustomizationPage/>}/>
-              <Route exact path="*/manageadmin/*" element={<ManageAdmins/>}/>
+              <Route exact path="*/manageadmin/*" element={<ManageAdmins userId={userId} />}/>
             </Routes>
           </div>
       </div>

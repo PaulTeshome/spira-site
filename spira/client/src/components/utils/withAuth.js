@@ -11,10 +11,8 @@ const withAuth = (Component) => {
     useEffect(() => {
       axios.get('/auth/check-login')
         .then(response => {
-
-            console.log("res:",response)
             setUser(response.data.user.username)
-            const expirationTime = (response.data.user.exp - response.data.user.iat+1) * 1000;
+            const expirationTime = (response.data.user.exp - response.data.user.iat) * 1000;
             setTimeout(() => {
               
               if (!alertShown) {
@@ -24,7 +22,6 @@ const withAuth = (Component) => {
             }, expirationTime);
         })
         .catch(error => {
-          console.log("error: ",error.response)
             navigate("/login")
         });
     }, [navigate, alertShown]);

@@ -8,13 +8,15 @@ import TextInput from './TextInput'
 import FixedHeader from './FixedHeader'
 import RadioComponent from './RadioComponent'
 import { email_validation, name_validation, phone_validation, text_validation } from './utils/inputValidations'
-import {BsFillCheckSquareFill} from 'react-icons/bs'
+import {BsFillCheckSquareFill, BsFillXSquareFill} from 'react-icons/bs'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
 function HireForm() {
 
-  const [success,setSuccess]= useState(false)
+  const [submitSuccess,setSubmitSuccess]= useState(false)
+  const [failure,setFailure]= useState(false)
+  const [success_msg,setMsg] = useState('')
   const navigate = useNavigate();
   
   useEffect(()=>{
@@ -33,15 +35,23 @@ function HireForm() {
    
     axios.post('/hire/makeRequest',data)
     .then(res=>{
-      setSuccess(true)
-      setTimeout(()=>{setSuccess(false)},3000)
-      setTimeout(()=>{navigate('/')},5000)
+      console.log("res: ",res)
+      setMsg(res.data)
+      setSubmitSuccess(true)
+      setFailure(false)
+
+      setTimeout(()=>{
+        setSubmitSuccess(false)
+        navigate('/')},8000)
     })
     .catch(err=>{
-
+      setMsg(err.response.data)
+        setSubmitSuccess(true)
+        setFailure(true)
     });
   })
-
+  const success_msg_class= failure?"error-msg":"success-msg"
+  const checkLogo=failure?<BsFillXSquareFill/>:<BsFillCheckSquareFill/> 
   return (
     <div className='hire-form-container'>
       <FixedHeader logo_link="/#home" services="/#services" about="/#abtUs" hireUs=""/>
@@ -63,14 +73,15 @@ function HireForm() {
               <RadioComponent value="other" label="Other" name="services"/>
               
               <TextInput textLabel="Specify" name="specify"  placeholder='Specify your choice above' {...text_validation}/>
-              {success && (
-                <motion.p className="success-msg"
+              {submitSuccess && (
+                <motion.p className={success_msg_class}
                   initial= {{ opacity: 0, y: 10 }}
                   animate= {{ opacity: 1, y: 0 }}
                   exit= {{ opacity: 0, y: 10 }}
                   transition= {{ duration: 0.5 }}
                 >
-                  <BsFillCheckSquareFill /> Form has been submitted successfully
+                  
+                  {checkLogo}&nbsp;{success_msg}
                 </motion.p>
               )}
               <button  className='form-btn' onClick={submitInputs}>Submit</button>

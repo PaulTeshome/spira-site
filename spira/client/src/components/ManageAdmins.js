@@ -5,7 +5,7 @@ import ManageAdminSettingChoice from './ManageAdminSettingChoice'
 import OtherAdminSettings from './OtherAdminSettings'
 import OwnAdminSettings from './OwnAdminSettings'
 
-function ManageAdmins() {
+function ManageAdmins({userId}) {
   return (
     <div className='manage-admin-holder'>
       <span className='manage-title'>Admin Managment</span>
@@ -15,7 +15,7 @@ function ManageAdmins() {
             <Routes>
                 <Route exact path="*" element={<ManageAdminSettingChoice/>}/>
                 <Route exact path="*/other-admins/*" element={<OtherAdminSettings/>}/>
-                <Route exact path="*/own-creds/*" element={<OwnAdminSettings/>}/>
+                <Route exact path="*/own-creds/*" element={<OwnAdminSettings userId={userId}/>}/>
               </Routes>
           </div>       
     </div>

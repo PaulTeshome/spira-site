@@ -2,11 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-
-
-
-// Define the reducer function
-
 const withAuth = (Component) => {
     const AuthenticatedComponent = (props) => {
     const navigate = useNavigate();

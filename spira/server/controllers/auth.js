@@ -4,21 +4,6 @@ import bcrypt from 'bcryptjs';
 
 
 
-
-
-export const register= (req,res)=>{
-//   const salt = bcrypt.genSaltSync(10);
-
-// // Hash a password with the salt
-//   const hash = bcrypt.hashSync('password123', salt);
-//   console.log("hash: ",hash)
-
-//   const isMatch = bcrypt.compareSync('password123', hash);
-//   console.log("match: ",isMatch)
-
-
-}
-
 export const login= (req,res)=>{
 
   const {username,password} = req.body;

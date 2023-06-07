@@ -30,13 +30,18 @@ export const login= (req,res)=>{
     }
     else {
      
+      try{
         const isMatch = bcrypt.compareSync(password, result[0].admin_password);
-
         if(!isMatch){
           return res.status(401).json({ message: 'Invalid username or password' })
         }
-
-        const token = jwt.sign({ username }, 'spira2121', { expiresIn: '1h' });
+      }catch(err){
+        return res.status(401).json({ message: 'Invalid username or password' })
+      }
+        
+        
+        
+        const token = jwt.sign({ username: result[0].admin_username }, 'spira2121', { expiresIn: '1h' });
         res.cookie('token', token, { httpOnly: true });
         res.status(200).json({ message: 'Login successful. Redirecting...' });
     }

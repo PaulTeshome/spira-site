@@ -40,7 +40,7 @@
     flex-direction: column;
     min-height:160px;
     width:40%;
-    border-radius: 20px;
+    border-radius: 3px;
     margin:5%;
     padding-bottom: 3%;
     background-color: #AFB1B4;
@@ -100,7 +100,7 @@
     .member-card{
         min-height:290px;
         width:40%;
-        border-radius: 20px;
+        border-radius: 8px;
         font-size: 15px;
     }
     
@@ -126,7 +126,7 @@
     .member-card{
         min-height:480px;
         width:30%;
-        border-radius: 40px;
+        border-radius: 15px;
         font-size: 20px;
     }
     

@@ -4,7 +4,7 @@
     min-height:200px;
     width:40%;
     margin:5%;
-    border-radius: 20px;
+    border-radius: 3px;
     box-shadow: 4px 6px 6px rgba(0, 0, 0, 0.5);
 }
 
@@ -46,7 +46,7 @@
     .recent-card{
         min-height:300px;
         width:30%;
-        border-radius: 30px;
+        border-radius: 8px;
     }
 
     .recent-card-header{
@@ -64,7 +64,7 @@
     .recent-card{
         min-height:600px;
         width:30%;
-        border-radius: 40px;
+        border-radius: 15px;
     }
 
     .recent-card-header{

@@ -27,7 +27,7 @@ function MottoSection({motto, description}) {
           <div className='motto-bg'>
             <motion.div className='quote-container'
                 animate={{
-                  x: m_anim? [-500,0] :0
+                  x: m_anim? [-800,0] :[0,-800]
                 }}
 
                 transition={{
@@ -39,7 +39,7 @@ function MottoSection({motto, description}) {
             </motion.div>
             <motion.div className='quote-logo'
               animate={{
-                x: m_anim? [500,0] :0
+                x: m_anim? [800,0] :[0,800]
               }}
 
               transition={{
@@ -58,8 +58,8 @@ function MottoSection({motto, description}) {
             }}
             
             animate={{
-              scale: q_anim? [0,1] :[1,0.9],
-              opacity: q_anim? [0,1] :1
+              scale: q_anim? [0,1] :[1,0],
+              opacity: q_anim? [0,1] :[1,0]
             }}
 
             transition={{
@@ -75,8 +75,8 @@ function MottoSection({motto, description}) {
             }}
 
             animate={{
-              scale: q_anim? [0,1] :[1,0.9],
-              opacity: q_anim? [0,1] :1
+              scale: q_anim? [0,1] :[1,0],
+              opacity: q_anim? [0,1] :[1,0]
             }}
             
             transition={{

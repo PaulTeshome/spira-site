@@ -8,11 +8,16 @@ function AdminNav() {
   const navigate= useNavigate()
 
   const handleLogout=() => {
-    axios.get('/auth/logout')
-    .then((res) => {
-      alert(res.data.message)
-      navigate('/login')
-    })
+    let checkLog= window.confirm('Are you sure you want to logout?')
+
+    if(checkLog){
+      axios.get('/auth/logout')
+      .then((res) => {
+        alert(res.data.message)
+        navigate('/login')
+      })
+    }
+    
   }
 
   return (

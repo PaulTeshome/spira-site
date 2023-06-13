@@ -16,7 +16,7 @@ let transporter = nodemailer.createTransport({
 
 
 export const getRequests = (req, res) => {
-    const q= "select * from hire_requests"
+    const q= "SELECT * FROM hire_requests ORDER BY request_id DESC"
 
     db.query(q, (err,data) => {
 
